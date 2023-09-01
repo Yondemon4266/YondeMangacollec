@@ -1,0 +1,124 @@
+$bradius: 10px;
+$padding: 18px;
+.compte {
+  padding-top: 50px;
+  height: 100vh;
+  a,h3,p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  h3 {
+    font-size: 21px;
+    font-weight: 400;
+  }
+  .logout {
+    margin: 0 auto;
+    line-height: 50px;
+    width: 97%;
+    color: $red;
+    text-align: center;
+    border-top: 1px solid $grey-compte;
+    border-bottom: 1px solid $grey-compte;
+    cursor: pointer;
+    &:hover {
+      background-color: $red-remove;
+      color: white;
+      width: 100%;
+    }
+  }
+  .islogout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    z-index: 999;
+    animation: fadeIn 0.5s ease forwards;
+    .islogout-container {
+      position: absolute;
+      top: calc(50% - 50px);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $white;
+      text-align: center;
+      border-radius: $bradius;
+      .islogout-header {
+        padding: 15px 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        h4 {
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        p {
+          margin-bottom: 20px;
+          text-align: center;
+        }
+      }
+      .islogout-content {
+        display: flex;
+        justify-content: center;
+        button {
+          width: 100%;
+          line-height: 40px;
+          cursor: pointer;
+          background-color: $white;
+        }
+        button:nth-child(1) {
+          border-bottom: none;
+          border-left: none;
+          border-right: 1px solid $grey-2;
+          border-top: 1px solid $grey-2;
+          border-bottom-left-radius: $bradius;
+          &:hover {
+            background-color: $grey-3;
+          }
+        }
+        button:nth-child(2) {
+          border-bottom: none;
+          border-right: none;
+          border-left: none;
+          border-top: 1px solid $grey-2;
+          border-bottom-right-radius: $bradius;
+          &:hover {
+            background-color: $red-remove;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.compte-info {
+  padding-top: $padding;
+  padding-left: $padding;
+
+}
+
+.themes {
+  padding-top: $padding;
+  padding-left: $padding;
+}
+
+.like-yondes-app {
+  padding-top: $padding;
+  padding-left: $padding;
+}
+
+.copy {
+  padding-top: $padding;
+  padding-left: $padding;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

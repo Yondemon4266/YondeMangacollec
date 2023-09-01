@@ -1,0 +1,36 @@
+.nouveautes {
+    display: flex;
+    flex-direction: column;
+    .nouveautes-mangas, .nouveautes-animes {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+        margin: 10px 25px;
+        h2 {
+            position: absolute;
+            top:0px;
+            left: 0;
+            padding-left: 18px;
+        }
+        .new-manga {
+            cursor: pointer;
+            img {
+                width: 220px;
+                height: 330px;
+            }
+            .manga-title-p {
+                display: flex;
+                flex-direction: column;
+                
+                h4 {
+                    font-size: 17px;
+                    line-height: 20px;
+                    font-weight: 200;
+                    
+                }
+            }
+        }
+    }
+}

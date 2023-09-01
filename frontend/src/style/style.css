@@ -1,0 +1,1178 @@
+@font-face {
+  font-family: "Lato";
+  src: url("../../public/fonts/Lato/Lato-Regular.ttf");
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto/Roboto-Regular.ttf");
+}
+* {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Lato", "Courier New", Courier, monospace;
+}
+
+.popularity-jauge {
+  width: 95%;
+  height: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.fill-jauge {
+  height: 100%;
+  border: transparent;
+  border-radius: 10px;
+  background-color: #0ade0a;
+  -webkit-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out; /* Animation de transition */
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  outline: none;
+  color: black;
+}
+
+a button {
+  border-radius: 30px;
+  padding: 12px 40px;
+  width: 100%;
+  border: none;
+  background-color: #cf000a;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+a button:hover {
+  cursor: pointer;
+}
+
+.connexion {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  padding-left: 18px;
+  border-bottom: 0.5px solid rgb(219, 219, 219);
+  background-color: white;
+  z-index: 110;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: start;
+      align-self: start;
+  font-size: 18px;
+}
+
+.schedule-day-list {
+  padding: 9px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 15px;
+}
+.schedule-day-list .new-manga img {
+  width: 220px;
+  height: 330px;
+}
+.schedule-day-list .new-manga .manga-title-p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.schedule-day-list .new-manga .manga-title-p h4 {
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 200;
+}
+
+#connexionid {
+  position: static;
+}
+
+#connexionid2 {
+  position: static;
+}
+
+#connexionid3 {
+  width: calc(100% - 220px);
+}
+
+.navigation-menu {
+  position: fixed;
+  top: 0;
+  width: 220px;
+  height: 100vh;
+  border-right: 0.5px solid rgb(228, 225, 225);
+  padding: 15px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.navigation-menu h4 {
+  font-size: 18px;
+  margin-left: 15px;
+  font-family: "Roboto", "Courier New", Courier, monospace;
+}
+.navigation-menu h2 {
+  color: #cf000a;
+  font-size: 22px;
+}
+.navigation-menu #lilogo {
+  padding: 5px;
+  background-color: white;
+}
+.navigation-menu #lilogo h2 {
+  margin-left: 5px;
+}
+.navigation-menu .navigation-up .nav-active li {
+  background-color: #ededed;
+  border-radius: 30px;
+}
+.navigation-menu .navigation-up .nav-active h4 {
+  color: #cf000a;
+  font-size: 18px;
+}
+.navigation-menu .navigation-up a li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0px;
+  padding: 10px 10px;
+  border-radius: 30px;
+}
+.navigation-menu .navigation-up a li:hover {
+  background-color: #ededed;
+}
+.navigation-menu .navigation-up a li .logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.navigation-menu .navigation-up a li img {
+  width: 26px;
+  height: 26px;
+}
+.navigation-menu .login a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 10px;
+  border-radius: 30px;
+}
+.navigation-menu .login a:hover {
+  background-color: #ededed;
+}
+.navigation-menu .login .nav-active {
+  background-color: #ededed;
+  border-radius: 30px;
+}
+.navigation-menu .login .nav-active h4 {
+  color: #cf000a;
+}
+
+.container {
+  margin-left: 220px;
+}
+
+.home-container .header {
+  height: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: url("../../public/img/japanese.png");
+  background-size: 400px 100%;
+  background-repeat: repeat-x;
+}
+.home-container .header .logo-title {
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  padding: 5px 20px 5px 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 16px 1px;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 16px 1px;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  width: auto;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.home-container .header .accroche {
+  margin-top: 50px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  padding: 20px 15px 25px 15px;
+  width: 600px;
+  border-radius: 30px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 16px 1px;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 16px 1px;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+.home-container .header .accroche h2 {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.home-container .header .accroche ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+.home-container .header .accroche ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home-container .header .accroche ul li p {
+  font-size: 24px;
+  font-weight: 200;
+  color: rgb(138, 136, 136);
+}
+.home-container .header .accroche .sinscrire {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.home-container .header .apps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+.home-container .header .apps li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: black;
+  border-radius: 5px;
+  padding: 7px;
+  color: white;
+  gap: 5px;
+}
+.home-container .header .apps li:hover {
+  cursor: pointer;
+}
+.home-container .header .apps li .app-text p:nth-child(1) {
+  font-size: 11px;
+}
+.home-container .header .apps li .app-text p:nth-child(2) {
+  font-size: 16px;
+}
+
+.logo-title img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.logo-title h1 {
+  color: #cf000a;
+  font-weight: 300;
+  font-size: 42px;
+}
+
+.nouveautes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.nouveautes .nouveautes-mangas, .nouveautes .nouveautes-animes {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+  margin: 10px 25px;
+}
+.nouveautes .nouveautes-mangas h2, .nouveautes .nouveautes-animes h2 {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  padding-left: 18px;
+}
+.nouveautes .nouveautes-mangas .new-manga, .nouveautes .nouveautes-animes .new-manga {
+  cursor: pointer;
+}
+.nouveautes .nouveautes-mangas .new-manga img, .nouveautes .nouveautes-animes .new-manga img {
+  width: 220px;
+  height: 330px;
+}
+.nouveautes .nouveautes-mangas .new-manga .manga-title-p, .nouveautes .nouveautes-animes .new-manga .manga-title-p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.nouveautes .nouveautes-mangas .new-manga .manga-title-p h4, .nouveautes .nouveautes-animes .new-manga .manga-title-p h4 {
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 200;
+}
+
+.choose-to-sign {
+  display: block;
+  position: relative;
+}
+.choose-to-sign .cts-container {
+  margin-top: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.choose-to-sign .cts-container .choose-to-sign-container {
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+  border: 0.5px solid rgb(219, 219, 219);
+  width: 300px;
+  height: 320px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4.65px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4.65px;
+}
+.choose-to-sign .mentions-legales {
+  position: absolute;
+  bottom: -350px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.schedules {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 50px;
+}
+.schedules .schedule-day-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2px;
+  width: 100%;
+}
+.schedules .schedule-day-container .day {
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 200;
+  width: 100%;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ebebeb;
+}
+.schedules .schedule-day-container .schedule-day-list {
+  padding: 9px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.schedules .schedule-day-container .schedule-day-list .new-manga {
+  cursor: pointer;
+}
+.schedules .schedule-day-container .schedule-day-list li {
+  padding: 9px;
+}
+.schedules .schedule-day-container .schedule-day-list li img {
+  width: 190px;
+  height: 288px;
+  border-radius: 5px;
+}
+.schedules .schedule-day-container .schedule-day-list li:hover {
+  cursor: pointer;
+}
+
+.search form .searchinput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 70%;
+}
+.search form .searchinput i {
+  position: absolute;
+  color: rgb(160, 158, 158);
+  background-color: rgb(224, 224, 224);
+  font-size: 16px;
+  left: 3px;
+  padding-left: 5px;
+}
+.search form .searchinput input {
+  padding-left: 38px;
+  border-radius: 30px;
+  height: 30px;
+  width: 100%;
+  border: none;
+  background-color: rgb(224, 224, 224);
+}
+.search form .ul-btn-options {
+  height: 30px;
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ebebeb;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.search form .ul-btn-options .btn-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.search form .ul-btn-options .btn-options li {
+  width: 50%;
+  height: 100%;
+  border-radius: 330px;
+}
+.search form .ul-btn-options .btn-options li button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: #ebebeb;
+  color: #cf000a;
+}
+.search form .ul-btn-options .btn-options li .activeBtn {
+  background: #cf000a;
+  color: white;
+}
+.search form .ul-btn-options .btn-options li .activeBtn:hover {
+  cursor: pointer;
+}
+.search form .ul-btn-options .btn-options li .not-activeBtn {
+  color: #cf000a;
+}
+.search form .ul-btn-options .btn-options li .not-activeBtn:hover {
+  cursor: pointer;
+  background-color: #d7d6d6;
+  border-radius: 30px;
+}
+.search form .search-list .animelist {
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.search form .search-list .animelist li {
+  height: 40px;
+  width: 100%;
+  padding-left: 18px;
+}
+.search form .search-list .animelist li:hover {
+  background-color: #d7d6d6;
+}
+.search form .search-list .animelist li button {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border: none;
+  border-bottom: 0.5px solid rgb(219, 219, 219);
+  text-align: left;
+  font-size: 17px;
+  color: rgb(28, 28, 30);
+}
+.search form .search-list .animelist li button:hover {
+  cursor: pointer;
+  background-color: #d7d6d6;
+}
+.search form .search-list .animelist li:last-child {
+  border-bottom: none;
+}
+
+.slc .connexion #retour {
+  position: relative;
+  width: 150px;
+  height: 30px;
+  border: none;
+  background-color: #cf000a;
+  color: white;
+  border-radius: 30px;
+  font-size: 14px;
+}
+.slc .connexion #retour i {
+  position: absolute;
+  left: 10px;
+  bottom: 0px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.slc .connexion #retour:hover {
+  cursor: pointer;
+}
+.slc .search-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 15px;
+  padding-left: 18px;
+  padding-bottom: 20px;
+}
+.slc .search-list .new-manga {
+  cursor: pointer;
+}
+.slc .search-list .new-manga img {
+  width: 220px;
+  height: 330px;
+}
+
+.new-manga .manga-title-p {
+  margin-bottom: 5px;
+}
+
+.cardpage {
+  height: calc(100vh - 50px);
+}
+.cardpage .connexion .retour {
+  color: #cf000a;
+  text-align: center;
+  border-radius: 50%;
+}
+.cardpage .connexion .retour i {
+  width: 40px;
+  line-height: 40px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-size: 22px;
+}
+.cardpage .connexion .retour:hover {
+  cursor: pointer;
+  background-color: #ebebeb;
+}
+.cardpage .cardpageall {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.cardpage .cardpageall .left-card-page {
+  width: 30%;
+  height: 100%;
+}
+.cardpage .cardpageall .left-card-page .img-container-cp {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.cardpage .cardpageall .left-card-page .img-container-cp img {
+  margin-top: 60px;
+  width: 335px;
+  height: 500px;
+}
+.cardpage .cardpageall .right-card-page {
+  width: 70%;
+  padding: 15px 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+.cardpage .cardpageall .right-card-page p {
+  font-size: 15px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 19px;
+}
+.cardpage .cardpageall .right-card-page .title-card-page {
+  width: 100%;
+}
+.cardpage .cardpageall .right-card-page .title-card-page h2 {
+  font-weight: 100;
+  font-size: 34px;
+  letter-spacing: 2px;
+  line-height: 40px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 40px;
+  background-color: transparent;
+  width: 100%;
+  border-radius: 30px;
+  padding: 0 10px;
+  position: relative;
+  font-size: 16px;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page button:hover {
+  cursor: pointer;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .add {
+  width: 50%;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .add p {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 10px;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .add button {
+  border: 1px solid red;
+  color: #cf000a;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .add button i {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 0 10px;
+  font-size: 22px;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .like {
+  width: 50%;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .like p {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 10px;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .like button {
+  border: 1px solid green;
+  position: relative;
+  color: green;
+}
+.cardpage .cardpageall .right-card-page .btn-optn-card-page .like button i {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 0 10px;
+  font-size: 22px;
+}
+.cardpage .cardpageall .right-card-page .synopsis {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+.cardpage .cardpageall .right-card-page .synopsis p {
+  letter-spacing: 1px;
+}
+
+.sign {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.sign .signin-signup {
+  width: 100%;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sign .signin-signup ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 60%;
+  background-color: #ebebeb;
+  border-radius: 30px;
+}
+.sign .signin-signup ul .hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  border: none;
+  background-color: #ebebeb;
+  color: #cf000a;
+}
+.sign .signin-signup ul .hover li {
+  line-height: 30px;
+}
+.sign .signin-signup ul .nav-active {
+  background: #cf000a;
+  border-radius: 30px;
+  color: white;
+}
+.sign .signin-signup ul .nav-active:hover {
+  cursor: pointer;
+}
+.sign .signin-signup ul .not-activeBtn {
+  color: #cf000a;
+  border-radius: 30px;
+}
+.sign .signin-signup ul .not-activeBtn:hover {
+  cursor: pointer;
+  background-color: #d7d6d6;
+  border-radius: 30px;
+}
+.sign form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+.sign form h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+.sign form input {
+  position: relative;
+  border: none;
+  line-height: 40px;
+  background-color: #ebebeb;
+  border-radius: 30px;
+  padding-left: 15px;
+  width: 20%;
+}
+.sign form label {
+  position: relative;
+}
+.sign form label::after {
+  content: "*";
+  position: absolute;
+  top: 0px;
+  right: -170px;
+  color: red;
+  font-size: 18px;
+}
+.sign form .nav-active {
+  background: #cf000a;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20%;
+  line-height: 40px;
+  border: none;
+  color: white;
+}
+.sign form .nav-active:hover {
+  cursor: pointer;
+}
+.sign p {
+  display: block;
+  text-align: center;
+  font-size: 17px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.sign .sign-google-fb-apple {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  gap: 15px;
+}
+.sign .sign-google-fb-apple li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.sign .sign-google-fb-apple li button {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 20%;
+  border: none;
+  line-height: 40px;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+}
+.sign .sign-google-fb-apple li button i {
+  position: absolute;
+  left: 10px;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  font-size: 18px;
+}
+.sign .sign-google-fb-apple li .blue {
+  background-color: #3b5998;
+}
+.sign .sign-google-fb-apple li .blueclear {
+  background-color: #4285f4;
+}
+.sign .sign-google-fb-apple li .black {
+  background-color: rgb(0, 0, 0);
+}
+.sign .mdp-oublie {
+  text-align: center;
+  cursor: pointer;
+}
+
+.success {
+  margin-left: calc(50% - 60px);
+  color: rgb(6, 126, 6);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid green;
+  border-radius: 10px;
+}
+
+.fail {
+  color: #cf000a;
+}
+
+.compte {
+  padding-top: 50px;
+  height: 100vh;
+}
+.compte a, .compte h3, .compte p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.compte h3 {
+  font-size: 21px;
+  font-weight: 400;
+}
+.compte .logout {
+  margin: 0 auto;
+  line-height: 50px;
+  width: 97%;
+  color: #cf000a;
+  text-align: center;
+  border-top: 1px solid rgb(211, 211, 211);
+  border-bottom: 1px solid rgb(211, 211, 211);
+  cursor: pointer;
+}
+.compte .logout:hover {
+  background-color: rgb(250, 82, 82);
+  color: white;
+  width: 100%;
+}
+.compte .islogout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  z-index: 999;
+  -webkit-animation: fadeIn 0.5s ease forwards;
+          animation: fadeIn 0.5s ease forwards;
+}
+.compte .islogout .islogout-container {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+.compte .islogout .islogout-container .islogout-header {
+  padding: 15px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.compte .islogout .islogout-container .islogout-header h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.compte .islogout .islogout-container .islogout-header p {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.compte .islogout .islogout-container .islogout-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.compte .islogout .islogout-container .islogout-content button {
+  width: 100%;
+  line-height: 40px;
+  cursor: pointer;
+  background-color: white;
+}
+.compte .islogout .islogout-container .islogout-content button:nth-child(1) {
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #ededed;
+  border-top: 1px solid #ededed;
+  border-bottom-left-radius: 10px;
+}
+.compte .islogout .islogout-container .islogout-content button:nth-child(1):hover {
+  background-color: #ebebeb;
+}
+.compte .islogout .islogout-container .islogout-content button:nth-child(2) {
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid #ededed;
+  border-bottom-right-radius: 10px;
+}
+.compte .islogout .islogout-container .islogout-content button:nth-child(2):hover {
+  background-color: rgb(250, 82, 82);
+  color: white;
+}
+
+.compte-info {
+  padding-top: 18px;
+  padding-left: 18px;
+}
+
+.themes {
+  padding-top: 18px;
+  padding-left: 18px;
+}
+
+.like-yondes-app {
+  padding-top: 18px;
+  padding-left: 18px;
+}
+
+.copy {
+  padding-top: 18px;
+  padding-left: 18px;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=style.css.map */
