@@ -13,11 +13,17 @@ import { useDispatch } from "react-redux";
 import { getUser } from "./actions/user.action";
 import CollectionUID from "./pages/pagesUID/CollectionUID";
 import Compte from "./pages/pagesUID/Compte";
+import CardPageUID from "./pages/pagesUID/CardPageUID";
 const App = () => {
   const dispatch = useDispatch();
 
-  const [uid, setUid] = useState(JSON.parse(localStorage.getItem('uid')) ? JSON.parse(localStorage.getItem('uid')) : null);
-
+  
+  const [uid, setUid] = useState(
+    JSON.parse(localStorage.getItem("uid"))
+      ? JSON.parse(localStorage.getItem("uid"))
+      : null
+  );
+  ////////////// FETCHTOKEN ////////////////////////
   useEffect(() => {
     const fetchToken = async () => {
       await axios({
@@ -26,8 +32,12 @@ const App = () => {
         withCredentials: true,
       })
         .then((res) => {
-          setUid(res.data);
-          localStorage.setItem('uid', JSON.stringify(res.data));
+          if (uid) {
+            console.log("token déjà valide");
+          } else {
+            setUid(res.data);
+            localStorage.setItem("uid", JSON.stringify(res.data));
+          }
         })
         .catch((err) => console.log(err + "  No token !"));
     };
@@ -35,6 +45,8 @@ const App = () => {
 
     if (uid) dispatch(getUser(uid));
   }, [uid]);
+
+    ////////////////UID ET FETCHTOKEN ////////////////////////
 
   return (
     <Routes>
@@ -50,6 +62,7 @@ const App = () => {
         <>
           <Route path="/user/:user/collection" element={<CollectionUID />} />
           <Route path="/user/:user/settings" element={<Compte />} />
+          <Route path="/cardpage/:user/:malid" element={<CardPageUID/>} />
           <Route path="/users/sign_in" element={<Navigate to="/" />} />
           <Route path="/users/sign_up" element={<Navigate to="/" />} />
           <Route path="/collection" element={<Navigate to="/" />} />
@@ -65,6 +78,7 @@ const App = () => {
             path="/user/:user/settings"
             element={<Navigate to="/users/sign_in" />}
           />
+          <Route path="/cardpage/:user/:malid" element={<Navigate to="/"/>} />
           <Route path="/users/sign_in" element={<SignIn />} />
           <Route path="/users/sign_up" element={<SignUp />} />
           <Route path="/collection" element={<Collection />} />

@@ -8,5 +8,6 @@ router.get("/logout", authController.logout);
 
 // user DB
 router.get("/:id", userController.userInfo);
-
+router.patch("/colleclistpatch/:id", userController.userColleclistPatch);
+router.delete("/colleclistdelete/:id/:malid", userController.userColleclistDelete);
 module.exports = router;

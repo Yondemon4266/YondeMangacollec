@@ -511,32 +511,6 @@ a button:hover {
   cursor: pointer;
 }
 
-.search form .searchinput {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  width: 70%;
-}
-.search form .searchinput i {
-  position: absolute;
-  color: rgb(160, 158, 158);
-  background-color: rgb(224, 224, 224);
-  font-size: 16px;
-  left: 3px;
-  padding-left: 5px;
-}
-.search form .searchinput input {
-  padding-left: 38px;
-  border-radius: 30px;
-  height: 30px;
-  width: 100%;
-  border: none;
-  background-color: rgb(224, 224, 224);
-}
 .search form .ul-btn-options {
   height: 30px;
   width: 30%;
@@ -617,6 +591,33 @@ a button:hover {
   border-bottom: none;
 }
 
+.searchinput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 70%;
+}
+.searchinput i {
+  position: absolute;
+  color: rgb(160, 158, 158);
+  background-color: rgb(224, 224, 224);
+  font-size: 16px;
+  left: 3px;
+  padding-left: 5px;
+}
+.searchinput input {
+  padding-left: 38px;
+  border-radius: 30px;
+  height: 30px;
+  width: 100%;
+  border: none;
+  background-color: rgb(224, 224, 224);
+}
+
 .slc .connexion #retour {
   position: relative;
   width: 150px;
@@ -650,6 +651,7 @@ a button:hover {
   gap: 15px;
   padding-left: 18px;
   padding-bottom: 20px;
+  margin-top: 60px;
 }
 .slc .search-list .new-manga {
   cursor: pointer;
@@ -692,6 +694,7 @@ a button:hover {
           flex-direction: row;
   width: 100%;
   height: 100%;
+  margin-top: 50px;
 }
 .cardpage .cardpageall .left-card-page {
   width: 30%;
@@ -742,14 +745,31 @@ a button:hover {
   line-height: 40px;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page {
+.cardpage .cardpageall .right-card-page .synopsis {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+.cardpage .cardpageall .right-card-page .synopsis p {
+  letter-spacing: 1px;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.btn-optn-card-page {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
   width: 100%;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page button {
+.btn-optn-card-page button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -767,66 +787,139 @@ a button:hover {
   position: relative;
   font-size: 16px;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page button:hover {
+.btn-optn-card-page button:hover {
   cursor: pointer;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .add {
-  width: 50%;
+.btn-optn-card-page .add-remove {
+  width: 350px;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .add p {
+.btn-optn-card-page .add-remove i {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 0 10px;
+  font-size: 22px;
+}
+.btn-optn-card-page .add-remove p {
   text-align: center;
   margin-top: 5px;
   font-size: 10px;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .add button {
+.btn-optn-card-page .add-remove .btn-add {
   border: 1px solid red;
   color: #cf000a;
+  height: 50px;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .add button i {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  padding: 0 10px;
-  font-size: 22px;
-}
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .like {
-  width: 50%;
-}
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .like p {
+.btn-optn-card-page .add-remove .btn-add p {
   text-align: center;
   margin-top: 5px;
-  font-size: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .like button {
-  border: 1px solid green;
-  position: relative;
-  color: green;
+.btn-optn-card-page .add-remove .btn-remove {
+  background-color: #cf000a;
+  color: white;
+  height: 50px;
 }
-.cardpage .cardpageall .right-card-page .btn-optn-card-page .like button i {
-  position: absolute;
+.btn-optn-card-page .add-remove .btn-remove p {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.btn-optn-card-page .fade {
+  position: fixed;
+  top: 0;
   left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  padding: 0 10px;
-  font-size: 22px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  z-index: 999;
+  -webkit-animation: fadeIn 0.5s ease forwards;
+          animation: fadeIn 0.5s ease forwards;
 }
-.cardpage .cardpageall .right-card-page .synopsis {
+.btn-optn-card-page .fade .fade-container {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  text-align: center;
+  border-radius: 20px;
+}
+.btn-optn-card-page .fade .fade-container .fade-header {
+  padding: 15px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.btn-optn-card-page .fade .fade-container .fade-header h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.btn-optn-card-page .fade .fade-container .fade-header p {
+  margin-bottom: 20px;
+  text-align: center;
+  width: 250px;
+}
+.btn-optn-card-page .fade .fade-container .fade-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.cardpage .cardpageall .right-card-page .synopsis p {
-  letter-spacing: 1px;
+.btn-optn-card-page .fade .fade-container .fade-content button {
+  width: 100%;
+  line-height: 40px;
+  cursor: pointer;
+  background-color: white;
+}
+.btn-optn-card-page .fade .fade-container .fade-content button:nth-child(1) {
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #ededed;
+  border-top: 1px solid #ededed;
+  border-bottom-left-radius: 20px;
+  font-size: 18px;
+}
+.btn-optn-card-page .fade .fade-container .fade-content button:nth-child(1):hover {
+  background-color: #ebebeb;
+}
+.btn-optn-card-page .fade .fade-container .fade-content button:nth-child(2) {
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid #ededed;
+  border-bottom-right-radius: 20px;
+  color: #cf000a;
+  font-size: 18px;
+}
+.btn-optn-card-page .fade .fade-container .fade-content button:nth-child(2):hover {
+  background-color: rgb(250, 82, 82);
+  color: white;
 }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .sign {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1055,19 +1148,20 @@ a button:hover {
   font-weight: 400;
 }
 .compte .logout {
-  margin: 0 auto;
+  padding-left: 18px;
+  margin: 150px auto;
   line-height: 50px;
   width: 97%;
   color: #cf000a;
   text-align: center;
   border-top: 1px solid rgb(211, 211, 211);
   border-bottom: 1px solid rgb(211, 211, 211);
-  cursor: pointer;
+  font-size: 22px;
 }
 .compte .logout:hover {
   background-color: rgb(250, 82, 82);
-  color: white;
   width: 100%;
+  cursor: pointer;
 }
 .compte .islogout {
   position: fixed;
@@ -1089,7 +1183,7 @@ a button:hover {
           transform: translate(-50%, -50%);
   background-color: white;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .compte .islogout .islogout-container .islogout-header {
   padding: 15px 20px;
@@ -1122,7 +1216,8 @@ a button:hover {
   border-left: none;
   border-right: 1px solid #ededed;
   border-top: 1px solid #ededed;
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 20px;
+  font-size: 18px;
 }
 .compte .islogout .islogout-container .islogout-content button:nth-child(1):hover {
   background-color: #ebebeb;
@@ -1132,7 +1227,9 @@ a button:hover {
   border-right: none;
   border-left: none;
   border-top: 1px solid #ededed;
-  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 20px;
+  color: #cf000a;
+  font-size: 18px;
 }
 .compte .islogout .islogout-container .islogout-content button:nth-child(2):hover {
   background-color: rgb(250, 82, 82);
@@ -1158,14 +1255,82 @@ a button:hover {
   padding-top: 18px;
   padding-left: 18px;
 }
+.copy p {
+  line-height: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.copy i {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.copy i:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
 
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.row2 {
+  height: 70px;
+  width: 97%;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+}
+.row2:hover {
+  cursor: pointer;
+}
+.row2 p {
+  font-size: 14px;
+  font-weight: 200;
+  font-weight: 400;
+}
+.row2 i {
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+h5 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.row {
+  height: 50px;
+  width: 97%;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+.row:hover {
+  background-color: #ebebeb;
+  width: 100%;
+}
+.row p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.acc-created {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
 @keyframes fadeIn {
@@ -1175,4 +1340,49 @@ a button:hover {
   to {
     opacity: 1;
   }
+}
+.collection-vide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+.collection-vide .collection-vide-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  width: 400px;
+  text-align: center;
+}
+.collection-vide .collection-vide-container h3 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+}
+.collection-vide .collection-vide-container p {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.collection-vide .collection-vide-container .center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }/*# sourceMappingURL=style.css.map */

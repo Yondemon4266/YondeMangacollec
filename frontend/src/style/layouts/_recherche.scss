@@ -1,27 +1,5 @@
 .search {
   form {
-    .searchinput {
-      display: flex;
-      align-items: center;
-      position: relative;
-      width: 70%;
-      i {
-        position: absolute;
-        color: rgb(160, 158, 158);
-        background-color: rgb(224, 224, 224);
-        font-size: 16px;
-        left: 3px;
-        padding-left: 5px;
-      }
-      input {
-        padding-left: 38px;
-        border-radius: 30px;
-        height: 30px;
-        width: 100%;
-        border: none;
-        background-color: rgb(224, 224, 224);
-      }
-    }
     .ul-btn-options {
       height: 30px;
       width: 30%;
@@ -97,6 +75,29 @@
   }
 }
 
+.searchinput {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 70%;
+  i {
+    position: absolute;
+    color: rgb(160, 158, 158);
+    background-color: rgb(224, 224, 224);
+    font-size: 16px;
+    left: 3px;
+    padding-left: 5px;
+  }
+  input {
+    padding-left: 38px;
+    border-radius: 30px;
+    height: 30px;
+    width: 100%;
+    border: none;
+    background-color: rgb(224, 224, 224);
+  }
+}
+
 .slc {
   .connexion {
     #retour {
@@ -119,7 +120,6 @@
       }
     }
   }
-
   .search-list {
     display: flex;
     flex-direction: row;
@@ -127,6 +127,7 @@
     gap: 15px;
     padding-left: 18px;
     padding-bottom: 20px;
+    margin-top: 60px;
     .new-manga {
         cursor: pointer;
       img {

@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import SignInSignUp from "../components/SignInSignUp";
 import SignIn from "../Log/SignIn";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const SignUp = () => {
   const [formSubmit, setFormSubmit] = useState(false);
@@ -58,22 +59,23 @@ const SignUp = () => {
 
   useEffect(() => {
     const success = document.querySelector(".success");
-    if (success) {
+    if (formSubmit) {
       setTimeout(() => {
         success.style.display = "none";
-      }, 3000);
+      }, 5000);
     }
-  }, []);
+  }, [formSubmit]);
 
   return (
     <>
       <Navigation />
       {formSubmit ? (
         <>
-          <SignIn />
+          (<SignIn />
           <h4 className="success">
             Enregistrement réussi, veuillez vous connecter
           </h4>
+          )
         </>
       ) : (
         <div className="sign container">

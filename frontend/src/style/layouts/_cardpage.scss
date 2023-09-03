@@ -1,20 +1,23 @@
+$bradius: 20px;
+$padding: 18px;
+
 .cardpage {
   height: calc(100vh - 50px);
   .connexion {
     .retour {
-        color: $red;
-        text-align: center;
-        border-radius: 50%;
-        i {
-            width: 40px;
-            line-height: 40px;
-            align-self: center;
-            font-size: 22px;
-        }
-        &:hover {
-            cursor: pointer;
-            background-color: $grey-3;
-        }
+      color: $red;
+      text-align: center;
+      border-radius: 50%;
+      i {
+        width: 40px;
+        line-height: 40px;
+        align-self: center;
+        font-size: 22px;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: $grey-3;
+      }
     }
   }
   .cardpageall {
@@ -22,6 +25,7 @@
     flex-direction: row;
     width: 100%;
     height: 100%;
+    margin-top: 50px;
     .left-card-page {
       width: 30%;
       height: 100%;
@@ -34,103 +38,183 @@
         display: flex;
         justify-content: center;
         img {
-            margin-top: 60px;
+          margin-top: 60px;
           width: 335px;
           height: 500px;
         }
       }
     }
     .right-card-page {
-        width: 70%;
-        padding: 15px 12px;
+      width: 70%;
+      padding: 15px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      p {
+        font-size: 15px;
+        font-weight: 400;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        line-height: 19px;
+      }
+      .title-card-page {
+        width: 100%;
+        h2 {
+          font-weight: 100;
+          font-size: 34px;
+          letter-spacing: 2px;
+          line-height: 40px;
+          font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+            Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+      }
+      .synopsis {
         display: flex;
         flex-direction: column;
         gap: 20px;
         p {
-            font-size: 15px;
-            font-weight: 400;
-            font-family:-apple-system,BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 19px;
+          letter-spacing: 1px;
+          font-size: 18px;
+          line-height: 22px;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+            sans-serif;
         }
-        .title-card-page {
-            width: 100%;
-            h2 {
-                font-weight: 100;
-                font-size: 34px;
-                letter-spacing: 2px;
-                line-height: 40px;
-                font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
-            }
-        }
-        .btn-optn-card-page {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-            button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 40px;
-                background-color: transparent;
-                width: 100%;
-                border-radius: 30px;
-                padding: 0 10px ;
-                position: relative;
-                font-size: 16px;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            .add {
-                width: 50%;
-                p {
-                    text-align: center;
-                    margin-top: 5px;
-                    font-size: 10px;
-                }
-                button {
-                    border: 1px solid red;
-                    color: $red;
-                    i {
-                        position: absolute;
-                        left: 0;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        padding: 0 10px;
-                        font-size: 22px;
-                    }
-                }
-            }
-            .like {
-                width: 50%;
-                p {
-                    text-align: center;
-                    margin-top: 5px;
-                    font-size: 10px;
-                }
-                button {
-                    border: 1px solid green;
-                    position: relative;
-                    color: green;
-                    i {
-                        position: absolute;
-                        left: 0;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        padding: 0 10px;
-                        font-size: 22px;
-                    }
-                }
-            }   
-        }
-        .synopsis {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            p {
-                letter-spacing: 1px;
-            }
-        }
+      }
     }
+  }
+}
+.btn-optn-card-page {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: transparent;
+    width: 100%;
+    border-radius: 30px;
+    padding: 0 10px;
+    position: relative;
+    font-size: 16px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .add-remove {
+    width: 350px;
+    i {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 10px;
+      font-size: 22px;
+    }
+    p {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 10px;
+    }
+    .btn-add {
+      border: 1px solid red;
+      color: $red;
+      height: 50px;
+      p {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+    .btn-remove {
+      background-color: $red;
+      color: $white;
+      height: 50px;
+      p {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
+  .fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    z-index: 999;
+    animation: fadeIn 0.5s ease forwards;
+    .fade-container {
+      position: absolute;
+      top: calc(50% - 50px);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $white;
+      text-align: center;
+      border-radius: $bradius;
+      .fade-header {
+        padding: 15px 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        h4 {
+          font-size: 18px;
+          margin-bottom: 10px;
+        }
+        p {
+          margin-bottom: 20px;
+          text-align: center;
+          width: 250px;
+        }
+      }
+      .fade-content {
+        display: flex;
+        justify-content: center;
+        button {
+          width: 100%;
+          line-height: 40px;
+          cursor: pointer;
+          background-color: $white;
+        }
+        button:nth-child(1) {
+          border-bottom: none;
+          border-left: none;
+          border-right: 1px solid $grey-2;
+          border-top: 1px solid $grey-2;
+          border-bottom-left-radius: $bradius;
+          font-size: 18px;
+          &:hover {
+            background-color: $grey-3;
+          }
+        }
+        button:nth-child(2) {
+          border-bottom: none;
+          border-right: none;
+          border-left: none;
+          border-top: 1px solid $grey-2;
+          border-bottom-right-radius: $bradius;
+          color: $red;
+          font-size: 18px;
+          &:hover {
+            background-color: $red-remove;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

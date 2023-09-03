@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import SignInSignUp from "../components/SignInSignUp";
 import axios from "axios";
 
+
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,7 +12,6 @@ const SignIn = () => {
     e.preventDefault();
     const emailError = document.querySelector(".email.error");
     const passwordError = document.querySelector(".password.error");
-    
 
     if (email && password.length >= 6) {
       await axios({
@@ -23,20 +23,21 @@ const SignIn = () => {
           password,
         },
       })
-      .then((res) => {
-        window.location = '/';
-      })
-      .catch((err) => {
-        console.log(err);
-        emailError.innerHTML = err.response.data.errors.email;
-        passwordError.innerHTML = err.response.data.errors.password;
-      });
+        .then((res) => {
+          window.location = "/";
+        })
+        .catch((err) => {
+          console.log(err);
+          emailError.innerHTML = err.response.data.errors.email;
+          passwordError.innerHTML = err.response.data.errors.password;
+        });
     } else {
       emailError.innerHTML = "Veuillez renseigner votre email";
       passwordError.innerHTML =
         "La longueur du mot de passe doit être supérieur à 6 caractères";
     }
   };
+
 
   return (
     <>
