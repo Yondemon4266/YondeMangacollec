@@ -13,10 +13,10 @@ const AddInfosCardPage = ({ manga }) => {
 
   return (
     <div className="add-info-card-page">
+      <BookMark manga={manga} userInfo={userInfo} />
       <div className="custom-stars">
         <CustomPopularity manga={manga} userInfo={userInfo}/>
       </div>
-      <BookMark manga={manga} userInfo={userInfo} />
     </div>
   );
 };
