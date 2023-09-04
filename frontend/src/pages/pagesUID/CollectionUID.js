@@ -14,42 +14,50 @@ const CollectionUID = () => {
   const handleSearchCollec = (e) => {
     let newSearch = e.target.value;
     setCollecSearch(newSearch);
-  }
-  const collectionData = JSON.parse(
-    localStorage.getItem(`collection${userInfo && userInfo.pseudo}`)
-  )
-    ? JSON.parse(localStorage.getItem(`collection${userInfo.pseudo}`))
-    : userInfo && userInfo.colleclist;
-  
-  
+  };
+  const collectionData = userInfo && userInfo.colleclist;
+
   return (
     <>
       <Navigation />
       <div className="container">
-        <div className="connexion"><div className="searchinput">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="search" name="search-collec" id="search-collec" placeholder="Rechercher dans la collection" style={{width:"40%"}} onChange={(e) => handleSearchCollec(e)}/>
-          </div></div>
+        <div className="connexion">
+          <div className="searchinput">
+            <i className="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="search"
+              name="search-collec"
+              id="search-collec"
+              placeholder="Rechercher dans la collection"
+              style={{ width: "40%" }}
+              onChange={(e) => handleSearchCollec(e)}
+            />
+          </div>
+        </div>
         {userInfo && Object.keys(userInfo.colleclist).length > 0 ? (
           <div className="schedules">
             <div className="schedule-day-container">
               <div className="schedule-day-list">
-                {collectionData.filter((element) => {
-                  if (collecSearch) {
-                    return element.title.toLowerCase().includes(collecSearch.toLowerCase());
-                  } else {
-                    return element;
-                  }
-                }).map((element) => {
-                  return (
-                    <Card
-                      manga={element}
-                      key={element.mal_id}
-                      isUserCollectionPage={isUserCollectionPage}
-                      userInfo={userInfo}
-                    />
-                  );
-                })}
+                {collectionData
+                  .filter((element) => {
+                    if (collecSearch) {
+                      return element.title
+                        .toLowerCase()
+                        .includes(collecSearch.toLowerCase());
+                    } else {
+                      return element;
+                    }
+                  })
+                  .map((element) => {
+                    return (
+                      <Card
+                        manga={element}
+                        key={element.mal_id}
+                        isUserCollectionPage={isUserCollectionPage}
+                        userInfo={userInfo}
+                      />
+                    );
+                  })}
               </div>
             </div>
           </div>

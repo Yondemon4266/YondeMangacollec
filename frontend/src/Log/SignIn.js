@@ -3,7 +3,6 @@ import Navigation from "../components/Navigation";
 import SignInSignUp from "../components/SignInSignUp";
 import axios from "axios";
 
-
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +23,7 @@ const SignIn = () => {
         },
       })
         .then((res) => {
+          console.log("hello");
           window.location = "/";
         })
         .catch((err) => {
@@ -37,7 +37,6 @@ const SignIn = () => {
         "La longueur du mot de passe doit être supérieur à 6 caractères";
     }
   };
-
 
   return (
     <>

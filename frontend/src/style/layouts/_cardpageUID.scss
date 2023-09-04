@@ -1,0 +1,38 @@
+.add-info-card-page {
+    height: 100%;
+}
+
+.custom-stars {
+    height: 100%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: center;
+    .custom-tooltip {
+        width: 52px;
+        text-align: center;
+    }
+    #scoretitle {
+        width: 150px;
+        text-align: center;
+    }
+}
+
+
+.bookmark {
+    width: 100%;
+    display: flex;
+    background-color: $white;
+    h4,i {
+        font-size: 18px;
+    }
+    #bookmarkint {
+        border: 1px solid black;
+        border-radius: 30px;
+        width: 75px;
+    }
+}
+
+.bookmark.equal {
+    background-color: green;
+}

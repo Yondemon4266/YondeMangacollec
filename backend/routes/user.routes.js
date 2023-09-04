@@ -10,4 +10,6 @@ router.get("/logout", authController.logout);
 router.get("/:id", userController.userInfo);
 router.patch("/colleclistpatch/:id", userController.userColleclistPatch);
 router.delete("/colleclistdelete/:id/:malid", userController.userColleclistDelete);
+router.patch("/colleclistbookmarkpatch/:id/:malid", userController.userBookMarkPatch);
+router.patch("/colleclistpopularitypatch/:id/:malid", userController.userPopularityPatch);
 module.exports = router;

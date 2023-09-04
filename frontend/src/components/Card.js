@@ -7,7 +7,7 @@ const Card = ({ manga, isUserCollectionPage, userInfo }) => {
   const navigate = useNavigate();
   const handleNav = () => {
     if (isUserCollectionPage) {
-      navigate(`/cardpage/${userInfo && userInfo.pseudo}/${manga.mal_id}`, {
+      navigate(`/cardpage/user:${userInfo && userInfo.pseudo}/${manga.mal_id}`, {
         state: {
           manga,
         },
@@ -51,7 +51,7 @@ const Card = ({ manga, isUserCollectionPage, userInfo }) => {
               )}
             </h4>
           </div>
-          <Popularity manga={manga} />
+          
         </div>
       )}
     </>

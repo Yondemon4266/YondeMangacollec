@@ -5,13 +5,15 @@ import AddInfosCardPage from "../components/componentsUID/AddInfosCardPage";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getUser } from "../actions/user.action";
+import Popularity from "../components/Popularity";
 
-const CardPage = (props) => {
+const CardPage = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const isUserCollectionCardPage = location.pathname.startsWith("/cardpage/user");
   const userInfo = useSelector((state) => state.userReducer.userInfo);
   const navigate = useNavigate();
   const { mal_id } = useParams();
-  const location = useLocation();
   const manga = location.state && location.state.manga;
   const [isRemoveVisible, setRemoveVisible] = useState(false);
   const [isRemoveConfirmed, setRemoveConfirmed] = useState(false);
@@ -35,10 +37,6 @@ const CardPage = (props) => {
         );
         console.log(response);
         await dispatch(getUser(userInfo._id));
-        localStorage.setItem(
-          `collection${userInfo.pseudo}`,
-          JSON.stringify(updatedColleclist)
-        );
       } else {
         if (isRemoveConfirmed) {
           console.log("suppression");
@@ -47,16 +45,6 @@ const CardPage = (props) => {
             `${process.env.REACT_APP_API_URL}api/user/colleclistdelete/${userInfo._id}/${element.mal_id}`
           );
           await dispatch(getUser(userInfo._id));
-          let collectionStorage = JSON.parse(
-            localStorage.getItem(`collection${userInfo.pseudo}`)
-          );
-          collectionStorage = collectionStorage.filter(
-            (o) => o.mal_id !== element.mal_id
-          );
-          localStorage.setItem(
-            `collection${userInfo.pseudo}`,
-            JSON.stringify(collectionStorage)
-          );
         } else {
           setRemoveVisible(true);
           setRemoveConfirmed(true);
@@ -111,6 +99,9 @@ const CardPage = (props) => {
                       Ajouté par <strong> 212 personnes</strong>
                     </p>
                   </div>
+                  <div className="mal-stars">
+            <Popularity manga={manga}/>
+            </div>
                   {isRemoveVisible && (
                     <div className="fade">
                       <div className="fade-container">
@@ -156,6 +147,9 @@ const CardPage = (props) => {
                       Ajouté par <strong> 212 personnes</strong>
                     </p>
                   </div>
+                  <div className="mal-stars">
+            <Popularity manga={manga}/>
+            </div>
                 </div>
               )}
             </>
@@ -163,7 +157,7 @@ const CardPage = (props) => {
               {manga.synopsis ? <h4>Résumé</h4> : null}
               <p>{manga.synopsis ? manga.synopsis : null}</p>
             </div>
-            {props.children ? props.children : null}
+            {isUserCollectionCardPage && <AddInfosCardPage manga={manga}/>}
           </div>
         </div>
         

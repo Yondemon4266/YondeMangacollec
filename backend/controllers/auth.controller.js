@@ -24,7 +24,7 @@ module.exports.signUp = async (req, res) => {
 };
 
 module.exports.signIn = async (req, res) => {
-    const { email, password } = req.body;
+    const {email,password } = req.body;
     try {
         const user = await UserModel.login(email, password);
         const token = createToken(user._id);
@@ -32,7 +32,8 @@ module.exports.signIn = async (req, res) => {
         res.status(200).json({ message: "Utilisateur : " + user.pseudo + " connecté avec succès", user: user._id});
     } catch (err) {
         const errors = signInErrors(err);
-        res.status(400).json({errors});
+        console.log({errors} + err)
+        res.status(400).json({errors} + err);
     }
 };
 

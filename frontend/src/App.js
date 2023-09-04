@@ -13,7 +13,6 @@ import { useDispatch } from "react-redux";
 import { getUser } from "./actions/user.action";
 import CollectionUID from "./pages/pagesUID/CollectionUID";
 import Compte from "./pages/pagesUID/Compte";
-import CardPageUID from "./pages/pagesUID/CardPageUID";
 const App = () => {
   const dispatch = useDispatch();
 
@@ -62,7 +61,7 @@ const App = () => {
         <>
           <Route path="/user/:user/collection" element={<CollectionUID />} />
           <Route path="/user/:user/settings" element={<Compte />} />
-          <Route path="/cardpage/:user/:malid" element={<CardPageUID/>} />
+          <Route path="/cardpage/:user/:malid" element={<CardPage/>} />
           <Route path="/users/sign_in" element={<Navigate to="/" />} />
           <Route path="/users/sign_up" element={<Navigate to="/" />} />
           <Route path="/collection" element={<Navigate to="/" />} />
