@@ -1,88 +1,136 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../../components/Navigation";
 import Card from "../../components/Card";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import SearchFriend from "../../components/componentsUID/SearchFriend";
+import CollectionUIDUserVide from "../../components/componentsUID/CollectionUIDUserVide";
+import CollectionUIDFriendVide from "../../components/componentsUID/CollectionUIDFriendVide";
+import CollectionUIDUserNonExistant from "../../components/componentsUID/CollectionUIDUserNonExistant";
+import CollectionUIDUser from "../../components/componentsUID/CollectionUIDUser";
+import CollectionUIDFriend from "../../components/componentsUID/CollectionUIDFriend";
+import CompareCollectionDisplay from "../../components/componentsUID/CompareCollectionDisplay";
 
 const CollectionUID = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isUserCollectionPage = location.pathname.startsWith("/user/");
+  const dispatch = useDispatch();
+  let { user } = useParams();
+  const [isCompare, setCompare] = useState(false);
   const userInfo = useSelector((state) => state.userReducer.userInfo);
-  const [collecSearch, setCollecSearch] = useState(null);
+  const allUsersData = useSelector((state) => state.userReducer.allUsersInfo);
 
+  const isUserCollectionPage = location.pathname.startsWith(
+    `/user/${userInfo && userInfo.pseudo}/collection`
+  );
+  const isFriendCollectionPage =
+    user !== (userInfo && userInfo.pseudo) &&
+    allUsersData &&
+    allUsersData.find((i) => i.pseudo === user);
+
+  const userExists =
+    allUsersData && allUsersData.find((u) => u.pseudo === user);
+  const [collecSearch, setCollecSearch] = useState(null);
+  const collectionData = allUsersData.find((i) => i.pseudo === user);
   const handleSearchCollec = (e) => {
     let newSearch = e.target.value;
     setCollecSearch(newSearch);
   };
-  const collectionData = userInfo && userInfo.colleclist;
+
+  const CollectionDisplay = () => {
+    if (userInfo && isUserCollectionPage) {
+      if ((userInfo && userInfo.colleclist).length > 0) {
+        return (
+          <CollectionUIDUser
+            userInfo={userInfo}
+            collecSearch={collecSearch}
+            isUserCollectionPage={isUserCollectionPage}
+            isFriendCollectionPage={isFriendCollectionPage}
+          />
+        );
+      } else {
+        return <CollectionUIDUserVide />;
+      }
+    } else if (userInfo && isFriendCollectionPage) {
+      if (Object.keys(collectionData.colleclist).length > 0) {
+        return (
+          <CollectionUIDFriend
+            collecSearch={collecSearch}
+            allUsersData={allUsersData}
+            isUserCollectionPage={isUserCollectionPage}
+            isFriendCollectionPage={isFriendCollectionPage}
+            userInfo={userInfo}
+            collectionData={collectionData}
+          />
+        );
+      } else {
+        return <CollectionUIDFriendVide />;
+      }
+    } else if (!userExists) {
+      return <CollectionUIDUserNonExistant />;
+    }
+  };
+
+  const compareCollections = () => {
+    let common = [];
+    let differentFriend = [];
+    let differentUser = [];
+    if (isFriendCollectionPage && userInfo) {
+      isFriendCollectionPage.colleclist.forEach((friendelement) => {
+        const match =
+          userInfo &&
+          userInfo.colleclist.find(
+            (userelement) => userelement.mal_id === friendelement.mal_id
+          );
+
+        if (match) {
+          common.push(friendelement);
+        } else {
+          differentFriend.push(friendelement);
+        }
+      });
+      userInfo &&
+        userInfo.colleclist.forEach((userelement) => {
+          const match = isFriendCollectionPage.colleclist.find(
+            (friendelement) => friendelement.mal_id === userelement.mal_id
+          );
+          if (!match) {
+            differentUser.push(userelement);
+          };
+        });
+    }
+    return { common, differentFriend, differentUser };
+  };
+
+  const compareList = compareCollections();
 
   return (
     <>
       <Navigation />
       <div className="container">
         <div className="connexion">
-          <div className="searchinput">
+          <div className="searchinput" style={{ width: "25%" }}>
             <i className="fa-solid fa-magnifying-glass"></i>
             <input
               type="search"
               name="search-collec"
               id="search-collec"
               placeholder="Rechercher dans la collection"
-              style={{ width: "40%" }}
               onChange={(e) => handleSearchCollec(e)}
+              autoComplete="off"
             />
           </div>
+          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} />
+          {isFriendCollectionPage && (
+            <button type="button" onClick={() => setCompare(true)}>
+              Comparez vos collections !
+            </button>
+          )}
         </div>
-        {userInfo && Object.keys(userInfo.colleclist).length > 0 ? (
-          <div className="schedules">
-            <div className="schedule-day-container">
-              <div className="schedule-day-list">
-                {collectionData
-                  .filter((element) => {
-                    if (collecSearch) {
-                      return element.title
-                        .toLowerCase()
-                        .includes(collecSearch.toLowerCase());
-                    } else {
-                      return element;
-                    }
-                  })
-                  .map((element) => {
-                    return (
-                      <Card
-                        manga={element}
-                        key={element.mal_id}
-                        isUserCollectionPage={isUserCollectionPage}
-                        userInfo={userInfo}
-                      />
-                    );
-                  })}
-              </div>
-            </div>
-          </div>
+        {isCompare ? (
+          <CompareCollectionDisplay compareList={compareList} isFriendCollectionPage={isFriendCollectionPage} />
         ) : (
-          <div className="collection-vide">
-            <div className="collection-vide-container">
-              <h3>Votre collection est vide</h3>
-              <p>
-                Pour profiter du potentiel de Yonde Mangacollec, ajoutez des
-                mangas à votre collection.
-              </p>
-              <div className="btn-optn-card-page center">
-                <div className="add-remove">
-                  <button
-                    type="button"
-                    className="btn-remove"
-                    onClick={() => navigate("/recherche")}
-                  >
-                    <i className="fa-solid fa-plus"></i>
-                    <p>Ajouter des mangas</p>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          CollectionDisplay()
         )}
       </div>
     </>

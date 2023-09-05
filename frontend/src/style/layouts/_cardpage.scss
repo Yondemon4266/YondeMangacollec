@@ -89,6 +89,7 @@ $padding-right-right-page: 70px;
   display: flex;
   gap: 10px;
   position: relative;
+  width: 100%;
   .mal-stars {
     position: absolute;
     right: 0;
@@ -128,7 +129,6 @@ $padding-right-right-page: 70px;
     }
     p {
       text-align: center;
-      margin-top: 5px;
       font-size: 10px;
     }
     .btn-add {
@@ -148,7 +148,6 @@ $padding-right-right-page: 70px;
       height: 50px;
       p {
         text-align: center;
-        margin-top: 5px;
         font-size: 18px;
         font-weight: 600;
       }

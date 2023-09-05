@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Rating } from "react-simple-star-rating";
 import { getUser } from "../../actions/user.action";
+import CustomPopularityFriend from "./CustomPopularityFriend";
 
-const CustomPopularity = ({ manga, userInfo }) => {
+const CustomPopularity = ({ manga, userInfo,isFriendCollectionPage, isUserCollectionCardPage }) => {
   const dispatch = useDispatch();
   const mangaIndex = userInfo
     ? userInfo.colleclist.findIndex((element) => element.mal_id == manga.mal_id)
@@ -33,16 +34,20 @@ const CustomPopularity = ({ manga, userInfo }) => {
   };
   return (
     <>
-      <h4 id="scoretitle">Évaluez cette oeuvre</h4>
+    {isUserCollectionCardPage && 
+    <>
+    {userInfo && userInfo.colleclist[mangaIndex].popularityValue ? <h4 id="scoretitle">Évalué !</h4> : <h4 id="scoretitle">Évaluez cette oeuvre</h4>}
       <Rating
         transition
         onClick={(e) => handleScore(e)}
-        initialValue={(userInfo && userInfo.colleclist[mangaIndex].popularityValue) ? userInfo.colleclist[mangaIndex].popularityValue : "0"}
+        initialValue={userInfo && userInfo.colleclist[mangaIndex].popularityValue ? userInfo.colleclist[mangaIndex].popularityValue : "0"}
         showTooltip
         allowFraction
         tooltipDefaultText="0"
         tooltipClassName="custom-tooltip"
       />
+      </>}
+      {isFriendCollectionPage && <CustomPopularityFriend manga={manga}/> }
     </>
   );
 };

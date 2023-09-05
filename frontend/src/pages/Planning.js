@@ -4,9 +4,9 @@ import db from "../db.json";
 import Card from "../components/Card";
 const Planning = () => {
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }, []);
-  
+
   const scheduleDB = localStorage.getItem("scheduleDB");
 
   const databaseSchedule = scheduleDB ? JSON.parse(scheduleDB) : db;
@@ -15,7 +15,7 @@ const Planning = () => {
   }, [databaseSchedule]);
 
   const today = new Date();
-  const todayISO = new Date().toLocaleDateString("fr-FR", {
+  const todayISO = new Date().toLocaleDateString(undefined, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -32,6 +32,9 @@ const Planning = () => {
       })
     );
   }
+
+  let daysOfWeekFR = [];
+
   const daysOfWeek = [
     "Mondays",
     "Tuesdays",
@@ -42,15 +45,15 @@ const Planning = () => {
     "Sundays",
   ];
 
-  const daysofWeekFR = [
-    "Lundi",
-    "Mardi",
-    "Mercredi",
-    "Jeudi",
-    "Vendredi",
-    "Samedi",
-    "Dimanche",
-  ];
+  for (let i = 0; i < 7; i++) {
+    today.setDate(i + 1); // Définissez le jour de la semaine en cours (0 = dimanche, 1 = lundi, etc.)
+    const dayOfWeekFR = today.toLocaleString(undefined, {weekday:"long"});
+    daysOfWeekFR.push(dayOfWeekFR);
+  };
+
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
   return (
     <div>
@@ -64,12 +67,8 @@ const Planning = () => {
             <div className="day">
               <h4>
                 {daysSemaine[index] === todayISO
-                  ? "Aujourd'hui" +
-                    " " +
-                    daysofWeekFR[index] +
-                    " " +
-                    daysSemaine[index]
-                  : daysofWeekFR[index] + " " + daysSemaine[index]}
+                  ? "Aujourd'hui" + " " + capitalizeFirstLetter(daysOfWeekFR[index]) + " " + daysSemaine[index]
+                  : capitalizeFirstLetter(daysOfWeekFR[index]) + " " + daysSemaine[index]}
               </h4>
             </div>
             <div className="schedule-day-list">
