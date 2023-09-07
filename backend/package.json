@@ -4,7 +4,7 @@
   "description": "",
   "main": "Server.js",
   "scripts": {
-    "start": "node Server.js",
+    "start": "nodemon Server.js",
     "build": "npm i"
   },
   "author": "",
@@ -22,6 +22,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "node-cache": "^5.1.2",
+    "nodemon": "^3.0.1",
     "util": "^0.12.5",
     "validator": "^13.11.0"
   }
