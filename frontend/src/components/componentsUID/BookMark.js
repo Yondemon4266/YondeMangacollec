@@ -11,6 +11,7 @@ const BookMark = ({
   isUserCollectionCardPage,
 }) => {
   const dispatch = useDispatch();
+  // HELLO
 
   const [bookMarkValue, setBookMarkValue] = useState(null);
   const mangaIndex = userInfo
