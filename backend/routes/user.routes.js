@@ -13,4 +13,6 @@ router.patch("/colleclistpatch/:id", userController.userColleclistPatch);
 router.delete("/colleclistdelete/:id/:malid", userController.userColleclistDelete);
 router.patch("/colleclistbookmarkpatch/:id/:malid", userController.userBookMarkPatch);
 router.patch("/colleclistpopularitypatch/:id/:malid", userController.userPopularityPatch);
+router.patch("/colleclistleveladdpatch/:id", userController.userLevelAddPatch);
+router.patch("/colleclistlevelremovepatch/:id", userController.userLevelRemovePatch);
 module.exports = router;

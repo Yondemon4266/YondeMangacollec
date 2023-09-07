@@ -145,3 +145,66 @@ module.exports.userPopularityPatch = async (req, res) => {
     return res.status(500).json({ message: "Erreur serveur" });
   }
 };
+
+module.exports.userLevelAddPatch = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+
+    let levelBefore = user.level;
+    user.level += 0.25;
+
+    await user.save();
+    if (Number.isInteger(user.level) && user.level > levelBefore) {
+      return res.status(200).json({
+        message:
+          "Niveau augmenté !",
+        data: user.level,
+      });
+    } else {
+      return res.status(200).json({
+        message:
+          "Expérience ajoutée avec succès",
+        data: user.level,
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur" });
+  }
+};
+module.exports.userLevelRemovePatch = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    let levelBefore = user.level;
+    user.level -= 0.25;
+
+
+    await user.save();
+    if (user.level < Math.floor(levelBefore)) {
+      return res.status(200).json({
+        message:
+          "Niveau enlevé !",
+        data: user.level,
+      });
+    } else {
+      return res.status(200).json({
+        message:
+          "Expérience enlevée avec succès",
+        data: user.level,
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur" });
+  }
+};
+
+

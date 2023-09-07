@@ -1,27 +1,191 @@
 .collection-vide {
+    position: relative;
+    height: calc(100vh - 200px);
+  .collection-vide-container {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    gap: 20px;
+    width: 400px;
+    text-align: center;
+    h3 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      font-weight: 400;
+    }
+    p {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.profilUser {
+  height: 250px;
+  width: 100%;
+  padding-left: 18px;
+  border-bottom: 0.5px solid rgb(219, 219, 219);
+  background-color: $white;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  .profil-container {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    .collection-vide-container {
+    .imgpseudo {
+        margin-top: 10px;
+        position: relative;
+      img {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+      }
+      h4 {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translate(-50%,50%);
+        text-align: center;
+      }
+    }
+    .rightpart {
+        width: 100%;
+        height: 120px;
+        margin-top: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        gap: 20px;
-        width: 400px;
-        text-align: center;
-        h3 {
-    
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-weight: 400;
+        gap: 10px;
+        border-radius: 10px;
+        .gradeold {
+            padding-left: 10px;
         }
-        p {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-        .center {
+        .niveau {
+            padding-left: 20px;
             display: flex;
-            justify-content: center;
+            gap: 10px;
+            .niveau-jauge {
+              width: 200px; /* Largeur de la jauge */
+              height: 20px; /* Hauteur de la jauge */
+              background-color: $grey-3; /* Couleur de fond de la jauge */
+              border-radius: 30px;
+              overflow: hidden; /* Pour masquer la partie remplie qui dépasse */
+              position: relative; /* Pour que la partie remplie soit positionnée correctement */
+            }
+            
+            .niveau-jauge-fill {
+              height: 100%;
+              background-color: #00ff00; /* Couleur de la partie remplie */
+              transition: width 0.5s ease; /* Animation de la largeur */
+            }
+        }
+        .membredepuis {
+            padding-left: 10px;
         }
     }
+  }
+  .utility-bar {
+    margin-top: 66px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    .search-friends {
+      width: 240px;
+      height: 30px;
+      .search-friends-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        input {
+          position: absolute;
+          width: 100%;
+          height: 80%;
+          margin-left: 10px;
+          padding-left: 10px;
+          border-radius: 30px;
+          border: none;
+          background-color: $grey-2;
+          left: 0;
+          bottom: 50%;
+          transform: translateY(50%);
+        }
+        .search-friends-list {
+            z-index: 1000;
+          width: 100%;
+          height: fit-content;
+          position: absolute;
+          border-radius: 3px;
+          left: 10px;
+          top: 40px;
+          background-color: $white;
+          box-shadow: 0px 2px 5px 0px rgb(176, 176, 176);
+          .friend {
+            width: 100%;
+            height: 70px;
+            padding-left: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-top: 2px solid $red;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            &:hover {
+              background-color: #ffebe9;
+            }
+            img {
+              height: 90%;
+            }
+            #frienduserpseudo {
+              align-self: start;
+              padding-left: 5px;
+            }
+            .gradeold {
+              position: absolute;
+              font-size: 12px;
+              bottom: 0;
+              left: calc(50% + 25px);
+              transform: translateX(-50%);
+            }
+            .level {
+              position: absolute;
+              right: 10px;
+              top: 3px;
+              p {
+                font-size: 14px;
+                line-height: 22px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #compareBtn {
+    margin-left: 30px;
+    padding: 5px 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: $red;
+    color: $white;
+    cursor: pointer;
+    transition: 0.6s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+#scheds {
+  margin-top: 0;
 }

@@ -8,6 +8,7 @@ const Card = ({
   isUserCollectionPage,
   isFriendCollectionPage,
   userInfo,
+  isCompare
 }) => {
   const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ const Card = ({
         <div className="manga-title-p">
           <h4>
             {TextTruncate(
-              manga.title_english ? manga.title_english : manga.title
+              manga.title_english ? manga.title_english : manga.title, isCompare
             )}
           </h4>
         </div>

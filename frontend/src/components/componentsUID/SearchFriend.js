@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 const SearchFriend = ({ userInfo, allUsersData }) => {
   const navigate = useNavigate();
   const [searchUsers, setSearchUsers] = useState(null);
@@ -32,19 +31,35 @@ const SearchFriend = ({ userInfo, allUsersData }) => {
           id="friendName"
           onChange={(e) => handleSearchFriends(e)}
           autoComplete="off"
+          placeholder="Rechercher le profil d'un ami"
         />
         {searchUsers ? (
           <div className="search-friends-list">
             {searchUsers.length > 0 ? (
               searchUsers.slice(0, 2).map((user) => {
                 return (
-                  <div key={user._id}>
-                    <span onClick={() => navigate(`/user/${user.pseudo}/collection`, { state: { user}})}>{user.pseudo}</span>
+                  <div
+                    key={user._id}
+                    className="friend"
+                    onClick={() => {
+                      navigate(`/user/${user.pseudo}/collection`, {
+                        state: { user },
+                      });
+                      setSearchUsers(null);
+                    }}
+                  >
+                    <img src={`../../../../${user.picture}`} />
+                    <span id="frienduserpseudo">{user.pseudo}</span>
+                    <div className="gradeold">
+                    <span id="old">Vétéran </span>
+                    <span id="grade">Kage</span>
+                    </div>
+                    <div className="level"><p>Niv.85</p></div>
                   </div>
                 );
               })
             ) : (
-              <div className="friends-not-found">Utilisateur pas trouvé</div>
+              <div className="friend">Utilisateur pas trouvé</div>
             )}
           </div>
         ) : null}

@@ -2,15 +2,11 @@ import React from "react";
 import Navigation from "../../components/Navigation";
 import Logout from "../../components/componentsUID/Logout";
 import { useSelector } from "react-redux";
+import { dateFormater } from "../../Utils";
 
 const Compte = () => {
   const userInfo = useSelector((state) => state.userReducer.userInfo);
-  const dateFormater = (date) => {
-    let dateSplit = date.split("T")[0].split('-');
-    [dateSplit[2], dateSplit[1], dateSplit[0]] = [dateSplit[0],dateSplit[1], dateSplit[2]];
-    const dateJoined = dateSplit.join('/');
-    return dateJoined;
-  };
+
   return (
     <>
       <Navigation />

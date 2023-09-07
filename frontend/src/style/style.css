@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Lato";
   src: url("../../public/fonts/Lato/Lato-Regular.ttf");
@@ -71,20 +72,6 @@ a button:hover {
   -ms-flex-item-align: start;
       align-self: start;
   font-size: 18px;
-}
-.connexion .search-friends {
-  height: 210px;
-  width: 240px;
-}
-.connexion .search-friends .search-friends-container {
-  width: 100%;
-}
-.connexion .search-friends .search-friends-container input {
-  width: 240px;
-  border: 1px solid black;
-}
-.connexion .search-friends .search-friends-container .search-friends-list {
-  border: 1px solid rgb(160, 157, 157);
 }
 
 .schedule-day-list {
@@ -1366,31 +1353,15 @@ h5 {
   }
 }
 .collection-vide {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100vh;
+  position: relative;
+  height: calc(100vh - 200px);
 }
 .collection-vide .collection-vide-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
   gap: 20px;
   width: 400px;
   text-align: center;
@@ -1409,6 +1380,202 @@ h5 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.profilUser {
+  height: 250px;
+  width: 100%;
+  padding-left: 18px;
+  border-bottom: 0.5px solid rgb(219, 219, 219);
+  background-color: white;
+  z-index: 110;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 18px;
+}
+.profilUser .profil-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.profilUser .profil-container .imgpseudo {
+  margin-top: 10px;
+  position: relative;
+}
+.profilUser .profil-container .imgpseudo img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+.profilUser .profil-container .imgpseudo h4 {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  text-align: center;
+}
+.profilUser .profil-container .rightpart {
+  width: 100%;
+  height: 120px;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+}
+.profilUser .profil-container .rightpart .gradeold {
+  padding-left: 10px;
+}
+.profilUser .profil-container .rightpart .niveau {
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+.profilUser .profil-container .rightpart .niveau .niveau-jauge {
+  width: 200px; /* Largeur de la jauge */
+  height: 20px; /* Hauteur de la jauge */
+  background-color: #ebebeb; /* Couleur de fond de la jauge */
+  border-radius: 30px;
+  overflow: hidden; /* Pour masquer la partie remplie qui dépasse */
+  position: relative; /* Pour que la partie remplie soit positionnée correctement */
+}
+.profilUser .profil-container .rightpart .niveau .niveau-jauge-fill {
+  height: 100%;
+  background-color: #00ff00; /* Couleur de la partie remplie */
+  -webkit-transition: width 0.5s ease;
+  transition: width 0.5s ease; /* Animation de la largeur */
+}
+.profilUser .profil-container .rightpart .membredepuis {
+  padding-left: 10px;
+}
+.profilUser .utility-bar {
+  margin-top: 66px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.profilUser .utility-bar .search-friends {
+  width: 240px;
+  height: 30px;
+}
+.profilUser .utility-bar .search-friends .search-friends-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.profilUser .utility-bar .search-friends .search-friends-container input {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-radius: 30px;
+  border: none;
+  background-color: #ededed;
+  left: 0;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list {
+  z-index: 1000;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+  border-radius: 3px;
+  left: 10px;
+  top: 40px;
+  background-color: white;
+  -webkit-box-shadow: 0px 2px 5px 0px rgb(176, 176, 176);
+          box-shadow: 0px 2px 5px 0px rgb(176, 176, 176);
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend {
+  width: 100%;
+  height: 70px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-top: 2px solid #cf000a;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend:hover {
+  background-color: #ffebe9;
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend img {
+  height: 90%;
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend #frienduserpseudo {
+  -ms-flex-item-align: start;
+      align-self: start;
+  padding-left: 5px;
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend .gradeold {
+  position: absolute;
+  font-size: 12px;
+  bottom: 0;
+  left: calc(50% + 25px);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend .level {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+}
+.profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend .level p {
+  font-size: 14px;
+  line-height: 22px;
+}
+.profilUser #compareBtn {
+  margin-left: 30px;
+  padding: 5px 20px;
+  border-radius: 30px;
+  border: none;
+  background-color: #cf000a;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.6s ease;
+  transition: 0.6s ease;
+}
+.profilUser #compareBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#scheds {
+  margin-top: 0;
 }
 
 .add-info-card-page {
@@ -1458,16 +1625,60 @@ h5 {
   background-color: green;
 }
 
-.schedules .schedule-day-container > .common-list .new-manga img, .schedules .schedule-day-container > .difference-friend-list .new-manga img, .schedules .schedule-day-container > .difference-user-list .new-manga img {
+.schedules .schedule-day-container > .common-list, .schedules .schedule-day-container > .difference-friend-list, .schedules .schedule-day-container > .difference-user-list {
+  width: 100%;
+  min-height: 100px;
+}
+.schedules .schedule-day-container > .common-list .listtitle, .schedules .schedule-day-container > .difference-friend-list .listtitle, .schedules .schedule-day-container > .difference-user-list .listtitle {
+  min-width: 10%;
+  max-width: 10%;
+  text-align: center;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.schedules .schedule-day-container > .common-list .listmangas, .schedules .schedule-day-container > .difference-friend-list .listmangas, .schedules .schedule-day-container > .difference-user-list .listmangas {
+  min-width: 80%;
+  max-width: 80%;
+  padding: 9px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 15px;
+  z-index: 1000;
+}
+.schedules .schedule-day-container > .common-list .listmangas .new-manga img, .schedules .schedule-day-container > .difference-friend-list .listmangas .new-manga img, .schedules .schedule-day-container > .difference-user-list .listmangas .new-manga img {
   width: 110px;
   height: 165px;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
 }
-.schedules .schedule-day-container .common-list {
+.schedules .schedule-day-container > .common-list .listmangas .new-manga img:hover, .schedules .schedule-day-container > .difference-friend-list .listmangas .new-manga img:hover, .schedules .schedule-day-container > .difference-user-list .listmangas .new-manga img:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.schedules .schedule-day-container > .common-list .listmangas .new-manga span, .schedules .schedule-day-container > .difference-friend-list .listmangas .new-manga span, .schedules .schedule-day-container > .difference-user-list .listmangas .new-manga span {
+  font-size: 13px;
+}
+.schedules .common-list {
   background-color: #E6FFEC;
 }
-.schedules .schedule-day-container .difference-friend-list {
+.schedules .difference-friend-list {
   background-color: #FFEBE9;
 }
-.schedules .schedule-day-container .difference-user-list {
+.schedules .difference-user-list {
   background-color: rgb(207, 119, 119);
 }/*# sourceMappingURL=style.css.map */

@@ -15,7 +15,7 @@ const Planning = () => {
   }, [databaseSchedule]);
 
   const today = new Date();
-  const todayISO = new Date().toLocaleDateString(undefined, {
+  const todayISO = new Date().toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -33,6 +33,8 @@ const Planning = () => {
     );
   }
 
+
+
   let daysOfWeekFR = [];
 
   const daysOfWeek = [
@@ -46,10 +48,13 @@ const Planning = () => {
   ];
 
   for (let i = 0; i < 7; i++) {
-    today.setDate(i + 1); // Définissez le jour de la semaine en cours (0 = dimanche, 1 = lundi, etc.)
-    const dayOfWeekFR = today.toLocaleString(undefined, {weekday:"long"});
+    const day = new Date(today);
+    day.setDate(today.getDate() + i); // Définissez le jour de la semaine en cours (0 = dimanche, 1 = lundi, etc.)
+    const dayOfWeekFR = day.toLocaleString("fr-FR", {weekday:"long"});
     daysOfWeekFR.push(dayOfWeekFR);
   };
+
+  console.log(daysOfWeekFR);
 
   function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);

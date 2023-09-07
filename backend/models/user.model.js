@@ -38,8 +38,12 @@ const userSchema = new mongoose.Schema(
     },
     colleclist: {
       type: [],
-
       required: true, // La propriété colleclist est requise
+    },
+    level: {
+      type: Number,
+      required: true,
+      default: 1,
     },
   },
   {

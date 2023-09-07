@@ -46,10 +46,23 @@ const CollectionUID = () => {
             collecSearch={collecSearch}
             isUserCollectionPage={isUserCollectionPage}
             isFriendCollectionPage={isFriendCollectionPage}
+            handleSearchCollec={handleSearchCollec}
+            allUsersData={allUsersData}
+            isCompare={isCompare}
+            setCompare={setCompare}
           />
         );
       } else {
-        return <CollectionUIDUserVide />;
+        return (
+          <CollectionUIDUserVide
+            userInfo={userInfo}
+            isFriendCollectionPage={isFriendCollectionPage}
+            isCompare={isCompare}
+            setCompare={setCompare}
+            allUsersData={allUsersData}
+            handleSearchCollec={handleSearchCollec}
+          />
+        );
       }
     } else if (userInfo && isFriendCollectionPage) {
       if (Object.keys(collectionData.colleclist).length > 0) {
@@ -61,10 +74,15 @@ const CollectionUID = () => {
             isFriendCollectionPage={isFriendCollectionPage}
             userInfo={userInfo}
             collectionData={collectionData}
+            handleSearchCollec={handleSearchCollec}
+            isCompare={isCompare}
+            setCompare={setCompare}
+            compareList={compareList}
           />
         );
       } else {
-        return <CollectionUIDFriendVide />;
+        return <CollectionUIDFriendVide collectionData={collectionData} userInfo={userInfo} isCompare={isCompare}
+        setCompare={setCompare} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec} isFriendCollectionPage={isFriendCollectionPage} compareList={compareList}/>;
       }
     } else if (!userExists) {
       return <CollectionUIDUserNonExistant />;
@@ -96,42 +114,20 @@ const CollectionUID = () => {
           );
           if (!match) {
             differentUser.push(userelement);
-          };
+          }
         });
     }
     return { common, differentFriend, differentUser };
   };
 
   const compareList = compareCollections();
+  
 
   return (
     <>
       <Navigation />
       <div className="container">
-        <div className="connexion">
-          <div className="searchinput" style={{ width: "25%" }}>
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <input
-              type="search"
-              name="search-collec"
-              id="search-collec"
-              placeholder="Rechercher dans la collection"
-              onChange={(e) => handleSearchCollec(e)}
-              autoComplete="off"
-            />
-          </div>
-          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} />
-          {isFriendCollectionPage && (
-            <button type="button" onClick={() => setCompare(true)}>
-              Comparez vos collections !
-            </button>
-          )}
-        </div>
-        {isCompare ? (
-          <CompareCollectionDisplay compareList={compareList} isFriendCollectionPage={isFriendCollectionPage} />
-        ) : (
-          CollectionDisplay()
-        )}
+          {CollectionDisplay()}
       </div>
     </>
   );
