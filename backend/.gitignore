@@ -5,8 +5,6 @@
 /.pnp
 .pnp.js
 .env
-/config/db.js
-/config/db
 
 # testing
 /coverage
