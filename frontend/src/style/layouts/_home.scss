@@ -1,5 +1,11 @@
 .container {
     margin-left: 220px;
+    @media screen and (max-width:965px) {
+        margin-left: 60px;
+    }
+    @media screen and (max-width: 500px) {
+        margin-left: 0;
+    }
 }
 
 .home-container {
@@ -23,7 +29,6 @@
             backdrop-filter: blur(2px);
             width: auto;
             align-self: center;
-            
         }
         .accroche {
             margin-top: 50px;
@@ -33,11 +38,17 @@
             border-radius: 30px;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 16px 1px;
             backdrop-filter: blur(4px);
+            @media screen and (max-width:790px) {
+                width: 90%;
+            }
             h2 {
                 font-size: 36px;
                 font-weight: 700;
                 text-align: center;
                 margin-bottom: 15px;
+                @media screen and (max-width:790px) {
+                font-size: 28px;
+                }
             }
             ul {
                 display: flex;
@@ -52,7 +63,12 @@
                         font-size: 24px;
                         font-weight: 200;
                         color: rgb(138, 136, 136);
-                        
+                        @media screen and (max-width:790px) {
+                            font-size: 18px;
+                        }
+                        @media screen and (max-width:790px) {
+                            font-size: 16px;
+                        }
                     }
                 }
             }
@@ -76,6 +92,9 @@
                 padding: 7px;
                 color: white;
                 gap: 5px;
+                @media screen and (max-width:550px) {
+                    padding: 5px;
+                }
                 &:hover {
                     cursor: pointer;
                 } 
@@ -101,5 +120,8 @@
         color: $red;
         font-weight: 300;
         font-size: 42px;
+        @media screen and (max-width:680px) {
+            font-size: 32px;
+        }
     }
 }

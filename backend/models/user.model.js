@@ -4,6 +4,12 @@ const bcrypt = require("bcrypt");
 
 const isEmail = validator.isEmail;
 
+function determineVillage() {
+  const villages =  ["Feuille", "Sable", "Roche", "Brume", "Pluie", "Son"];
+  const randomIndex = Math.floor(Math.random() * villages.length);
+  return villages[randomIndex];
+}
+
 const userSchema = new mongoose.Schema(
   {
     pseudo: {
@@ -45,6 +51,16 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: 1,
     },
+    village: {
+      type: String,
+      required: true,
+      default: determineVillage(),
+    },
+    ideas: {
+      type: String,
+      required: true,
+      default: "",
+    }
   },
   {
     timestamps: true,
@@ -71,6 +87,8 @@ userSchema.statics.login = async function (email, password) {
   }
   throw Error("Email incorrect");
 };
+
+
 
 const UserModel = mongoose.model("user", userSchema);
 module.exports = UserModel;

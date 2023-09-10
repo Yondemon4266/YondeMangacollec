@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import SearchFriend from "./SearchFriend";
 import { dateFormater } from "../../Utils";
 import NiveauJauge from "./NiveauJauge";
+import { determineGrade } from "../../Utils";
+import { phraseVillage } from "../../Utils";
 
 const CollectionUIDFriendVide = ({
   collectionData,
@@ -26,7 +28,7 @@ const CollectionUIDFriendVide = ({
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5>Titre : Vétéran Kage</h5>
+              <h5>Titre : {determineGrade(collectionData && collectionData.level)} {phraseVillage(collectionData && collectionData.village)} {collectionData && collectionData.village}</h5>
             </div>
             <div className="niveau">
               <h5>Niveau : {Math.floor(collectionData && collectionData.level)}</h5>
@@ -42,18 +44,7 @@ const CollectionUIDFriendVide = ({
         </div>
         <div className="badges"></div>
         <div className="utility-bar">
-          <div className="searchinput" style={{ width: "25%" }}>
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <input
-              type="search"
-              name="search-collec"
-              id="search-collec"
-              placeholder="Rechercher dans la collection"
-              onChange={(e) => handleSearchCollec(e)}
-              autoComplete="off"
-            />
-          </div>
-          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} />
+          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec}/>
         </div>
       </div>
       <div className="collection-vide">

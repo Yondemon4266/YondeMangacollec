@@ -1,10 +1,14 @@
 import React from "react";
 import Card from "../Card";
 import { useParams } from "react-router-dom";
-import { dateFormater } from "../../Utils";
+import { dateFormater, phraseVillage, determineGrade } from "../../Utils";
 import SearchFriend from "./SearchFriend";
 import CompareCollectionDisplay from "./CompareCollectionDisplay";
 import NiveauJauge from "./NiveauJauge";
+import { useDispatch, useSelector } from "react-redux";
+import { getCompareState } from "../../actions/user.action";
+
+
 
 const CollectionUIDFriend = ({
   collecSearch,
@@ -19,6 +23,9 @@ const CollectionUIDFriend = ({
   compareList,
 }) => {
   let { user } = useParams();
+  const dispatch = useDispatch();
+  const compareState = useSelector((state) => state.userReducer.isCompare);
+
   return (
     <>
       <div className="profilUser">
@@ -32,7 +39,7 @@ const CollectionUIDFriend = ({
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5>Titre : Vétéran Kage</h5>
+              <h5>Titre : {determineGrade(collectionData && collectionData.level)} {phraseVillage(collectionData && collectionData.village)} {collectionData && collectionData.village}</h5>
             </div>
             <div className="niveau">
               <h5>Niveau : {Math.floor(collectionData && collectionData.level)}</h5>
@@ -48,38 +55,29 @@ const CollectionUIDFriend = ({
         </div>
         <div className="badges"></div>
         <div className="utility-bar">
-          <div className="searchinput" style={{ width: "25%" }}>
-            <i className="fa-solid fa-magnifying-glass"></i>
-            <input
-              type="search"
-              name="search-collec"
-              id="search-collec"
-              placeholder="Rechercher dans la collection"
-              onChange={(e) => handleSearchCollec(e)}
-              autoComplete="off"
-            />
-          </div>
-          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} />
-          {isFriendCollectionPage && !isCompare && (
+          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec} />
+          {isFriendCollectionPage && (compareState === false) && (
             <button
               type="button"
               id="compareBtn"
-              onClick={() => setCompare(true)}
+              onClick={() =>{dispatch(getCompareState(true));
+              setCompare(true);}}
             >
               Comparez vos collections !
             </button>
           )}
-          {isFriendCollectionPage && isCompare && (<button
+          {isFriendCollectionPage && (compareState === true) && (<button
               type="button"
               id="compareBtn"
-              onClick={() => setCompare(false)}
+              onClick={() => {dispatch(getCompareState(false));
+              setCompare(false);}}
             >
               Annuler la comparaison
             </button>)}
         </div>
       </div>
       <div className="schedules" id="scheds">
-        {isCompare ? (
+        {(isCompare || compareState )? (
           <CompareCollectionDisplay
             compareList={compareList}
             isFriendCollectionPage={isFriendCollectionPage}

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getUser } from "../actions/user.action";
 import Popularity from "../components/Popularity";
-import AddRemoveCollectionComponent from "../components/componentsUID/AddRemoveCollection";
+import AddRemoveCollectionComponent from "../components/componentsUID/AddRemoveCollectionComponent";
 
 const CardPage = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,6 @@ const CardPage = () => {
   const isUserCardPage = location.pathname.startsWith("/cardpage/g");
   const [isRemoveVisible, setRemoveVisible] = useState(false);
   const [isRemoveConfirmed, setRemoveConfirmed] = useState(false);
-
 
   return (
     <>
@@ -42,38 +41,42 @@ const CardPage = () => {
             }}
           >
             <div className="img-container-cp">
-              <img
-                src={manga ? manga.images.webp.large_image_url : null}
-                alt={manga ? manga.title : null}
-              />
+              <div className="img-container">
+                <img
+                  src={manga ? manga.images.webp.large_image_url : null}
+                  alt={manga ? manga.title : null}
+                />
+              </div>
             </div>
           </div>
           <div className="right-card-page">
             <div className="title-card-page">
               <h2>{manga.title_english ? manga.title_english : manga.title}</h2>
             </div>
-              {(isUserCollectionCardPage || isUserCardPage )? (
-                <div className="btn-optn-card-page">
+            {isUserCollectionCardPage || isUserCardPage ? (
+              <div className="btn-optn-card-page">
                 <AddRemoveCollectionComponent
                   userInfo={userInfo}
                   manga={manga}
-                  isRemoveConfirmed={isRemoveConfirmed}    
+                  isRemoveConfirmed={isRemoveConfirmed}
                   setRemoveConfirmed={setRemoveConfirmed}
                   isRemoveVisible={isRemoveVisible}
                   setRemoveVisible={setRemoveVisible}
                   isUserCollectionCardPage={isUserCollectionCardPage}
-                  isUserCardPage={isUserCardPage}        />
+                  isUserCardPage={isUserCardPage}
+                />
                 <div className="mal-stars">
-                <Popularity manga={manga} />
-              </div>
+                  <Popularity manga={manga} />
                 </div>
-              ) : 
-              (<div className="btn-optn-card-page">
-              <div className="mal-stars">
-              <Popularity manga={manga} />
-            </div>
-            </div>)}
-              
+              </div>
+            ) : (
+              <div className="btn-optn-card-page">
+                <div className="mal-stars">
+                  <Popularity manga={manga} />
+                </div>
+              </div>
+            )}
+
             <div className="synopsis">
               {manga.synopsis ? <h4>Résumé</h4> : null}
               <p>{manga.synopsis ? manga.synopsis : null}</p>

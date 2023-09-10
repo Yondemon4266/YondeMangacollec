@@ -6,6 +6,7 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         gap: 15px;
         margin: 10px 25px;
         h2 {
@@ -19,6 +20,20 @@
             img {
                 width: 220px;
                 height: 330px;
+                @media screen and (max-width:1215px) {
+                    width: 180px;
+                    height: 300px;
+                }
+                @media screen and (max-width:860px) {
+                    width: 160px;
+                    height: 250px;
+                }
+                @media screen and (max-width:400px) {
+                    width: 250px;
+                    height: 320px;
+                }
+
+               
             }
             .manga-title-p {
                 display: flex;
@@ -28,7 +43,15 @@
                     font-size: 17px;
                     line-height: 20px;
                     font-weight: 200;
-                    
+                    @media screen and (max-width: 860px) {
+                        font-size: 15px;
+                    }
+                    @media screen and (max-width: 550px) {
+                        font-size: 14px;
+                    }
+                    @media screen and (max-width: 550px) {
+                        font-size: 18px;
+                    }
                 }
             }
         }

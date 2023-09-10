@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const GET_USER = "GET_USER"; 
 export const GET_ALL_USERS = "GET_ALL_USERS"; 
+export const GET_COMPARE_STATE = "GET_COMPARE_STATE";
 
 export const getUser = (uid) => {
     return async (dispatch) => {
@@ -24,4 +25,15 @@ export const getAllUsers = (uid) => {
         }
     };
 };
+export const getCompareState = (hello) => {
+    return (dispatch) => {
+        try {
+            dispatch({ type: GET_COMPARE_STATE, payload: hello });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};
+
+
 

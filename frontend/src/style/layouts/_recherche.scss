@@ -7,6 +7,9 @@
       background-color: $grey-3;
       margin-left: 15px;
       margin-right: 15px;
+      @media screen and (max-width:480px) {
+        width: 45%;
+      }
       .btn-options {
         display: flex;
         width: 100%;
@@ -21,12 +24,15 @@
             border: none;
             background-color: $grey-3;
             color: $red;
+            @media screen and (max-width:480px) {
+              font-size: 11px;
+            }
           }
           .activeBtn {
             background: $red;
             color: white;
             &:hover {
-                cursor: pointer;
+              cursor: pointer;
             }
           }
           .not-activeBtn {
@@ -80,6 +86,9 @@
   align-items: center;
   position: relative;
   width: 70%;
+  @media screen and (max-width:480px) {
+    width: 55%;
+  }
   i {
     position: absolute;
     color: rgb(160, 158, 158);
@@ -129,7 +138,7 @@
     padding-bottom: 20px;
     margin-top: 60px;
     .new-manga {
-        cursor: pointer;
+      cursor: pointer;
       img {
         width: 220px;
         height: 330px;
@@ -141,5 +150,45 @@
 .new-manga {
   .manga-title-p {
     margin-bottom: 5px;
+  }
+}
+
+.searchinputs {
+  display: flex;
+  width: 50%;
+  gap: 10px;
+  @media screen and (max-width:680px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .searchinput {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 45%;
+    @media screen and (max-width:680px) {
+      width: 45%;
+    }
+    i {
+      position: absolute;
+      color: rgb(160, 158, 158);
+      background-color: rgb(224, 224, 224);
+      font-size: 16px;
+      left: 3px;
+      padding-left: 5px;
+    }
+    input {
+      padding-left: 25px;
+      border-radius: 30px;
+      height: 30px;
+      width: 100%;
+      border: none;
+      background-color: rgb(224, 224, 224);
+      @media screen and (max-width:635px) {
+        font-size: 12px;
+      }
+    }
   }
 }

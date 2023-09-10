@@ -1,8 +1,9 @@
-import { GET_ALL_USERS, GET_USER } from "../actions/user.action";
+import { GET_ALL_USERS, GET_COMPARE_STATE, GET_USER } from "../actions/user.action";
 
 const initialState = {
     userInfo: null,
     allUsersInfo: [],
+    isCompare: false,
 };
 
 export default function userReducer(state = initialState, action) {
@@ -16,6 +17,11 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         allUsersInfo: action.payload,
+      };
+    case GET_COMPARE_STATE:
+      return {
+        ...state,
+        isCompare: action.payload,
       }
     default:
       return state;

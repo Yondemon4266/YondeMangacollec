@@ -14,6 +14,7 @@ const Popularity = ({ manga }) => {
       allowFraction
       fillColor="#2F52A2"
       showTooltip
+      size="35"
     />
   );
 };

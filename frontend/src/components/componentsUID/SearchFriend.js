@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const SearchFriend = ({ userInfo, allUsersData }) => {
+const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
   const navigate = useNavigate();
   const [searchUsers, setSearchUsers] = useState(null);
   const handleSearchFriends = (e) => {
@@ -23,46 +23,62 @@ const SearchFriend = ({ userInfo, allUsersData }) => {
     }
   };
   return (
-    <div className="search-friends">
-      <div className="search-friends-container">
+    <div className="searchinputs">
+      <div className="searchinput">
+        <i className="fa-solid fa-book" style={{ color: "black" }}></i>
         <input
-          type="text"
-          name="friendName"
-          id="friendName"
-          onChange={(e) => handleSearchFriends(e)}
+          type="search"
+          name="search-collec"
+          id="search-collec"
+          placeholder="Rechercher un manga"
+          onChange={(e) => handleSearchCollec(e)}
           autoComplete="off"
-          placeholder="Rechercher le profil d'un ami"
         />
-        {searchUsers ? (
-          <div className="search-friends-list">
-            {searchUsers.length > 0 ? (
-              searchUsers.slice(0, 2).map((user) => {
-                return (
-                  <div
-                    key={user._id}
-                    className="friend"
-                    onClick={() => {
-                      navigate(`/user/${user.pseudo}/collection`, {
-                        state: { user },
-                      });
-                      setSearchUsers(null);
-                    }}
-                  >
-                    <img src={`../../../../${user.picture}`} />
-                    <span id="frienduserpseudo">{user.pseudo}</span>
-                    <div className="gradeold">
-                    <span id="old">Vétéran </span>
-                    <span id="grade">Kage</span>
+      </div>
+      <div className="search-friends">
+        <div className="search-friends-container">
+          <i className="fa-solid fa-user-group"></i>
+          <input
+            type="text"
+            name="friendName"
+            id="friendName"
+            onChange={(e) => handleSearchFriends(e)}
+            autoComplete="off"
+            placeholder="Rechercher un ami"
+          />
+          {searchUsers ? (
+            <div className="search-friends-list">
+              {searchUsers.length > 0 ? (
+                searchUsers.slice(0, 2).map((user) => {
+                  return (
+                    <div
+                      key={user._id}
+                      className="friend"
+                      onClick={() => {
+                        navigate(`/user/${user.pseudo}/collection`, {
+                          state: { user },
+                        });
+                        setSearchUsers(null);
+                      }}
+                    >
+                      <img src={`../../../../${user.picture}`} />
+                      <span id="frienduserpseudo">{user.pseudo}</span>
+                      <div className="gradeold">
+                        <span id="old">Vétéran </span>
+                        <span id="grade">Kage</span>
+                      </div>
+                      <div className="level">
+                        <p>Niv.85</p>
+                      </div>
                     </div>
-                    <div className="level"><p>Niv.85</p></div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="friend">Utilisateur pas trouvé</div>
-            )}
-          </div>
-        ) : null}
+                  );
+                })
+              ) : (
+                <div className="friend">Utilisateur pas trouvé</div>
+              )}
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dateFormater } from '../../Utils';
 import SearchFriend from './SearchFriend';
 import NiveauJauge from './NiveauJauge';
+import { determineGrade } from '../../Utils';
+import { phraseVillage } from "../../Utils";
+import ExplicationTitre from '../../pages/pagesUID/ExplicationTitre';
 
 const CollectionUIDUserVide = ({userInfo, handleSearchCollec, isFriendCollectionPage, setCompare, allUsersData}) => {
   const navigate = useNavigate();
+  const [isExplicationVisible, setExplicationVisible] = useState(false);
     return (
       <>
       <div className="profilUser">
@@ -19,15 +23,16 @@ const CollectionUIDUserVide = ({userInfo, handleSearchCollec, isFriendCollection
             </div>
             <div className="rightpart">
             <div className="gradeold">
-              <h5>Titre : Vétéran Kage</h5>
+              <h5><strong>Titre : </strong> {determineGrade(userInfo && userInfo.level)} {phraseVillage(userInfo && userInfo.village)} {userInfo && userInfo.village} <i className="fa-solid fa-asterisk" onClick={() => setExplicationVisible(!isExplicationVisible)}></i></h5>
+              {isExplicationVisible && <ExplicationTitre setExplicationVisible={setExplicationVisible}/>}
             </div>
             <div className="niveau">
-              <h5>Niveau : {Math.floor(userInfo && userInfo.level)}</h5>
+              <h5><strong>Niveau :</strong> {Math.floor(userInfo && userInfo.level)}</h5>
               <NiveauJauge userInfo={userInfo}/>
             </div>
             <div className="membredepuis">
               <h5>
-                Membre depuis le :{" "}
+              <strong>Membre depuis le :</strong>{" "}
                 {userInfo && dateFormater(userInfo.createdAt)}
               </h5>
             </div>
@@ -36,18 +41,7 @@ const CollectionUIDUserVide = ({userInfo, handleSearchCollec, isFriendCollection
           </div>
           <div className="badges"></div>
           <div className="utility-bar">
-            <div className="searchinput" style={{ width: "25%" }}>
-              <i className="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="search"
-                name="search-collec"
-                id="search-collec"
-                placeholder="Rechercher dans la collection"
-                onChange={(e) => handleSearchCollec(e)}
-                autoComplete="off"
-              />
-            </div>
-            <SearchFriend userInfo={userInfo} allUsersData={allUsersData} />
+            <SearchFriend userInfo={userInfo} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec}/>
             {isFriendCollectionPage && (
               <button
                 type="button"
@@ -62,7 +56,7 @@ const CollectionUIDUserVide = ({userInfo, handleSearchCollec, isFriendCollection
         <div className="collection-vide">
             <div className="collection-vide-container">
               <h3>Votre collection est vide</h3>
-              <p>
+              <p id='pp'>
                 Pour profiter du potentiel de Yonde Mangacollec, ajoutez des
                 mangas à votre collection.
               </p>

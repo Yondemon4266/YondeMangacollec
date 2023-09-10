@@ -15,4 +15,9 @@ router.patch("/colleclistbookmarkpatch/:id/:malid", userController.userBookMarkP
 router.patch("/colleclistpopularitypatch/:id/:malid", userController.userPopularityPatch);
 router.patch("/colleclistleveladdpatch/:id", userController.userLevelAddPatch);
 router.patch("/colleclistlevelremovepatch/:id", userController.userLevelRemovePatch);
+// USER CHANGES
+
+router.patch("/emailchange/:id", userController.userEmailChange);
+router.patch("/pseudochange/:id", userController.userPseudoChange);
+router.patch("/sendidea/:id", userController.userSendIdea);
 module.exports = router;

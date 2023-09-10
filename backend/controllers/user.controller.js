@@ -36,10 +36,10 @@ module.exports.userColleclistPatch = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("Id non reconnu : " + req.params.id);
   try {
-    const updates = req.body;
+    const updates = req.body.colleclist;
     const updatedUser = await UserModel.findByIdAndUpdate(
       req.params.id,
-      { $set: updates },
+      { $push: {colleclist: updates} },
       { new: true }
     ).select("-password -picture -updatedAt -email -createdAt -pseudo");
     if (!updatedUser)
@@ -208,3 +208,59 @@ module.exports.userLevelRemovePatch = async (req, res) => {
 };
 
 
+// USER CHANGES
+
+module.exports.userEmailChange = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "Utilisateur non trouvé" });
+    const existingUser = await UserModel.findOne({ email: req.body.email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Adresse email déjà utilisée par un autre utilisateur" });
+    } else {
+      user.email = req.body.email;
+      await user.save();
+      return res.status(200).json({message: "Adresse email mise à jour avec succès", mail:user.email})
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};
+
+module.exports.userPseudoChange = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "Utilisateur non trouvé" });
+    const existingUser = await UserModel.findOne({ pseudo: req.body.pseudo });
+    if (existingUser) {
+      return res.status(400).json({ message: "Pseudo déjà utilisé par un autre utilisateur" });
+    } else {
+      user.pseudo = req.body.pseudo;
+      await user.save();
+      return res.status(200).json({message: "Pseudo mis à jour avec succès", pseudo:user.pseudo})
+    }
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};
+
+module.exports.userSendIdea = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: "Utilisateur non trouvé" });
+      user.ideas += req.body.idea;
+      await user.save();
+      return res.status(200).json({message: "Idée reçue avec succès", idee:user.ideas})
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};

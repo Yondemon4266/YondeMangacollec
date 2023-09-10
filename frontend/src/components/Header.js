@@ -1,8 +1,10 @@
 import React from "react";
 import LogoTitle from "./LogoTitle";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const userInfo = useSelector(state => state.userReducer.userInfo);
   return (
     <div className="header">
       <LogoTitle />
@@ -18,11 +20,12 @@ const Header = () => {
             <p>Managez votre propre bibliothèque</p>
           </li>
         </ul>
-        <div className="sinscrire">
+        {!userInfo &&  <div className="sinscrire">
           <NavLink to="/users/sign_up">
             <button className="button-sign">S'INSCRIRE</button>
           </NavLink>
-        </div>
+        </div>}
+       
       </div>
       <ul className="apps">
         <li>

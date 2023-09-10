@@ -13,7 +13,10 @@ import { useDispatch } from "react-redux";
 import { getAllUsers, getUser } from "./actions/user.action";
 import CollectionUID from "./pages/pagesUID/CollectionUID";
 import Compte from "./pages/pagesUID/Compte";
+import ExplicationTitre from "./pages/pagesUID/ExplicationTitre";
 const App = () => {
+
+  
   const dispatch = useDispatch();
 
   const [uid, setUid] = useState(

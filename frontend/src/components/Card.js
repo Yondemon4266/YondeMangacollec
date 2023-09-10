@@ -18,7 +18,7 @@ const Card = ({
       navigate(`/cardpage/user:${user}/${manga.mal_id}`, {
         state: {
           manga,
-          isFriendCollectionPage,
+          isFriendCollectionPage, 
         },
       });
     } else if (isFriendCollectionPage) {

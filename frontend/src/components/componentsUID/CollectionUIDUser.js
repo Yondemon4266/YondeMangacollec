@@ -3,10 +3,13 @@ import Card from '../Card';
 import { dateFormater } from '../../Utils';
 import SearchFriend from './SearchFriend';
 import NiveauJauge from './NiveauJauge';
+import { determineGrade } from '../../Utils';
+import { useDispatch } from 'react-redux';
+import { getCompareState } from '../../actions/user.action';
 
 
 const CollectionUIDUser = ({userInfo, collecSearch, isUserCollectionPage, isFriendCollectionPage, handleSearchCollec, allUsersData, isCompare, setCompare}) => {
-  console.log(isCompare);
+  const dispatch = useDispatch();
     return (
       <>
       <div className="profilUser">
@@ -14,13 +17,13 @@ const CollectionUIDUser = ({userInfo, collecSearch, isUserCollectionPage, isFrie
             <div className="imgpseudo">
               <img
                 src={`../../../${userInfo && userInfo.picture}`}
-                alt={`image de ${userInfo && userInfo.pseudo}`}
+                alt={`${userInfo && userInfo.pseudo}`}
               />
               <h4>{userInfo && userInfo.pseudo}</h4>
             </div>
             <div className="rightpart">
             <div className="gradeold">
-              <h5>Titre : Vétéran Kage</h5>
+             <h5>Titre : {determineGrade(userInfo && userInfo.level)} du village caché du {userInfo && userInfo.village}</h5>
             </div>
             <div className="niveau">
               <h5>Niveau : {Math.floor(userInfo && userInfo.level)}</h5>
@@ -28,7 +31,7 @@ const CollectionUIDUser = ({userInfo, collecSearch, isUserCollectionPage, isFrie
             </div>
             <div className="membredepuis">
               <h5>
-                Membre depuis le :{" "}
+                <strong>Membre depuis le :</strong>{" "}
                 {userInfo && dateFormater(userInfo.createdAt)}
               </h5>
             </div>
@@ -37,23 +40,14 @@ const CollectionUIDUser = ({userInfo, collecSearch, isUserCollectionPage, isFrie
           </div>
           <div className="badges"></div>
           <div className="utility-bar">
-            <div className="searchinput" style={{ width: "25%" }}>
-              <i className="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="search"
-                name="search-collec"
-                id="search-collec"
-                placeholder="Rechercher dans la collection"
-                onChange={(e) => handleSearchCollec(e)}
-                autoComplete="off"
-              />
-            </div>
-            <SearchFriend userInfo={userInfo} allUsersData={allUsersData} />
+            <SearchFriend userInfo={userInfo} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec} />
             {isFriendCollectionPage && (
               <button
                 type="button"
                 id="compareBtn"
-                onClick={() => setCompare(true)}
+                onClick={() => {setCompare(true);
+                  dispatch(getCompareState(isCompare));
+                }}
               >
                 Comparez vos collections !
               </button>
