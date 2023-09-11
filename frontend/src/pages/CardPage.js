@@ -23,6 +23,24 @@ const CardPage = () => {
   const isUserCardPage = location.pathname.startsWith("/cardpage/g");
   const [isRemoveVisible, setRemoveVisible] = useState(false);
   const [isRemoveConfirmed, setRemoveConfirmed] = useState(false);
+  const [isSynopsisVisible, setIsSynopsisVisible] = useState(false);
+
+  const SynopsisTruncate = (synopsis) => {
+    if (synopsis.length > 360) {
+      const truncatedSynopsis = synopsis.substring(0, 360);
+      return (
+        <>
+          <span>{truncatedSynopsis}</span>
+          <i
+            className="fa-solid fa-ellipsis" style={{color:"#067e06"}}
+            onClick={() => setIsSynopsisVisible(true)}
+          ></i>
+        </>
+      );
+    } else {
+      return synopsis;
+    }
+  };
 
   return (
     <>
@@ -78,9 +96,22 @@ const CardPage = () => {
             )}
 
             <div className="synopsis">
-              {manga.synopsis ? <h4>Résumé</h4> : null}
-              <p>{manga.synopsis ? manga.synopsis : null}</p>
+              {isSynopsisVisible ? (
+                manga.synopsis ? (
+                  <>
+                    <h4>Résumé</h4>
+                    <p>{manga.synopsis} <i className="fa-solid fa-minus" style={{color:"#fa5252"}} onClick={() => setIsSynopsisVisible(false)}></i></p>
+                   
+                  </>
+                ) : null
+              ) : manga.synopsis ? (
+                <>
+                  <h4>Résumé</h4>
+                  <p>{SynopsisTruncate(manga.synopsis)}</p>
+                </>
+              ) : null}
             </div>
+
             {isUserCollectionCardPage && (
               <AddInfosCardPage
                 manga={manga}

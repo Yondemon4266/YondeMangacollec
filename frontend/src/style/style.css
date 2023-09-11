@@ -835,6 +835,16 @@ a button:hover {
   width: 100%;
   padding-left: 18px;
 }
+@media screen and (max-width: 550px) {
+  .search form .search-list .animelist li {
+    padding-left: 10px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .search form .search-list .animelist li {
+    padding-left: 5px;
+  }
+}
 .search form .search-list .animelist li:hover {
   background-color: #d7d6d6;
 }
@@ -847,6 +857,16 @@ a button:hover {
   text-align: left;
   font-size: 17px;
   color: rgb(28, 28, 30);
+}
+@media screen and (max-width: 550px) {
+  .search form .search-list .animelist li button {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .search form .search-list .animelist li button {
+    font-size: 14px;
+  }
 }
 .search form .search-list .animelist li button:hover {
   cursor: pointer;
@@ -886,6 +906,7 @@ a button:hover {
   width: 100%;
   border: none;
   background-color: rgb(224, 224, 224);
+  outline: none;
 }
 
 .slc .connexion #retour {
@@ -1041,7 +1062,7 @@ a button:hover {
   }
 }
 .cardpage .cardpageall .left-card-page .img-container-cp {
-  height: 100%;
+  height: 100vh;
   background-color: rgba(255, 255, 255, 0.4);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(10px);
@@ -1051,6 +1072,11 @@ a button:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+@media screen and (max-width: 750px) {
+  .cardpage .cardpageall .left-card-page .img-container-cp {
+    height: 100%;
+  }
 }
 .cardpage .cardpageall .left-card-page .img-container-cp .img-container {
   position: relative;
@@ -1148,6 +1174,11 @@ a button:hover {
     width: 100%;
   }
 }
+@media screen and (max-width: 570px) {
+  .cardpage .cardpageall .right-card-page {
+    padding: 10px;
+  }
+}
 .cardpage .cardpageall .right-card-page p {
   font-size: 17px;
   font-weight: 400;
@@ -1159,6 +1190,16 @@ a button:hover {
   .cardpage .cardpageall .right-card-page p {
     font-size: 17px;
   }
+}
+@media screen and (max-width: 550px) {
+  .cardpage .cardpageall .right-card-page p {
+    font-size: 14px;
+    margin-bottom: 60px;
+  }
+}
+.cardpage .cardpageall .right-card-page #p-btn-add {
+  margin-bottom: 0;
+  font-weight: 500;
 }
 .cardpage .cardpageall .right-card-page .title-card-page {
   width: 100%;
@@ -1191,6 +1232,16 @@ a button:hover {
     font-size: 15px;
     line-height: 18px;
   }
+}
+.cardpage .cardpageall .right-card-page .synopsis p i {
+  padding-left: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.cardpage .cardpageall .right-card-page .synopsis p i:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
 }
 
 .btn-optn-card-page {
@@ -1274,6 +1325,19 @@ a button:hover {
 
 .add-remove {
   width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+@media screen and (max-width: 550px) {
+  .add-remove {
+    width: 65%;
+  }
 }
 .add-remove i {
   position: absolute;
@@ -1416,7 +1480,7 @@ a button:hover {
   font-size: 18px;
 }
 .add-remove .fade .fade-container .fade-content button:nth-child(2):hover {
-  background-color: rgb(250, 82, 82);
+  background-color: #fa5252;
   color: white;
 }
 
@@ -1728,7 +1792,7 @@ p {
 
 .success {
   margin-left: calc(50% - 60px);
-  color: rgb(6, 126, 6);
+  color: #067e06;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1791,7 +1855,7 @@ p {
   }
 }
 .compte .logout:hover {
-  background-color: rgb(250, 82, 82);
+  background-color: #fa5252;
   cursor: pointer;
 }
 .compte .islogout {
@@ -1892,7 +1956,7 @@ p {
   }
 }
 .compte .islogout .islogout-container .islogout-content button:nth-child(2):hover {
-  background-color: rgb(250, 82, 82);
+  background-color: #fa5252;
   color: white;
 }
 
@@ -2292,6 +2356,7 @@ h5 {
   bottom: 50%;
   -webkit-transform: translateY(50%);
           transform: translateY(50%);
+  outline: none;
 }
 @media screen and (max-width: 635px) {
   .profilUser .utility-bar .search-friends .search-friends-container input {
@@ -2320,6 +2385,16 @@ h5 {
   background-color: white;
   -webkit-box-shadow: 0px 2px 5px 0px rgb(176, 176, 176);
           box-shadow: 0px 2px 5px 0px rgb(176, 176, 176);
+}
+@media screen and (max-width: 680px) {
+  .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list {
+    left: -100px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list {
+    width: 130%;
+  }
 }
 .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend {
   width: 100%;
@@ -2357,6 +2432,11 @@ h5 {
   left: calc(50% + 25px);
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+@media screen and (max-width: 450px) {
+  .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend .gradeold {
+    text-align: center;
+  }
 }
 .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend .level {
   position: absolute;
@@ -2420,6 +2500,7 @@ h5 {
 .custom-stars #scoretitle {
   width: 150px;
   text-align: center;
+  color: #067e06;
 }
 
 .bookmark {
@@ -2428,14 +2509,41 @@ h5 {
   display: -ms-flexbox;
   display: flex;
   background-color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 25px;
 }
-.bookmark h4, .bookmark i {
+.bookmark h4 {
   font-size: 18px;
 }
-.bookmark #bookmarkint {
-  border: 1px solid black;
-  border-radius: 30px;
-  width: 75px;
+.bookmark i {
+  font-size: 18px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  color: #067e06;
+}
+.bookmark i:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+  cursor: pointer;
+}
+.bookmark #formBookMark {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 10px 0 10px;
+}
+.bookmark #formBookMark #bookmarkint {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: 150px;
+  overflow: hidden;
 }
 
 .bookmark.equal {
@@ -2521,9 +2629,9 @@ h5 {
       -ms-flex-pack: center;
           justify-content: center;
   background-color: white;
-  border-bottom: 3px solid rgb(250, 82, 82);
-  border-right: 3px solid rgb(250, 82, 82);
-  border-left: 3px solid rgb(250, 82, 82);
+  border-bottom: 3px solid #fa5252;
+  border-right: 3px solid #fa5252;
+  border-left: 3px solid #fa5252;
   border-top: none;
   border-radius: 20px;
   width: 300px;
@@ -2539,7 +2647,7 @@ h5 {
   font-size: 15px;
   padding: 2px 0;
   width: 101%;
-  background-color: rgb(250, 82, 82);
+  background-color: #fa5252;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   text-align: center;

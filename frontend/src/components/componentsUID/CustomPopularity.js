@@ -45,6 +45,7 @@ const CustomPopularity = ({ manga, userInfo,isFriendCollectionPage, isUserCollec
         allowFraction
         tooltipDefaultText="0"
         tooltipClassName="custom-tooltip"
+        size="30"
       />
       </>}
       {isFriendCollectionPage && <CustomPopularityFriend manga={manga}/> }

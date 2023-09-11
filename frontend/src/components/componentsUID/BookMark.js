@@ -18,7 +18,8 @@ const BookMark = ({
   ? userInfo.colleclist.findIndex((element) => element.mal_id == manga.mal_id)
   : null;
 
-  const handleBookMark = async () => {
+  const handleBookMark = async (e) => {
+    e.preventDefault();
     if (isUserCollectionCardPage) {
       if (userInfo && bookMarkValue) {
         const bookMarkData = { bookMarkValue };
@@ -62,19 +63,21 @@ const BookMark = ({
       id="bookmark"
     >
       <i className="fa-regular fa-bookmark"></i>
+      <form action="" id="formBookMark" onSubmit={(e) => handleBookMark(e)}>
       <input
         type="number"
         name="bookmarkint"
         id="bookmarkint"
-        placeholder="Num"
+        placeholder="Marque page"
         onChange={(e) => setBookMarkValue(e.target.value)}
         defaultValue={userInfo.colleclist[mangaIndex].bookMarkValue}
         max={manga.chapters}
       />
-      <i className="fa-solid fa-check" onClick={() => handleBookMark()}></i>
+      <i className="fa-solid fa-check" onClick={(e) => handleBookMark(e)}></i>
+      </form>
       <h4>
         {" "}
-        /{manga.chapters ? manga.chapters : "Nombre d'épisodes/chapitres"}
+        /{manga.chapters ? manga.chapters : (manga.episodes ? manga.episodes : "")}
       </h4>{" "}
     </div>}
     {isFriendCollectionPage && <BookMarkFriend manga={manga}/>}
