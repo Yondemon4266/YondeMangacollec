@@ -1450,7 +1450,12 @@ a button:hover {
   background-color: #ebebeb;
   border-radius: 30px;
 }
-.sign .signin-signup ul .hover {
+@media screen and (max-width: 450px) {
+  .sign .signin-signup ul {
+    width: 85%;
+  }
+}
+.sign .signin-signup .hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1465,27 +1470,40 @@ a button:hover {
   background-color: #ebebeb;
   color: #cf000a;
 }
-.sign .signin-signup ul .hover li {
+.sign .signin-signup .hover li {
   line-height: 30px;
 }
-.sign .signin-signup ul .nav-active {
+@media screen and (max-width: 780px) {
+  .sign .signin-signup .hover li {
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
+@media screen and (max-width: 470px) {
+  .sign .signin-signup .hover li {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+.sign .signin-signup .nav-active {
   background: #cf000a;
   border-radius: 30px;
   color: white;
 }
-.sign .signin-signup ul .nav-active:hover {
+.sign .signin-signup .nav-active:hover {
   cursor: pointer;
 }
-.sign .signin-signup ul .not-activeBtn {
+.sign .signin-signup .not-activeBtn {
   color: #cf000a;
   border-radius: 30px;
 }
-.sign .signin-signup ul .not-activeBtn:hover {
+.sign .signin-signup .not-activeBtn:hover {
   cursor: pointer;
   background-color: #d7d6d6;
   border-radius: 30px;
 }
-.sign form {
+
+form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1501,11 +1519,11 @@ a button:hover {
           align-items: center;
   gap: 10px;
 }
-.sign form h1 {
+form h1 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
-.sign form input {
+form input {
   position: relative;
   border: none;
   line-height: 40px;
@@ -1514,10 +1532,35 @@ a button:hover {
   padding-left: 15px;
   width: 20%;
 }
-.sign form label {
+@media screen and (max-width: 1545px) {
+  form input {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1140px) {
+  form input {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 780px) {
+  form input {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 630px) {
+  form input {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 470px) {
+  form input {
+    width: 85%;
+  }
+}
+form label {
   position: relative;
 }
-.sign form label::after {
+form label::after {
   content: "*";
   position: absolute;
   top: 0px;
@@ -1525,7 +1568,7 @@ a button:hover {
   color: red;
   font-size: 18px;
 }
-.sign form .nav-active {
+form .nav-active {
   background: #cf000a;
   border-radius: 30px;
   display: -webkit-box;
@@ -1542,16 +1585,53 @@ a button:hover {
   border: none;
   color: white;
 }
-.sign form .nav-active:hover {
+@media screen and (max-width: 1545px) {
+  form .nav-active {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1140px) {
+  form .nav-active {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 780px) {
+  form .nav-active {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 630px) {
+  form .nav-active {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 470px) {
+  form .nav-active {
+    width: 85%;
+  }
+}
+form .nav-active:hover {
   cursor: pointer;
 }
-.sign p {
+
+p {
   display: block;
   text-align: center;
   font-size: 17px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-.sign .sign-google-fb-apple {
+@media screen and (max-width: 780px) {
+  p {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 500px) {
+  p {
+    font-size: 14px;
+  }
+}
+
+.sign-google-fb-apple {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1568,7 +1648,7 @@ a button:hover {
   width: 100%;
   gap: 15px;
 }
-.sign .sign-google-fb-apple li {
+.sign-google-fb-apple li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1580,7 +1660,7 @@ a button:hover {
           align-items: center;
   width: 100%;
 }
-.sign .sign-google-fb-apple li button {
+.sign-google-fb-apple li button {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1598,7 +1678,32 @@ a button:hover {
   color: white;
   cursor: pointer;
 }
-.sign .sign-google-fb-apple li button i {
+@media screen and (max-width: 1545px) {
+  .sign-google-fb-apple li button {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1140px) {
+  .sign-google-fb-apple li button {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 780px) {
+  .sign-google-fb-apple li button {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 630px) {
+  .sign-google-fb-apple li button {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 470px) {
+  .sign-google-fb-apple li button {
+    width: 85%;
+  }
+}
+.sign-google-fb-apple li button i {
   position: absolute;
   left: 10px;
   bottom: 50%;
@@ -1606,16 +1711,17 @@ a button:hover {
           transform: translateY(50%);
   font-size: 18px;
 }
-.sign .sign-google-fb-apple li .blue {
+.sign-google-fb-apple li .blue {
   background-color: #3b5998;
 }
-.sign .sign-google-fb-apple li .blueclear {
+.sign-google-fb-apple li .blueclear {
   background-color: #4285f4;
 }
-.sign .sign-google-fb-apple li .black {
+.sign-google-fb-apple li .black {
   background-color: rgb(0, 0, 0);
 }
-.sign .mdp-oublie {
+
+.mdp-oublie {
   text-align: center;
   cursor: pointer;
 }

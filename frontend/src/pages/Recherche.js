@@ -15,7 +15,7 @@ const Recherche = () => {
   const mangaNewsData = JSON.parse(localStorage.getItem("mangaNewsData"))
     ? JSON.parse(localStorage.getItem("mangaNewsData"))
     : null;
-  const [animes, setAnimes] = useState(true);
+  const [animes, setAnimes] = useState(false);
   const [search, setSearch] = useState("");
   let dataRecu = [];
 
@@ -77,7 +77,7 @@ const Recherche = () => {
       <Navigation />
       <div className="container">
         <div className="search">
-          <form action="" onSubmit={(e) => handleSubmit(e, search)}>
+          <form action="" onSubmit={(e) => handleSubmit(e, search)} style={{alignItems:"flex-start"}}>
             <div className="connexion" id="connexionid3">
               <div className="searchinput">
                 <i className="fa-solid fa-magnifying-glass"></i>
@@ -96,25 +96,25 @@ const Recherche = () => {
                   <li>
                     <button
                       type="button"
-                      onClick={() => setAnimes(true)}
-                      className={animes ? "activeBtn" : "not-activeBtn"}
-                    >
-                      ANIMES
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
                       onClick={() => setAnimes(false)}
                       className={animes ? "not-activeBtn" : "activeBtn"}
                     >
                       MANGAS
                     </button>
                   </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => setAnimes(true)}
+                      className={animes ? "activeBtn" : "not-activeBtn"}
+                    >
+                      ANIMES
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div className="search-list">
+            <div className="search-list" style={{width:"100%"}}>
               <ul className="animelist">{animes ? animeList : mangaList}</ul>
             </div>
           </form>
