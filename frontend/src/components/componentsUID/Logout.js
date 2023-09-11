@@ -19,6 +19,7 @@ const Logout = () => {
       .then(() => {
         removeCookie("jwt");
         localStorage.removeItem("uid");
+        window.location = "/";
       })
       .catch((err) => console.log(err));
     
