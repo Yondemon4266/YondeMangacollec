@@ -23,7 +23,7 @@ const SignIn = () => {
         },
       })
         .then((res) => {
-          console.log("hello");
+          console.log(res);
           window.location = "/";
         })
         .catch((err) => {
