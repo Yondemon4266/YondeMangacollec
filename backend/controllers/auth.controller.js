@@ -32,7 +32,6 @@ module.exports.signIn = async (req, res) => {
         res.status(200).json({ message: "Utilisateur : " + user.pseudo + " connecté avec succès", user: user._id});
     } catch (err) {
         const errors = signInErrors(err);
-        console.log({errors} + err)
         res.status(400).json({errors} + err);
     }
 };

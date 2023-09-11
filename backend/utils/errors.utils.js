@@ -15,7 +15,6 @@ module.exports.signUpErrors = (err) => {
 module.exports.signInErrors = (err) => {
     let errors = { email: '', password: ''};
     
-    console.log(err);
     if (err.message.includes("Email")) 
         errors.email = "Email inconnu";
     
