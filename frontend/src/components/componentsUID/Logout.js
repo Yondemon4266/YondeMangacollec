@@ -11,7 +11,6 @@ const Logout = () => {
   };
 
   const logout = async () => {
-    localStorage.removeItem("uid");
     await axios({
       method: "get",
       url: `${process.env.REACT_APP_API_URL}api/user/logout`,
@@ -19,6 +18,7 @@ const Logout = () => {
     })
       .then(() => {
         removeCookie("jwt");
+        localStorage.removeItem("uid");
       })
       .catch((err) => console.log(err));
     window.location = "/";
