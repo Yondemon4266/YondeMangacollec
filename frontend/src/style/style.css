@@ -2414,6 +2414,11 @@ h5 {
   position: relative;
   cursor: pointer;
 }
+@media screen and (max-width: 450px) {
+  .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend {
+    font-size: 16px;
+  }
+}
 .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend:hover {
   background-color: #ffebe9;
 }

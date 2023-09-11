@@ -223,7 +223,9 @@
             align-items: center;
             position: relative;
             cursor: pointer;
-  
+            @media screen and (max-width:450px) {
+              font-size: 16px;
+            }
             &:hover {
               background-color: #ffebe9;
             }
