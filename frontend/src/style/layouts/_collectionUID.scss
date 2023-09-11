@@ -106,7 +106,7 @@
           cursor: pointer;
           transition: 0.5s ease;
           font-size: 12px;
-          align-self: start;
+          align-self: flex-start;
           &:hover {
             transform: scale(1.4);
           }
@@ -223,7 +223,7 @@
               height: 90%;
             }
             #frienduserpseudo {
-              align-self: start;
+              align-self: flex-start;
               padding-left: 5px;
             }
             .gradeold {

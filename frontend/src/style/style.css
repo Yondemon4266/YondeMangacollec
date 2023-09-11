@@ -70,7 +70,7 @@ a button:hover {
       -ms-flex-align: center;
           align-items: center;
   -ms-flex-item-align: start;
-      align-self: start;
+      align-self: flex-start;
   font-size: 18px;
 }
 
@@ -1798,7 +1798,7 @@ a button:hover {
           justify-content: center;
   -webkit-box-align: start;
       -ms-flex-align: start;
-          align-items: start;
+          align-items: flex-start;
   gap: 10px;
 }
 .row2:hover {
@@ -2012,7 +2012,7 @@ h5 {
   transition: 0.5s ease;
   font-size: 12px;
   -ms-flex-item-align: start;
-      align-self: start;
+      align-self: flex-start;
 }
 .profilUser .profil-container .rightpart .gradeold i:hover {
   -webkit-transform: scale(1.4);
@@ -2164,7 +2164,7 @@ h5 {
 }
 .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend #frienduserpseudo {
   -ms-flex-item-align: start;
-      align-self: start;
+      align-self: flex-start;
   padding-left: 5px;
 }
 .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list .friend .gradeold {
