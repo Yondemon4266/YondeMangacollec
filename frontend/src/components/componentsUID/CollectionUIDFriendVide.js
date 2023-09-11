@@ -28,15 +28,15 @@ const CollectionUIDFriendVide = ({
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5>Titre : {determineGrade(collectionData && collectionData.level)} {phraseVillage(collectionData && collectionData.village)} {collectionData && collectionData.village}</h5>
+              <h5><strong>Titre :</strong> {determineGrade(collectionData && collectionData.level)} {phraseVillage(collectionData && collectionData.village)} {collectionData && collectionData.village}</h5>
             </div>
             <div className="niveau">
-              <h5>Niveau : {Math.floor(collectionData && collectionData.level)}</h5>
+              <h5><strong>Niveau :</strong> {Math.floor(collectionData && collectionData.level)}</h5>
               <NiveauJauge userInfo={collectionData}/>
             </div>
             <div className="membredepuis">
               <h5>
-                Membre depuis le :{" "}
+                <strong>Membre depuis le :</strong>{" "}
                 {collectionData && dateFormater(collectionData.createdAt)}
               </h5>
             </div>

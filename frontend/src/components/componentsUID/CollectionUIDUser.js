@@ -23,10 +23,10 @@ const CollectionUIDUser = ({userInfo, collecSearch, isUserCollectionPage, isFrie
             </div>
             <div className="rightpart">
             <div className="gradeold">
-             <h5>Titre : {determineGrade(userInfo && userInfo.level)} du village caché du {userInfo && userInfo.village}</h5>
+             <h5><strong>Titre :</strong> {determineGrade(userInfo && userInfo.level)} du village caché du {userInfo && userInfo.village}</h5>
             </div>
             <div className="niveau">
-              <h5>Niveau : {Math.floor(userInfo && userInfo.level)}</h5>
+              <h5><strong>Niveau :</strong>{Math.floor(userInfo && userInfo.level)}</h5>
               <NiveauJauge userInfo={userInfo}/>
             </div>
             <div className="membredepuis">
