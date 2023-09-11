@@ -67,7 +67,7 @@ module.exports.userColleclistDelete = async (req, res) => {
     await user.save();
     return res.status(204).send();
   } catch (err) {
-    console.error(error);
+    console.error(err);
     return res
       .status(500)
       .json({ message: "Erreur lors de la suppression de l'élément " });

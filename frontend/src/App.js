@@ -29,7 +29,6 @@ const App = () => {
     const fetchAllUsers = async () => {
       try {
         await dispatch(getAllUsers());
-        console.log("Données utilisateurs récupérées");
       } catch (err) {
         console.log("Pas pu récupérer tous les utilisateurs" + err);
       }

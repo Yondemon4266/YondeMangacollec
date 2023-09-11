@@ -20,8 +20,9 @@ export const getAllUsers = (uid) => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}api/user/`, {withCredentials:true});
             dispatch({ type: GET_ALL_USERS, payload: response.data });
+            console.log("données utilisateurs récupérées");
         } catch (err) {
-            console.log(err);
+            console.log("Données utilisateurs pas récupérées" + err);
         }
     };
 };
