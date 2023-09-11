@@ -1766,7 +1766,7 @@ p {
 }
 @media screen and (max-width: 500px) {
   .compte .logout {
-    margin: 120px auto;
+    margin: 60px auto;
   }
 }
 .compte .logout:hover {
