@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../actions/user.action";
 
 const ChangeMail = () => {
+  const dispatch = useDispatch();
   const [isChangeMailVisible, setIsChangeMailVisible] = useState(false);
   const userInfo = useSelector((state) => state.userReducer.userInfo);
   const [newMail, setNewMail] = useState("");
@@ -22,6 +24,7 @@ const ChangeMail = () => {
         console.log(response);
         emailError.style.color = "green";
         emailError.textContent = "Votre email a été changé avec succès";
+        dispatch(getUser(userInfo && userInfo._id));
       } catch (err) {
         console.log(err.response.data.message);
         emailError.style.color = "red";
@@ -50,8 +53,6 @@ const ChangeMail = () => {
         </div>
         {isChangeMailVisible && (
           <div className="add-remove">
-
-          
           <div className="fade">
             <div className="fade-container">
               <div className="fade-header">

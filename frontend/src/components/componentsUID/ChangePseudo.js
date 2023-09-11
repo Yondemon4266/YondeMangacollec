@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../actions/user.action";
 
 const ChangePseudo = () => {
-
+  const dispatch = useDispatch();
   const [isChangePseudoVisible, setIsChangePseudoVisible] = useState(false);
   const userInfo = useSelector((state) => state.userReducer.userInfo);
   const [newPseudo, setNewPseudo] = useState(null);
@@ -24,6 +25,7 @@ const ChangePseudo = () => {
         console.log(response);
         pseudoError.style.color = "green";
         pseudoError.textContent = "Votre pseudo a été changé avec succès";
+        dispatch(getUser(userInfo && userInfo._id));
       } catch (err) {
         console.log(err.response.data.message);
         pseudoError.style.color = "red";
