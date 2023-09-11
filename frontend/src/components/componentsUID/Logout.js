@@ -21,7 +21,7 @@ const Logout = () => {
         localStorage.removeItem("uid");
       })
       .catch((err) => console.log(err));
-    window.location = "/";
+    
   };
   return (
     <>
