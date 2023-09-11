@@ -70,7 +70,7 @@ const App = () => {
       <Route path="/recherche" element={<Recherche />} />
       <Route path="/cardpage/:cardId" element={<CardPage />} />
       <Route path="/recherche/:searchId" element={<SearchPage />} />
-
+"EDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD                                            zéW"
       {/* Routes privées */}
       {uid ? (
         <>
