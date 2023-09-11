@@ -39,7 +39,7 @@ module.exports.userColleclistPatch = async (req, res) => {
     const updates = req.body.colleclist;
     const updatedUser = await UserModel.findByIdAndUpdate(
       req.params.id,
-      { $push: {colleclist: updates} },
+      { $push: { colleclist: updates } },
       { new: true }
     ).select("-password -picture -updatedAt -email -createdAt -pseudo");
     if (!updatedUser)
@@ -160,14 +160,12 @@ module.exports.userLevelAddPatch = async (req, res) => {
     await user.save();
     if (Number.isInteger(user.level) && user.level > levelBefore) {
       return res.status(200).json({
-        message:
-          "Niveau augmenté !",
+        message: "Niveau augmenté !",
         data: user.level,
       });
     } else {
       return res.status(200).json({
-        message:
-          "Expérience ajoutée avec succès",
+        message: "Expérience ajoutée avec succès",
         data: user.level,
       });
     }
@@ -186,18 +184,15 @@ module.exports.userLevelRemovePatch = async (req, res) => {
     let levelBefore = user.level;
     user.level -= 0.25;
 
-
     await user.save();
     if (user.level < Math.floor(levelBefore)) {
       return res.status(200).json({
-        message:
-          "Niveau enlevé !",
+        message: "Niveau enlevé !",
         data: user.level,
       });
     } else {
       return res.status(200).json({
-        message:
-          "Expérience enlevée avec succès",
+        message: "Expérience enlevée avec succès",
         data: user.level,
       });
     }
@@ -207,7 +202,6 @@ module.exports.userLevelRemovePatch = async (req, res) => {
   }
 };
 
-
 // USER CHANGES
 
 module.exports.userEmailChange = async (req, res) => {
@@ -215,14 +209,24 @@ module.exports.userEmailChange = async (req, res) => {
     return res.status(400).send("Id non reconnu : " + req.params.id);
   try {
     const user = await UserModel.findById(req.params.id);
-    if (!user) return res.status(404).json({ message: "Utilisateur non trouvé" });
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
     const existingUser = await UserModel.findOne({ email: req.body.email });
     if (existingUser) {
-      return res.status(400).json({ message: "Adresse email déjà utilisée par un autre utilisateur" });
+      return res
+        .status(400)
+        .json({
+          message: "Adresse email déjà utilisée par un autre utilisateur",
+        });
     } else {
       user.email = req.body.email;
       await user.save();
-      return res.status(200).json({message: "Adresse email mise à jour avec succès", mail:user.email})
+      return res
+        .status(200)
+        .json({
+          message: "Adresse email mise à jour avec succès",
+          mail: user.email,
+        });
     }
   } catch (err) {
     console.error(err);
@@ -235,14 +239,22 @@ module.exports.userPseudoChange = async (req, res) => {
     return res.status(400).send("Id non reconnu : " + req.params.id);
   try {
     const user = await UserModel.findById(req.params.id);
-    if (!user) return res.status(404).json({ message: "Utilisateur non trouvé" });
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
     const existingUser = await UserModel.findOne({ pseudo: req.body.pseudo });
     if (existingUser) {
-      return res.status(400).json({ message: "Pseudo déjà utilisé par un autre utilisateur" });
+      return res
+        .status(400)
+        .json({ message: "Pseudo déjà utilisé par un autre utilisateur" });
     } else {
       user.pseudo = req.body.pseudo;
       await user.save();
-      return res.status(200).json({message: "Pseudo mis à jour avec succès", pseudo:user.pseudo})
+      return res
+        .status(200)
+        .json({
+          message: "Pseudo mis à jour avec succès",
+          pseudo: user.pseudo,
+        });
     }
   } catch (err) {
     console.error(err);
@@ -250,15 +262,39 @@ module.exports.userPseudoChange = async (req, res) => {
   }
 };
 
+module.exports.userPasswordChange = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+
+    user.password = req.body.password;
+    await user.save();
+    return res
+      .status(200)
+      .json({ message: "Mot de passe mis à jour avec succès"});
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};
+
+// USER CHANGE END
+
 module.exports.userSendIdea = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("Id non reconnu : " + req.params.id);
   try {
     const user = await UserModel.findById(req.params.id);
-    if (!user) return res.status(404).json({ message: "Utilisateur non trouvé" });
-      user.ideas += req.body.idea;
-      await user.save();
-      return res.status(200).json({message: "Idée reçue avec succès", idee:user.ideas})
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    user.ideas += req.body.idea;
+    await user.save();
+    return res
+      .status(200)
+      .json({ message: "Idée reçue avec succès", idee: user.ideas });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Erreur serveur", err });

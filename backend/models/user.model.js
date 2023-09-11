@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minLength: 3,
-      maxLength: 30,
+      maxLength: 16,
       unique: true,
       trim: true,
     },

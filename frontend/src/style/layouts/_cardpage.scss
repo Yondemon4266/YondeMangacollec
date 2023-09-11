@@ -300,15 +300,20 @@ $padding-right-right-page: 25px;
         background-color: $white;
         text-align: center;
         border-radius: $bradius;
+        width: 320px;
+        @media screen and (max-width:430px) {
+          width: 280px;
+        }
         .fade-header {
           padding: 15px 20px;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
             Helvetica, Arial, sans-serif;
           form {
+            width: 100%;
             input,textarea {
               text-align: justify;
               border-radius: 10px;
-              padding: 5px;
+              width: 100%;
               outline: none;
               border: 1px solid $grey-compte;
             }
@@ -316,8 +321,9 @@ $padding-right-right-page: 25px;
               resize: none;
               overflow: hidden;
               height: 200px;
-              width: 300px;
+              width: 100%;
               outline: none;
+              padding: 7px;
             }
           }
           h4 {

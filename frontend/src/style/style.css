@@ -184,6 +184,12 @@ a button:hover {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .search-list {
+    margin-bottom: 60px;
+  }
+}
+
 .navigation-menu {
   position: fixed;
   top: 0;
@@ -323,6 +329,14 @@ a button:hover {
     width: 30px;
     height: 30px;
   }
+}
+.navigation-menu .login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 @media screen and (max-width: 500px) {
   .navigation-menu .login {
@@ -732,6 +746,11 @@ a button:hover {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+@media screen and (max-width: 500px) {
+  .schedules .schedule-day-container .schedule-day-list {
+    margin-bottom: 60px;
+  }
 }
 .schedules .schedule-day-container .schedule-day-list .new-manga {
   cursor: pointer;
@@ -1417,15 +1436,24 @@ a button:hover {
   background-color: white;
   text-align: center;
   border-radius: 20px;
+  width: 320px;
+}
+@media screen and (max-width: 430px) {
+  .add-remove .fade .fade-container {
+    width: 280px;
+  }
 }
 .add-remove .fade .fade-container .fade-header {
   padding: 15px 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
+.add-remove .fade .fade-container .fade-header form {
+  width: 100%;
+}
 .add-remove .fade .fade-container .fade-header form input, .add-remove .fade .fade-container .fade-header form textarea {
   text-align: justify;
   border-radius: 10px;
-  padding: 5px;
+  width: 100%;
   outline: none;
   border: 1px solid rgb(211, 211, 211);
 }
@@ -1433,8 +1461,9 @@ a button:hover {
   resize: none;
   overflow: hidden;
   height: 200px;
-  width: 300px;
+  width: 100%;
   outline: none;
+  padding: 7px;
 }
 .add-remove .fade .fade-container .fade-header h4 {
   font-size: 18px;
@@ -2374,7 +2403,7 @@ h5 {
 }
 .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list {
   z-index: 1000;
-  width: 100%;
+  min-width: 300px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -2388,7 +2417,8 @@ h5 {
 }
 @media screen and (max-width: 680px) {
   .profilUser .utility-bar .search-friends .search-friends-container .search-friends-list {
-    left: -100px;
+    left: -120px;
+    min-width: 240px;
   }
 }
 @media screen and (max-width: 450px) {

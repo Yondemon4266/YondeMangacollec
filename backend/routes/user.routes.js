@@ -19,5 +19,6 @@ router.patch("/colleclistlevelremovepatch/:id", userController.userLevelRemovePa
 
 router.patch("/emailchange/:id", userController.userEmailChange);
 router.patch("/pseudochange/:id", userController.userPseudoChange);
+router.patch("/passwordchange/:id", userController.userPasswordChange);
 router.patch("/sendidea/:id", userController.userSendIdea);
 module.exports = router;

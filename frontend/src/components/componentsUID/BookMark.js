@@ -25,6 +25,16 @@ const BookMark = ({
         const bookMarkData = { bookMarkValue };
         if (manga && manga.bookMarkValue) {
           if (manga.bookMarkValue != bookMarkValue) {
+            const BookMarkElement = document.querySelector('.bookmarkinfo');
+            BookMarkElement.style.color = "#067e06";
+            BookMarkElement.style.fontSize = "15px";
+            BookMarkElement.style.fontWeight = "600";
+            BookMarkElement.style.marginBottom = "10px";
+
+            BookMarkElement.textContent = "Marque page ajoutée avec succès !";
+            setTimeout(() => {
+              BookMarkElement.textContent = "";
+            }, 2000);
             const response = await axios.patch(
               `${process.env.REACT_APP_API_URL}api/user/colleclistbookmarkpatch/${userInfo._id}/${manga.mal_id}`,
               bookMarkData
@@ -79,7 +89,9 @@ const BookMark = ({
         {" "}
         /{manga.chapters ? manga.chapters : (manga.episodes ? manga.episodes : "")}
       </h4>{" "}
+      
     </div>}
+    <div className="bookmarkinfo"></div>
     {isFriendCollectionPage && <BookMarkFriend manga={manga}/>}
     </>
   );

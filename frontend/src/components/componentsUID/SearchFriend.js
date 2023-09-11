@@ -11,7 +11,7 @@ const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
           setSearchUsers(
             allUsersData.filter((user) => {
               if (user.pseudo === userInfo.pseudo) return false;
-              return user.pseudo.toLowerCase().includes(e.target.value);
+              return user.pseudo.toLowerCase().includes(e.target.value.toLowerCase());
             })
           );
         } else {
