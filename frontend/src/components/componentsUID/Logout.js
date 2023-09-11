@@ -12,12 +12,16 @@ const Logout = () => {
 
   const logout = async () => {
     localStorage.removeItem("uid");
-    await axios.get( `${process.env.REACT_APP_API_URL}api/user/logout`).then(() => {
+    await axios({
+      method: "get",
+      url: `${process.env.REACT_APP_API_URL}api/user/logout`,
+      withCredentials: true,
+    })
+      .then(() => {
         removeCookie("jwt");
-        window.location = "/";
       })
       .catch((err) => console.log(err));
-    
+    window.location = "/";
   };
   return (
     <>
