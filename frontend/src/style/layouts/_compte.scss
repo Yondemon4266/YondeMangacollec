@@ -1,31 +1,49 @@
 $bradius: 20px;
 $padding: 18px;
+
+
 .compte {
-  padding-top: 50px;
-  height: 100vh;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: calc(100vh - 60px);
+  position: relative;
   a,h3,p {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   h3 {
     font-size: 21px;
     font-weight: 400;
+    @media screen and (max-width: 500px) {
+      font-size: 17px;
+    }
   }
   .logout {
     padding-left: $padding;
     margin: 150px auto;
     line-height: 50px;
-    width: 97%;
+    width: 100%;
     color: $red;
     text-align: center;
     border-top: 1px solid $grey-compte;
     border-bottom: 1px solid $grey-compte;
     font-size: 22px;
     @media screen and (max-width: 500px) {
-      margin: 60px auto;
+      margin: 0;
+  }
+  @media screen and (max-height: 570px) {
+    position: fixed;
+    left: 60%;
+    top: 0px;
+    font-size: 14px;
+    background-color: $red;
+    border-radius: 10px;
+    color: $white;
+    width: 40%;
+    padding-left: 0;
+    z-index: 15000;
   }
     &:hover {
       background-color: $red-remove;
-      width: 100%;
       cursor: pointer;
     }
   }
@@ -51,6 +69,9 @@ $padding: 18px;
         padding: 15px 20px;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Helvetica, Arial, sans-serif;
+        @media screen and (max-width: 520px) {
+          padding: 8px 10px;
+        }
         h4 {
           font-size: 18px;
           margin-bottom: 10px;
@@ -76,6 +97,14 @@ $padding: 18px;
           border-top: 1px solid $grey-2;
           border-bottom-left-radius: $bradius;
           font-size: 18px;
+          @media screen and (max-width: 520px) {
+           font-size: 15px; 
+           width: 150px;
+          }
+          @media screen and (max-width: 400px) {
+            font-size: 15px; 
+            width: 120px;
+           }
           &:hover {
             background-color: $grey-3;
           }
@@ -88,6 +117,14 @@ $padding: 18px;
           border-bottom-right-radius: $bradius;
           color: $red;
           font-size: 18px;
+          @media screen and (max-width: 520px) {
+            font-size: 15px; 
+            width: 150px;
+           }
+           @media screen and (max-width: 400px) {
+            font-size: 15px; 
+            width: 120px;
+           }
           &:hover {
             background-color: $red-remove;
             color: $white;
@@ -101,7 +138,10 @@ $padding: 18px;
 .compte-info {
   padding-top: $padding;
   padding-left: $padding;
-
+  @media screen and (max-width: 500px) {
+    padding-top: 8px;
+    padding-left: 6px;
+  }
 }
 
 .themes {
@@ -112,6 +152,10 @@ $padding: 18px;
 .like-yondes-app {
   padding-top: $padding;
   padding-left: $padding;
+  @media screen and (max-width:500px) {
+    padding-top: 6px;
+    padding-left: 6px;
+  }
 }
 
 .copy {
@@ -119,12 +163,18 @@ $padding: 18px;
   padding-left: $padding;
   padding-right: $padding;
   padding-bottom: $padding;
+  @media screen and (max-width: 500px) {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
   p {
     line-height: 25px;
     font-family: Arial, Helvetica, sans-serif;
     @media screen and (max-width: 500px) {
       line-height: 20px;
-      font-size: 17px;
+      font-size: 15px;
       text-align: center;
   }
   }
@@ -168,6 +218,9 @@ h5 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 17px;
   font-weight: 400;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+  }
 }
 .row {
   height: 50px;
@@ -189,6 +242,9 @@ h5 {
 .acc-created {
   margin-top: 10px;
   font-size: 13px;
+  p {
+    text-align: left;
+  }
 }
 
 

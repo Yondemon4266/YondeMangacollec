@@ -36,21 +36,11 @@ const Compte = () => {
               <h5>Boîte à idées</h5>
               {isBoiteVisible && <BoiteAIdees isBoiteVisible={isBoiteVisible} setIsBoiteVisible={setIsBoiteVisible}/>}
             </div>
-            <div className="row">
-              <h5>Paramètres avancés</h5>
-            </div>
             <div className="acc-created">
               <p>
                 Compte créé le{" "}
                 <strong>{userInfo && dateFormater(userInfo.createdAt)}</strong>
               </p>
-            </div>
-          </div>
-          <div className="themes">
-            <h3>Préférences</h3>
-            <div className="row add-remove">
-              <h5>Thème système</h5>
-              
             </div>
           </div>
           <div className="like-yondes-app">

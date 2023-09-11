@@ -1743,8 +1743,10 @@ p {
 }
 
 .compte {
-  padding-top: 50px;
-  height: 100vh;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: calc(100vh - 60px);
+  position: relative;
 }
 .compte a, .compte h3, .compte p {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -1753,11 +1755,16 @@ p {
   font-size: 21px;
   font-weight: 400;
 }
+@media screen and (max-width: 500px) {
+  .compte h3 {
+    font-size: 17px;
+  }
+}
 .compte .logout {
   padding-left: 18px;
   margin: 150px auto;
   line-height: 50px;
-  width: 97%;
+  width: 100%;
   color: #cf000a;
   text-align: center;
   border-top: 1px solid rgb(211, 211, 211);
@@ -1766,12 +1773,25 @@ p {
 }
 @media screen and (max-width: 500px) {
   .compte .logout {
-    margin: 60px auto;
+    margin: 0;
+  }
+}
+@media screen and (max-height: 570px) {
+  .compte .logout {
+    position: fixed;
+    left: 60%;
+    top: 0px;
+    font-size: 14px;
+    background-color: #cf000a;
+    border-radius: 10px;
+    color: white;
+    width: 40%;
+    padding-left: 0;
+    z-index: 15000;
   }
 }
 .compte .logout:hover {
   background-color: rgb(250, 82, 82);
-  width: 100%;
   cursor: pointer;
 }
 .compte .islogout {
@@ -1799,6 +1819,11 @@ p {
 .compte .islogout .islogout-container .islogout-header {
   padding: 15px 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media screen and (max-width: 520px) {
+  .compte .islogout .islogout-container .islogout-header {
+    padding: 8px 10px;
+  }
 }
 .compte .islogout .islogout-container .islogout-header h4 {
   font-size: 18px;
@@ -1830,6 +1855,18 @@ p {
   border-bottom-left-radius: 20px;
   font-size: 18px;
 }
+@media screen and (max-width: 520px) {
+  .compte .islogout .islogout-container .islogout-content button:nth-child(1) {
+    font-size: 15px;
+    width: 150px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .compte .islogout .islogout-container .islogout-content button:nth-child(1) {
+    font-size: 15px;
+    width: 120px;
+  }
+}
 .compte .islogout .islogout-container .islogout-content button:nth-child(1):hover {
   background-color: #ebebeb;
 }
@@ -1842,6 +1879,18 @@ p {
   color: #cf000a;
   font-size: 18px;
 }
+@media screen and (max-width: 520px) {
+  .compte .islogout .islogout-container .islogout-content button:nth-child(2) {
+    font-size: 15px;
+    width: 150px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .compte .islogout .islogout-container .islogout-content button:nth-child(2) {
+    font-size: 15px;
+    width: 120px;
+  }
+}
 .compte .islogout .islogout-container .islogout-content button:nth-child(2):hover {
   background-color: rgb(250, 82, 82);
   color: white;
@@ -1850,6 +1899,12 @@ p {
 .compte-info {
   padding-top: 18px;
   padding-left: 18px;
+}
+@media screen and (max-width: 500px) {
+  .compte-info {
+    padding-top: 8px;
+    padding-left: 6px;
+  }
 }
 
 .themes {
@@ -1861,12 +1916,26 @@ p {
   padding-top: 18px;
   padding-left: 18px;
 }
+@media screen and (max-width: 500px) {
+  .like-yondes-app {
+    padding-top: 6px;
+    padding-left: 6px;
+  }
+}
 
 .copy {
   padding-top: 18px;
   padding-left: 18px;
   padding-right: 18px;
   padding-bottom: 18px;
+}
+@media screen and (max-width: 500px) {
+  .copy {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
 }
 .copy p {
   line-height: 25px;
@@ -1875,7 +1944,7 @@ p {
 @media screen and (max-width: 500px) {
   .copy p {
     line-height: 20px;
-    font-size: 17px;
+    font-size: 15px;
     text-align: center;
   }
 }
@@ -1931,6 +2000,11 @@ h5 {
   font-size: 17px;
   font-weight: 400;
 }
+@media screen and (max-width: 500px) {
+  h5 {
+    font-size: 15px;
+  }
+}
 
 .row {
   height: 50px;
@@ -1960,6 +2034,9 @@ h5 {
 .acc-created {
   margin-top: 10px;
   font-size: 13px;
+}
+.acc-created p {
+  text-align: left;
 }
 
 @keyframes fadeIn {
