@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import Popularity from "../Popularity";
-import { getUser } from "../../actions/user.action";
+import { getUser, getLevelMessage } from "../../actions/user.action";
 
 const AddRemoveCollectionComponent = ({
   userInfo,
@@ -34,7 +34,7 @@ const AddRemoveCollectionComponent = ({
           updatedData
         );
         const responselevel = await axios.patch(`${process.env.REACT_APP_API_URL}api/user/colleclistleveladdpatch/${userInfo._id}`);
-
+        dispatch(getLevelMessage(responselevel.data.message));
         await dispatch(getUser(userInfo._id));
       } else {
         if (isRemoveConfirmed) {
@@ -44,6 +44,7 @@ const AddRemoveCollectionComponent = ({
               `${process.env.REACT_APP_API_URL}api/user/colleclistdelete/${userInfo._id}/${element.mal_id}`
             );
             const responselevel = await axios.patch(`${process.env.REACT_APP_API_URL}api/user/colleclistlevelremovepatch/${userInfo._id}`);
+            dispatch(getLevelMessage(responselevel.data.message));
             await dispatch(getUser(userInfo._id));
             setRemoveConfirmed(false);
           } else if (isUserCollectionCardPage) {
@@ -53,6 +54,7 @@ const AddRemoveCollectionComponent = ({
               `${process.env.REACT_APP_API_URL}api/user/colleclistdelete/${userInfo._id}/${element.mal_id}`
             );
             const responselevel = await axios.patch(`${process.env.REACT_APP_API_URL}api/user/colleclistlevelremovepatch/${userInfo._id}`);
+            dispatch(getLevelMessage(responselevel.data.message));
             await dispatch(getUser(userInfo._id));
             setRemoveVisible(false);
             setRemoveConfirmed(false);

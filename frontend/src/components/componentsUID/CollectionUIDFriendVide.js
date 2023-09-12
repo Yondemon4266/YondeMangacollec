@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import SearchFriend from "./SearchFriend";
 import { dateFormater } from "../../Utils";
 import NiveauJauge from "./NiveauJauge";
@@ -13,7 +13,6 @@ const CollectionUIDFriendVide = ({
   handleSearchCollec,
   
 }) => {
-  const navigate = useNavigate();
   const { user } = useParams();
   return (
     <>
@@ -22,7 +21,7 @@ const CollectionUIDFriendVide = ({
           <div className="imgpseudo">
             <img
               src={`../../../${collectionData && collectionData.picture}`}
-              alt={`image de ${collectionData && collectionData.pseudo}`}
+              alt={`${collectionData && collectionData.pseudo}`}
             />
             <h4>{collectionData && collectionData.pseudo}</h4>
           </div>

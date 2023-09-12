@@ -8,8 +8,8 @@ const CompareCollectionDisplay = ({compareList, isFriendCollectionPage, isCompar
     return (
         <>
               <div className="schedule-day-container">
-                <div className="common-list schedule-day-list">
-                  <div className="listtitle"><p>Éléments en commun</p></div>
+                <div className="common-list schedule-day-list" style={{flexDirection:"column"}}>
+                  <div className="listtitle" style={{backgroundColor: "rgb(182, 236, 197)"}}><p>Éléments en commun</p></div>
                   <div className="listmangas">
                   {compareList.common.filter((element) => {
                       if (collecSearch) {
@@ -25,7 +25,7 @@ const CompareCollectionDisplay = ({compareList, isFriendCollectionPage, isCompar
                   </div>
                 </div>
                 <div className="difference-friend-list schedule-day-list">
-                <div className="listtitle"><p>Éléments en plus de {user}</p></div>
+                <div className="listtitle" style={{backgroundColor: "#ff9398"}}><p>Éléments en plus de <strong>{user}</strong></p></div>
                 <div className="listmangas">
                 {compareList.differentFriend.filter((element) => {
                       if (collecSearch) {
@@ -42,7 +42,7 @@ const CompareCollectionDisplay = ({compareList, isFriendCollectionPage, isCompar
                   
                 </div>
                 <div className="difference-user-list schedule-day-list">
-                <div className="listtitle"><p>Éléments en plus de {userInfo && userInfo.pseudo}</p></div>
+                <div className="listtitle" style={{backgroundColor: "#cf000a", color:"white"}}><p>Éléments en plus de <strong>{userInfo && userInfo.pseudo}</strong></p></div>
                 <div className="listmangas">
                 {compareList.differentUser.filter((element) => {
                       if (collecSearch) {

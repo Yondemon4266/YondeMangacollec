@@ -71,7 +71,7 @@ const CardPage = () => {
             <div className="title-card-page">
               <h2>{manga.title_english ? manga.title_english : manga.title}</h2>
             </div>
-            {isUserCollectionCardPage || isUserCardPage ? (
+            
               <div className="btn-optn-card-page">
                 <AddRemoveCollectionComponent
                   userInfo={userInfo}
@@ -87,13 +87,7 @@ const CardPage = () => {
                   <Popularity manga={manga} />
                 </div>
               </div>
-            ) : (
-              <div className="btn-optn-card-page">
-                <div className="mal-stars">
-                  <Popularity manga={manga} />
-                </div>
-              </div>
-            )}
+            
 
             <div className="synopsis">
               {isSynopsisVisible ? (

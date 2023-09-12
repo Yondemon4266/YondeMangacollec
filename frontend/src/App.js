@@ -10,10 +10,10 @@ import CardPage from "./pages/CardPage";
 import SearchPage from "./pages/SearchPage";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { getAllUsers, getUser } from "./actions/user.action";
+import { getAllUsers, getLevelMessage, getUser } from "./actions/user.action";
 import CollectionUID from "./pages/pagesUID/CollectionUID";
 import Compte from "./pages/pagesUID/Compte";
-import ExplicationTitre from "./pages/pagesUID/ExplicationTitre";
+
 const App = () => {
 
   
@@ -35,6 +35,7 @@ const App = () => {
     };
     fetchAllUsers();
   }, []);
+
 
 
   ////////////// FETCHTOKEN ////////////////////////
@@ -63,7 +64,9 @@ const App = () => {
   ////////////////UID ET FETCHTOKEN ////////////////////////
 
   return (
+    
     <Routes>
+      
       {/* Routes publiques */}
       <Route path="*" element={<Home />} />
       <Route path="/planning" element={<Planning />} />
@@ -98,6 +101,7 @@ const App = () => {
         </>
       )}
     </Routes>
+   
   );
 };
 

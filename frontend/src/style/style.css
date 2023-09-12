@@ -207,6 +207,7 @@ a button:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  z-index: 10000;
 }
 @media screen and (max-width: 965px) {
   .navigation-menu {
@@ -2590,20 +2591,21 @@ h5 {
   min-height: 100px;
 }
 .schedules .schedule-day-container > .common-list .listtitle, .schedules .schedule-day-container > .difference-friend-list .listtitle, .schedules .schedule-day-container > .difference-user-list .listtitle {
-  min-width: 10%;
-  max-width: 10%;
-  text-align: center;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: block;
+  width: 50%;
+  border-radius: 10px;
+  padding: 10px;
+}
+.schedules .schedule-day-container > .common-list .listtitle p, .schedules .schedule-day-container > .difference-friend-list .listtitle p, .schedules .schedule-day-container > .difference-user-list .listtitle p {
+  font-size: 17px;
+  font-weight: 600;
+}
+@media screen and (max-width: 400px) {
+  .schedules .schedule-day-container > .common-list .listtitle p, .schedules .schedule-day-container > .difference-friend-list .listtitle p, .schedules .schedule-day-container > .difference-user-list .listtitle p {
+    font-size: 14px;
+  }
 }
 .schedules .schedule-day-container > .common-list .listmangas, .schedules .schedule-day-container > .difference-friend-list .listmangas, .schedules .schedule-day-container > .difference-user-list .listmangas {
-  min-width: 80%;
-  max-width: 80%;
   padding: 9px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2618,7 +2620,6 @@ h5 {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 15px;
-  z-index: 1000;
 }
 .schedules .schedule-day-container > .common-list .listmangas .new-manga img, .schedules .schedule-day-container > .difference-friend-list .listmangas .new-manga img, .schedules .schedule-day-container > .difference-user-list .listmangas .new-manga img {
   width: 110px;

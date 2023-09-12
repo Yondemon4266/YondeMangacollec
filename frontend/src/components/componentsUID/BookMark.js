@@ -34,7 +34,7 @@ const BookMark = ({
             BookMarkElement.textContent = "Marque page ajoutée avec succès !";
             setTimeout(() => {
               BookMarkElement.textContent = "";
-            }, 2000);
+            }, 3000);
             const response = await axios.patch(
               `${process.env.REACT_APP_API_URL}api/user/colleclistbookmarkpatch/${userInfo._id}/${manga.mal_id}`,
               bookMarkData

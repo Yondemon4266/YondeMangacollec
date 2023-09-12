@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_USER = "GET_USER"; 
 export const GET_ALL_USERS = "GET_ALL_USERS"; 
 export const GET_COMPARE_STATE = "GET_COMPARE_STATE";
+export const GET_LEVEL_MESSAGE = "GET_LEVEL_MESSAGE";
 
 export const getUser = (uid) => {
     return async (dispatch) => {
@@ -36,5 +37,13 @@ export const getCompareState = (hello) => {
     };
 };
 
-
+export const getLevelMessage = (hello) => {
+    return (dispatch) => {
+        try {
+            dispatch({ type: GET_LEVEL_MESSAGE, payload: hello });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+};
 
