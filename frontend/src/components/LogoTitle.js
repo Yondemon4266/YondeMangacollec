@@ -4,7 +4,7 @@ const LogoTitle = () => {
     return (
         <div className='logo-title'>
             <img src="./img/logo.webp" alt="logo" className='logo'/>
-            <h1>Mangacollec</h1>
+            <h1>Yonde-Mangacollec</h1>
         </div>
     );
 };
