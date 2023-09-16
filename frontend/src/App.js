@@ -15,8 +15,6 @@ import CollectionUID from "./pages/pagesUID/CollectionUID";
 import Compte from "./pages/pagesUID/Compte";
 
 const App = () => {
-
-  
   const dispatch = useDispatch();
 
   const [uid, setUid] = useState(
@@ -36,12 +34,10 @@ const App = () => {
     fetchAllUsers();
   }, []);
 
-
-
   ////////////// FETCHTOKEN ////////////////////////
   useEffect(() => {
     const fetchToken = async () => {
-      await axios({
+      axios({
         method: "get",
         url: `${process.env.REACT_APP_API_URL}jwtid`,
         withCredentials: true,
@@ -64,9 +60,7 @@ const App = () => {
   ////////////////UID ET FETCHTOKEN ////////////////////////
 
   return (
-    
     <Routes>
-      
       {/* Routes publiques */}
       <Route path="*" element={<Home />} />
       <Route path="/planning" element={<Planning />} />
@@ -94,14 +88,16 @@ const App = () => {
             path="/user/:user/settings"
             element={<Navigate to="/users/sign_in" />}
           />
-          <Route path="/cardpage/:user/:malid" element={<Navigate to="/users/sign_in" />} />
+          <Route
+            path="/cardpage/:user/:malid"
+            element={<Navigate to="/users/sign_in" />}
+          />
           <Route path="/users/sign_in" element={<SignIn />} />
           <Route path="/users/sign_up" element={<SignUp />} />
           <Route path="/collection" element={<Collection />} />
         </>
       )}
     </Routes>
-   
   );
 };
 
