@@ -37,24 +37,28 @@ const App = () => {
   ////////////// FETCHTOKEN ////////////////////////
   useEffect(() => {
     const fetchToken = async () => {
-      axios({
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}jwtid`,
-        withCredentials: true,
-      })
-        .then((res) => {
-          if (uid) {
-            console.log("token déjà valide");
-          } else {
-            setUid(res.data);
-            localStorage.setItem("uid", JSON.stringify(res.data));
-          }
+      if (uid) {
+        console.log("token déjà valide");
+        dispatch(getUser(uid));
+        console.log("hello");
+      } else {
+        axios({
+          method: "get",
+          url: `${process.env.REACT_APP_API_URL}jwtid`,
+          withCredentials: true,
         })
-        .catch((err) => console.log(err + "  No token !"));
+          .then((res) => {
+            if (res) {
+              setUid(res.data);
+              localStorage.setItem("uid", JSON.stringify(res.data));
+              dispatch(getUser(res.data));
+              console.log(res.data);
+            }
+          })
+          .catch((err) => console.log(err + "  No token !"));
+      }
     };
     fetchToken();
-
-    if (uid) dispatch(getUser(uid));
   }, [uid]);
 
   ////////////////UID ET FETCHTOKEN ////////////////////////

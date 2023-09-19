@@ -37,6 +37,6 @@ module.exports.requireAuth = (req, res, next) => {
             }
         });
     } else {
-        res.status(400).send('pas de token pour requireAuth');
+        res.locals.user = null;
     }
 };

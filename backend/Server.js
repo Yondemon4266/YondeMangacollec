@@ -41,7 +41,7 @@ server.use(cors(corsOptions));
 server.get("*", checkUser);
 server.get("/jwtid", requireAuth, (req, res) => {
     res.status(200).send(res.locals.user._id);
-});
+  });
 
 
 
