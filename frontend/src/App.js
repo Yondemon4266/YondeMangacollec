@@ -42,20 +42,21 @@ const App = () => {
         dispatch(getUser(uid));
         console.log("hello");
       } else {
-        axios({
-          method: "get",
-          url: `${process.env.REACT_APP_API_URL}jwtid`,
-          withCredentials: true,
-        })
-          .then((res) => {
-            if (res) {
-              setUid(res.data);
-              localStorage.setItem("uid", JSON.stringify(res.data));
-              dispatch(getUser(res.data));
-              console.log(res.data);
-            }
-          })
-          .catch((err) => console.log(err + "  No token !"));
+        try {
+          const response = await axios({
+            method: "get",
+            url: `${process.env.REACT_APP_API_URL}jwtid`,
+            withCredentials: true,
+          });
+          if (response) {
+            setUid(response.data);
+              localStorage.setItem("uid", JSON.stringify(response.data));
+              await dispatch(getUser(response.data));
+              console.log(response.data);
+          };
+        } catch (err) {
+          console.log(err + "  No token !")
+        };   
       }
     };
     fetchToken();
