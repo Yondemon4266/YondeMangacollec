@@ -10,6 +10,7 @@ export const getUser = (uid) => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}api/user/${uid}`, {withCredentials:true});
             dispatch({ type: GET_USER, payload: response.data });
+            console.log("données de l'utilisateur récupérées");
         } catch (err) {
             console.log(err);
         }
