@@ -14,16 +14,13 @@ module.exports.signUp = async (req, res) => {
     const { pseudo, email, password } = req.body;
 
     try {
-        const existingUser = await UserModel.findOne({
-          $or: [{ pseudo }, { email }],
+      const user = await UserModel.create({ pseudo, email, password });
+      res
+        .status(201)
+        .json({
+          message: "Utilisateur : " + user.pseudo + " inscrit avec succès",
+          user: user._id,
         });
-        if (existingUser) {
-          return res.status(400).json({
-            message: "L'utilisateur avec ce pseudo ou cet email existe déjà",
-          });
-        }
-        const user = await UserModel.create({pseudo,email, password});
-        res.status(201).json({message: "Utilisateur : " + user.pseudo + " inscrit avec succès" , user: user._id});
     }
     catch(err) {
         const errors = signUpErrors(err);
