@@ -21,13 +21,13 @@ const port = process.env.SERVER_PORT;
 
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin: [process.env.CLIENT_URL, process.env.CLIENT2_URL],
   credentials: true,
-  'allowedHeaders': ['sessionId', 'Content-Type'],
-  'exposedHeaders': ['sessionId'],
-  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  'preflightContinue': false
-}
+  allowedHeaders: ["sessionId", "Content-Type"],
+  exposedHeaders: ["sessionId"],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+};
 
 //
 
