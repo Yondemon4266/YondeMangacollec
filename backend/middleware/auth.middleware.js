@@ -31,6 +31,7 @@ module.exports.requireAuth = (req, res, next) => {
         jwt.verify(token, process.env.TOKEN_SECRET, (err, decodedToken) => {
             if (err) {
                 console.log("noo?" + err);
+                res.status(400).send({message: "token pas bon!"})
             } else {
                 console.log("token ok pour requireAuth" + decodedToken.id);
                 next();
@@ -38,5 +39,6 @@ module.exports.requireAuth = (req, res, next) => {
         });
     } else {
         res.locals.user = null;
+        res.status(400).send({message: "pas de token!"});
     }
 };
