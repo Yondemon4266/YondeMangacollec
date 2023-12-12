@@ -6,7 +6,7 @@ module.exports.getAllUsers = async (req, res) => {
     const users = await UserModel.find().select("-password");
     res.status(200).json(users);
   } catch (err) {
-    res.status(400).send("Pas pu récupérer allusers");
+    res.status(400).send({ message: "Pas pu récupérer allusers" });
   }
 };
 
