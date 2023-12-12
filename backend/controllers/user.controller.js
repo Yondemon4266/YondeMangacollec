@@ -28,7 +28,7 @@ module.exports.userInfo = async (req, res) => {
   } catch (err) {
     return res
       .status(404)
-      .send("Utilisateur non trouvé pour l'ID: " + req.params.id);
+      .send({ message: "Utilisateur non trouvé pour l'ID: " + req.params.id });
   }
 };
 
