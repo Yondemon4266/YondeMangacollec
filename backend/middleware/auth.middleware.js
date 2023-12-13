@@ -39,6 +39,6 @@ module.exports.requireAuth = (req, res, next) => {
         });
     } else {
         res.locals.user = null;
-        res.status(400).send({message: "pas de token!"});
+        res.status(200).send({ message: "pas de token!" });
     }
 };
