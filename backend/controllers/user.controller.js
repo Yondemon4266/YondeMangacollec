@@ -290,7 +290,7 @@ module.exports.userPasswordChange = async (req, res) => {
 
       return res
         .status(200)
-        .json({ message: "Mot de passe mis à jour avec succès", token });
+        .json({ message: "Mot de passe mis à jour avec succès" });
     } else {
       return res
         .status(400)
