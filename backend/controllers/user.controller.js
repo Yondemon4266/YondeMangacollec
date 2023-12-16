@@ -278,12 +278,12 @@ module.exports.userPasswordChange = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const hashedOldpassword = await bcrypt.hash(req.body.oldpassword, salt);
     // Vérifier que le nouveau mot de passe est différent de l'ancien
-    if (await bcrypt.compare(hashedPassword, user.password)) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
       return res.status(400).json({
         message: "Le nouveau mot de passe doit être différent de l'ancien",
       });
     }
-    if (await bcrypt.compare(hashedOldpassword, user.password)) {
+    if (await bcrypt.compare(req.body.oldpassword, user.password)) {
       // Mettre à jour le mot de passe haché dans la base de données
       user.password = req.body.password;
       await user.save();
