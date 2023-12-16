@@ -274,19 +274,18 @@ module.exports.userPasswordChange = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "Utilisateur non trouvé" });
     }
-
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const hashedOldpassword = await bcrypt.hash(req.body.oldpassword, salt);
     // Vérifier que le nouveau mot de passe est différent de l'ancien
-    if (await bcrypt.compare(req.body.password, user.password)) {
+    if (await bcrypt.compare(hashedPassword, user.password)) {
       return res.status(400).json({
         message: "Le nouveau mot de passe doit être différent de l'ancien",
       });
     }
-    if (await bcrypt.compare(req.body.oldpassword, user.password)) {
-      // Hasher le nouveau mot de passe
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
+    if (await bcrypt.compare(hashedOldpassword, user.password)) {
       // Mettre à jour le mot de passe haché dans la base de données
-      user.password = hashedPassword;
+      user.password = req.body.password;
       await user.save();
 
       return res
