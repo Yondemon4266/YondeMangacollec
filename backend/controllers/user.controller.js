@@ -275,8 +275,7 @@ module.exports.userPasswordChange = async (req, res) => {
       return res.status(404).json({ message: "Utilisateur non trouvé" });
     }
     const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    const hashedOldpassword = await bcrypt.hash(req.body.oldpassword, salt);
+
     // Vérifier que le nouveau mot de passe est différent de l'ancien
     if (await bcrypt.compare(req.body.password, user.password)) {
       return res.status(400).json({
