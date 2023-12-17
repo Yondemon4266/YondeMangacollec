@@ -137,8 +137,7 @@ module.exports.userPopularityPatch = async (req, res) => {
     await user.save();
 
     return res.status(200).json({
-      message:
-        "Donnée ajoutée avec succès à l'élément spécifique de colleclist",
+      message: "Votre évaluation a bien été sauvegardée.",
       data: updatedObject,
     });
   } catch (err) {
