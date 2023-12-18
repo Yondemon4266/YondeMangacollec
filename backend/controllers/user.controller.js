@@ -365,7 +365,7 @@ module.exports.userSelectUniverse = async (req, res) => {
     return res.status(500).json({ message: "Erreur serveur", err });
   }
 };
-module.exports.userSelectVillageIsland = async (req, res) => {
+module.exports.userSelectMarineOrPirate = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("Id non reconnu : " + req.params.id);
   try {
@@ -373,18 +373,12 @@ module.exports.userSelectVillageIsland = async (req, res) => {
     if (!user)
       return res.status(404).json({ message: "Utilisateur non trouvé" });
 
-    if (user.universe === "naruto") {
-      user.village = req.body.village;
-    } else if (user.universe === "onepiece") {
-      user.island = req.body.island;
-      user.marineorpirate = req.body.marineorpirate;
-    }
+    user.marineorpirate = req.body.marineorpirate;
     await user.save();
 
     return res.status(200).json({
-      message: "Village/Ile sélectionnée avec succès",
-      island: user.island,
-      village: user.village,
+      message: "Camp sélectionnée avec succès",
+      marineorpirate: user.marineorpirate,
     });
   } catch (err) {
     console.error(err);

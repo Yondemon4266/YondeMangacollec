@@ -30,4 +30,8 @@ router.patch(
   "/selectvillageisland/:id",
   userController.userSelectVillageIsland
 );
+router.patch(
+  "/selectmarineorpirate/:id",
+  userController.userSelectMarineOrPirate
+);
 module.exports = router;
