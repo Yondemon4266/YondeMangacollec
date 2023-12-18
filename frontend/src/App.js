@@ -17,11 +17,7 @@ import Compte from "./pages/pagesUID/Compte";
 const App = () => {
   const dispatch = useDispatch();
 
-  const [uid, setUid] = useState(
-    JSON.parse(localStorage.getItem("uid"))
-      ? JSON.parse(localStorage.getItem("uid"))
-      : null
-  );
+  const [uid, setUid] = useState("");
 
   useEffect(() => {
     const fetchAllUsers = async () => {
