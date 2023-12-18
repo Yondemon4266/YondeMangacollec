@@ -12,15 +12,15 @@ const ChangePassword = () => {
     e.preventDefault();
     if ((newPassword.length > 6 && userInfo) && (newPassword !== userInfo.password) && (newPassword === controlPassword) && (oldPassword !== newPassword)) {
       const passwordError = document.querySelector(".passwordError");
-      let changedPassword = { password: newPassword, oldpassword: oldPassword };
       passwordError.textContent = "";
       try {
-        const response = await axios.patch(
-          `${process.env.REACT_APP_API_URL}api/user/passwordchange/${
+        const response = await axios({
+          method: "patch",
+          url: `${process.env.REACT_APP_API_URL}api/user/passwordchange/${
             userInfo && userInfo._id
           }`,
-          changedPassword
-        );
+          data: { password: newPassword, oldpassword: oldPassword },
+        });
         console.log(response);
         passwordError.style.color = "green";
         passwordError.textContent = "Votre password a été changé avec succès";
