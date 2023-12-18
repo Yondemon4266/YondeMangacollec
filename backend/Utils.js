@@ -24,6 +24,7 @@ export const determineGrade = (level, universe, marineorpirate) => {
       return marineorpirate === "marine" ? "Amiral" : "Capitaine";
     }
   }
+  return "";
 };
 
 export const phraseVillage = (village) => {
