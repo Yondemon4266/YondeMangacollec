@@ -98,7 +98,6 @@ module.exports.userBookMarkPatch = async (req, res) => {
       bookMarkValue: req.body.bookMarkValue,
     };
     user.colleclist[index] = updatedObject;
-
     await user.save();
 
     return res.status(200).json({
@@ -247,20 +246,16 @@ module.exports.userEmailChange = async (req, res) => {
       return res.status(404).json({ message: "Utilisateur non trouvé" });
     const existingUser = await UserModel.findOne({ email: req.body.email });
     if (existingUser) {
-      return res
-        .status(400)
-        .json({
-          message: "Adresse email déjà utilisée par un autre utilisateur",
-        });
+      return res.status(400).json({
+        message: "Adresse email déjà utilisée par un autre utilisateur",
+      });
     } else {
       user.email = req.body.email;
       await user.save();
-      return res
-        .status(200)
-        .json({
-          message: "Adresse email mise à jour avec succès",
-          mail: user.email,
-        });
+      return res.status(200).json({
+        message: "Adresse email mise à jour avec succès",
+        mail: user.email,
+      });
     }
   } catch (err) {
     console.error(err);
@@ -283,12 +278,10 @@ module.exports.userPseudoChange = async (req, res) => {
     } else {
       user.pseudo = req.body.pseudo;
       await user.save();
-      return res
-        .status(200)
-        .json({
-          message: "Pseudo mis à jour avec succès",
-          pseudo: user.pseudo,
-        });
+      return res.status(200).json({
+        message: "Pseudo mis à jour avec succès",
+        pseudo: user.pseudo,
+      });
     }
   } catch (err) {
     console.error(err);
@@ -348,6 +341,51 @@ module.exports.userSendIdea = async (req, res) => {
     return res
       .status(200)
       .json({ message: "Idée reçue avec succès", idee: user.ideas });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};
+module.exports.userSelectUniverse = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+
+    user.universe = req.body.universe;
+    await user.save();
+    return res.status(200).json({
+      message: "Univers sélectionnée avec succès",
+      universe: user.universe,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};
+module.exports.userSelectVillageIsland = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+
+    if (user.universe === "naruto") {
+      user.village = req.body.village;
+    } else if (user.universe === "onepiece") {
+      user.island = req.body.island;
+      user.marineorpirate = req.body.marineorpirate;
+    }
+    await user.save();
+
+    return res.status(200).json({
+      message: "Village/Ile sélectionnée avec succès",
+      island: user.island,
+      village: user.village,
+    });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Erreur serveur", err });

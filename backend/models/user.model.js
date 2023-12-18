@@ -1,14 +1,9 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
+const { determineGrade } = require("../Utils");
 
 const isEmail = validator.isEmail;
-
-function determineVillage() {
-  const villages =  ["Feuille", "Sable", "Roche", "Brume", "Pluie", "Son"];
-  const randomIndex = Math.floor(Math.random() * villages.length);
-  return villages[randomIndex];
-}
 
 const userSchema = new mongoose.Schema(
   {
@@ -54,9 +49,29 @@ const userSchema = new mongoose.Schema(
     village: {
       type: String,
       required: true,
-      default: determineVillage(),
+      default: "",
+    },
+    island: {
+      type: String,
+      required: true,
+      default: "",
+    },
+    grade: {
+      type: String,
+      required: true,
+      default: function () {
+        return this.determineGrade();
+      },
     },
     ideas: {
+      type: String,
+      default: "",
+    },
+    universe: {
+      type: String,
+      default: "",
+    },
+    marineorpirate: {
       type: String,
       default: "",
     },
@@ -85,6 +100,14 @@ userSchema.statics.login = async function (email, password) {
     throw Error("Mot de passe incorrect");
   }
   throw Error("Email incorrect");
+};
+
+userSchema.methods.determineGrade = function () {
+  const userLevel = this.level;
+  const universe = this.universe;
+  const marineorpirate = this.marineorpirate;
+  const grade = determineGrade(userLevel, universe, marineorpirate);
+  return grade;
 };
 
 

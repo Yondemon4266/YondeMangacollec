@@ -25,4 +25,9 @@ router.patch("/emailchange/:id", userController.userEmailChange);
 router.patch("/pseudochange/:id", userController.userPseudoChange);
 router.patch("/passwordchange/:id", userController.userPasswordChange);
 router.patch("/sendidea/:id", userController.userSendIdea);
+router.patch("/selectuniverse/:id", userController.userSelectUniverse);
+router.patch(
+  "/selectvillageisland/:id",
+  userController.userSelectVillageIsland
+);
 module.exports = router;
