@@ -12,7 +12,7 @@ const ChangePassword = () => {
     e.preventDefault();
     if ((newPassword.length > 6 && userInfo) && (newPassword !== userInfo.password) && (newPassword === controlPassword) && (oldPassword !== newPassword)) {
       const passwordError = document.querySelector(".passwordError");
-      let changedPassword = { password: newPassword };
+      let changedPassword = { password: newPassword, oldpassword: oldPassword };
       passwordError.textContent = "";
       try {
         const response = await axios.patch(
