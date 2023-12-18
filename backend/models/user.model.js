@@ -47,12 +47,10 @@ const userSchema = new mongoose.Schema(
     },
     village: {
       type: String,
-      required: true,
       default: "",
     },
     island: {
       type: String,
-      required: true,
       default: "",
     },
     ideas: {
