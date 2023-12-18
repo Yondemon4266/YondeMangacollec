@@ -145,6 +145,40 @@ module.exports.userPopularityPatch = async (req, res) => {
     return res.status(500).json({ message: "Erreur serveur" });
   }
 };
+module.exports.userCommentaryPatch = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+
+    const index = user.colleclist.findIndex(
+      (element) => element.mal_id == req.params.malid
+    );
+
+    if (index === -1)
+      return res
+        .status(404)
+        .json({ message: "Élément non trouvé dans colleclist" });
+
+    const updatedObject = {
+      ...user.colleclist[index],
+      commentary: req.body.commentary,
+    };
+    user.colleclist[index] = updatedObject;
+
+    await user.save();
+
+    return res.status(200).json({
+      message: "Votre commentaire a bien été sauvegardée.",
+      data: updatedObject,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur" });
+  }
+};
 
 module.exports.userLevelAddPatch = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
