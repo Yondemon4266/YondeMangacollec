@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
-const { determineGrade } = require("../Utils");
 
 const isEmail = validator.isEmail;
 
@@ -56,13 +55,6 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: "",
     },
-    grade: {
-      type: String,
-      required: true,
-      default: function () {
-        return this.determineGrade();
-      },
-    },
     ideas: {
       type: String,
       default: "",
@@ -102,13 +94,6 @@ userSchema.statics.login = async function (email, password) {
   throw Error("Email incorrect");
 };
 
-userSchema.methods.determineGrade = function () {
-  const userLevel = this.level;
-  const universe = this.universe;
-  const marineorpirate = this.marineorpirate;
-  const grade = determineGrade(userLevel, universe, marineorpirate);
-  return grade;
-};
 
 
 
