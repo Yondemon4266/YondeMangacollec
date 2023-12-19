@@ -48,10 +48,10 @@ router.patch(
   "/selectmarineorpirate/:id",
   userController.userSelectMarineOrPirate
 );
-router.patch("/bgpatch/:id", upload.single("bg"), userController.userBgPatch);
+router.patch("/bgpatch/:id", upload.single("img"), userController.userBgPatch);
 router.patch(
   "/imgpatch/:id",
-  upload.single("avatar"),
+  upload.single("img"),
   userController.userImgPatch
 );
 module.exports = router;
