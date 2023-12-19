@@ -63,11 +63,11 @@ const userSchema = new mongoose.Schema(
     },
     img: {
       type: String,
-      default: "../utils/images/onizuka.jfif",
+      default: "onizuka.jfif",
     },
     bgimg: {
       type: String,
-      default: "../utils/images/onizukabg.jpg",
+      default: "onizukabg.jpg",
     },
   },
   {
