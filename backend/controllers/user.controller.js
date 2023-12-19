@@ -2,6 +2,7 @@ const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+
 module.exports.getAllUsers = async (req, res) => {
   try {
     const users = await UserModel.find().select("-password");
@@ -405,6 +406,42 @@ module.exports.userSelectMarineOrPirate = async (req, res) => {
     return res.status(200).json({
       message: "Camp sélectionnée avec succès",
       marineorpirate: user.marineorpirate,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};
+module.exports.userBgPatch = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    console.log(req.file);
+    await user.save();
+
+    return res.status(200).json({
+      message: "Image Background sélectionnée avec succès",
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Erreur serveur", err });
+  }
+};
+module.exports.userImgPatch = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("Id non reconnu : " + req.params.id);
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+
+    await user.save();
+
+    return res.status(200).json({
+      message: "Image sélectionnée avec succès",
     });
   } catch (err) {
     console.error(err);
