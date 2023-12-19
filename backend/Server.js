@@ -35,7 +35,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(cookieParser());
 server.use(cors(corsOptions));
-
+server.use('/images', express.static('../utils/images'))
 // jwt
 
 server.get("*", checkUser);

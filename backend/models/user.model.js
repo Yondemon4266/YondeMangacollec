@@ -28,10 +28,6 @@ const userSchema = new mongoose.Schema(
       max: 1024,
       minLength: 6,
     },
-    picture: {
-      type: String,
-      default: "./uploads/profil/random-user.png",
-    },
     bio: {
       type: String,
       max: 1024,
