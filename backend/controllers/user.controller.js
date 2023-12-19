@@ -419,7 +419,7 @@ module.exports.userBgPatch = async (req, res) => {
     const user = await UserModel.findById(req.params.id);
     if (!user)
       return res.status(404).json({ message: "Utilisateur non trouvé" });
-    console.log("req.file", req.file);
+    user.bgimg = req.file.path;
     await user.save();
 
     return res.status(200).json({
@@ -437,7 +437,7 @@ module.exports.userImgPatch = async (req, res) => {
     const user = await UserModel.findById(req.params.id);
     if (!user)
       return res.status(404).json({ message: "Utilisateur non trouvé" });
-    console.log(req.file);
+    user.img = req.file.path;
     await user.save();
 
     return res.status(200).json({
