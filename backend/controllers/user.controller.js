@@ -2,7 +2,7 @@ const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const path = require("path");
 module.exports.getAllUsers = async (req, res) => {
   try {
     const users = await UserModel.find().select("-password");
@@ -419,7 +419,8 @@ module.exports.userBgPatch = async (req, res) => {
     const user = await UserModel.findById(req.params.id);
     if (!user)
       return res.status(404).json({ message: "Utilisateur non trouvé" });
-    user.bgimg = req.file.path;
+    const fileName = path.basename(req.file.path);
+    user.bgimg = fileName;
     await user.save();
 
     return res.status(200).json({
@@ -437,7 +438,8 @@ module.exports.userImgPatch = async (req, res) => {
     const user = await UserModel.findById(req.params.id);
     if (!user)
       return res.status(404).json({ message: "Utilisateur non trouvé" });
-    user.img = req.file.path;
+    const fileName = path.basename(req.file.path);
+    user.img = fileName;
     await user.save();
 
     return res.status(200).json({
