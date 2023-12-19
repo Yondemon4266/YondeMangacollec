@@ -1,5 +1,5 @@
-const router = require("express").Router();
 const multer = require("multer");
+const router = require("express").Router();
 const upload = multer({ dest: "../utils/images/" });
 const authController = require("../controllers/auth.controller");
 const userController = require("../controllers/user.controller");
@@ -48,10 +48,14 @@ router.patch(
   "/selectmarineorpirate/:id",
   userController.userSelectMarineOrPirate
 );
-router.patch("/bgpatch/:id", upload.single("img"), userController.userBgPatch);
+router.patch(
+  "/bgpatch/:id",
+  upload.single("image"),
+  userController.userBgPatch
+);
 router.patch(
   "/imgpatch/:id",
-  upload.single("img"),
+  upload.single("image"),
   userController.userImgPatch
 );
 module.exports = router;
