@@ -64,10 +64,10 @@ const DeleteAccount = () => {
                 Confirmer
               </button>
             </div>
-            <div className="fail">
+            <div className="fail2">
               {msgErrors.error ? msgErrors.error : null}
             </div>
-            <div className=" success">
+            <div className="success2">
               {msgErrors.success ? msgErrors.success : null}
             </div>
           </div>
