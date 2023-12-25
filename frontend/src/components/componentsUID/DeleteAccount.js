@@ -4,7 +4,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 const DeleteAccount = () => {
   const [isDeleteVisible, setDeleteVisible] = useState(false);
-  const [deletionInput, setDeletionInput] = useState("");
   const [msgErrors, setMsgErrors] = useState({ error: "", success: "" });
   const userInfo = useSelector((state) => state.userReducer.userInfo);
   const removeCookie = (key) => {
@@ -65,8 +64,12 @@ const DeleteAccount = () => {
                 Confirmer
               </button>
             </div>
-            {msgErrors.error ? msgErrors.error : null};
-            {msgErrors.success ? msgErrors.success : null};
+            <div className="ideeError fail-success">
+              {msgErrors.error ? msgErrors.error : null}
+            </div>
+            <div className="ideeError fail-success">
+              {msgErrors.success ? msgErrors.success : null}
+            </div>
           </div>
         </div>
       )}
