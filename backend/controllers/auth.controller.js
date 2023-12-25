@@ -53,13 +53,8 @@ module.exports.deleteUser = async (req, res) => {
     const userId = req.params.id;
     const deletedUser = await UserModel.findByIdAndDelete(userId);
 
-    if (!deletedUser) {
-      return res.status(404).send({ message: "Utilisateur non trouvé" });
-    }
-    res.redirect("/");
     res.send({ message: "Utilisateur supprimé avec succès" });
   } catch (error) {
-    console.log(error);
-    return res.status(500).send("Erreur serveur");
+    return res.status(404).send({ message: "Utilisateur non trouvé" });
   }
 };
