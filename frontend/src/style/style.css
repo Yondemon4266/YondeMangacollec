@@ -190,6 +190,18 @@ a button:hover {
   }
 }
 
+.fail {
+  color: "red";
+}
+
+.success {
+  color: "green";
+}
+
+.decal {
+  margin-bottom: 50px;
+}
+
 .navigation-menu {
   position: fixed;
   top: 0;

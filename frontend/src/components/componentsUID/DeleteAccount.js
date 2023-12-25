@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import cookie from "js-cookie";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import "../../style/layouts/_settings.scss";
 const DeleteAccount = () => {
   const [isDeleteVisible, setDeleteVisible] = useState(false);
   const [msgErrors, setMsgErrors] = useState({ error: "", success: "" });
@@ -48,7 +49,7 @@ const DeleteAccount = () => {
         Suppression du compte
       </div>
       {isDeleteVisible && (
-        <div className="islogout">
+        <div className="islogout decal">
           <div className="islogout-container">
             <div className="islogout-header">
               <h4>Supprimer votre compte</h4>
@@ -64,10 +65,10 @@ const DeleteAccount = () => {
                 Confirmer
               </button>
             </div>
-            <div className="ideeError fail-success">
+            <div className="fail">
               {msgErrors.error ? msgErrors.error : null}
             </div>
-            <div className="ideeError fail-success">
+            <div className=" success">
               {msgErrors.success ? msgErrors.success : null}
             </div>
           </div>
