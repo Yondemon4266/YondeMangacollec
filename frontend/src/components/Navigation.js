@@ -15,7 +15,7 @@ const Navigation = () => {
         >
           <li id="lilogo">
             <img src="../../img/logo.webp" alt="" className="logo" />
-            <h2>Mangacollec</h2>
+            <h2>Hinokuni</h2>
           </li>
         </NavLink>
         <NavLink
@@ -61,7 +61,7 @@ const Navigation = () => {
           className={(nav) => (nav.isActive ? "nav-active hover" : "hover")}
         >
           <img src="../../img/user-circle.svg" alt="" />
-          {userInfo ? (<h4>Compte</h4>) : <h4>Se connecter</h4>}
+          {userInfo ? <h4>Compte</h4> : <h4>Se connecter</h4>}
         </NavLink>
       </div>
     </div>
