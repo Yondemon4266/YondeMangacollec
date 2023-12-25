@@ -48,3 +48,18 @@ module.exports.logout = async (req, res) => {
     res.redirect('/');
 };
 
+module.exports.deleteUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const deletedUser = await UserModel.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).send({ message: "Utilisateur non trouvé" });
+    }
+    res.redirect("/");
+    res.send({ message: "Utilisateur supprimé avec succès" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Erreur serveur");
+  }
+};
