@@ -14,7 +14,7 @@ const Navigation = () => {
           className={(nav) => (nav.isActive ? "nav-active hover" : "hover")}
         >
           <li id="lilogo">
-            <img src="../../img/logo.webp" alt="" className="logo" />
+            <img src="../../img/logo.png" alt="" className="logo" />
             <h2>Hinokuni</h2>
           </li>
         </NavLink>
