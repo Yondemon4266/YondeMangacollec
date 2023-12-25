@@ -45,6 +45,13 @@
         @media screen and (max-width: 500px) {
             display: none;
         }
+        @media screen and (max-width: 965px) {
+           justify-content: center;
+        }
+        img {
+          width: 60px;
+          height: 60px;
+        }
         h2 {
             margin-left: 5px;
         }

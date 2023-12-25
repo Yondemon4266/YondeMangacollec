@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cookie from "js-cookie";
 import axios from "axios";
 const Logout = () => {

@@ -7,6 +7,7 @@ import ChangeMail from "../../components/componentsUID/ChangeMail";
 import ChangePseudo from "../../components/componentsUID/ChangePseudo";
 import BoiteAIdees from "../../components/componentsUID/BoiteAIdees";
 import ChangePassword from "../../components/componentsUID/ChangePassword";
+import DeleteAccount from "../../components/componentsUID/DeleteAccount";
 const Compte = () => {
   const userInfo = useSelector((state) => state.userReducer.userInfo);
   return (
@@ -23,11 +24,9 @@ const Compte = () => {
 
             <ChangePseudo />
 
-            <ChangePassword/>
-            
-            <BoiteAIdees />
+            <ChangePassword />
 
-            
+            <BoiteAIdees />
 
             <div className="acc-created">
               <p>
@@ -68,6 +67,7 @@ const Compte = () => {
           </div>
 
           <Logout />
+          <DeleteAccount />
         </div>
       </div>
     </>
