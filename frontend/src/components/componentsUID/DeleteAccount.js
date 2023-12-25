@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import cookie from "js-cookie";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import "../../style/layouts/_settings.scss";
 const DeleteAccount = () => {
   const [isDeleteVisible, setDeleteVisible] = useState(false);
   const [msgErrors, setMsgErrors] = useState({ error: "", success: "" });

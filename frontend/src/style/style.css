@@ -190,18 +190,6 @@ a button:hover {
   }
 }
 
-.fail {
-  color: "red";
-}
-
-.success {
-  color: "green";
-}
-
-.decal {
-  margin-bottom: 50px;
-}
-
 .navigation-menu {
   position: fixed;
   top: 0;
@@ -2164,6 +2152,18 @@ h5 {
     opacity: 1;
   }
 }
+.fail {
+  color: "red";
+}
+
+.success {
+  color: "green";
+}
+
+.decal {
+  margin-bottom: 50px;
+}
+
 .collection-vide {
   position: relative;
   height: calc(100vh - 200px);
