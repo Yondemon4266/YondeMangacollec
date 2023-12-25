@@ -44,11 +44,11 @@ const DeleteAccount = () => {
 
   return (
     <>
-      <div className="logout" onClick={() => setDeleteVisible(true)}>
+      <div className="logout decal" onClick={() => setDeleteVisible(true)}>
         Suppression du compte
       </div>
       {isDeleteVisible && (
-        <div className="islogout decal">
+        <div className="islogout">
           <div className="islogout-container">
             <div className="islogout-header">
               <h4>Supprimer votre compte</h4>
