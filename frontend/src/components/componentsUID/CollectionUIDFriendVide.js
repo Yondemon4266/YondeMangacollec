@@ -5,13 +5,12 @@ import { dateFormater } from "../../Utils";
 import NiveauJauge from "./NiveauJauge";
 import { determineGrade } from "../../Utils";
 import { phraseVillage } from "../../Utils";
-
+import img from "../../assets/onizuka.jpg";
 const CollectionUIDFriendVide = ({
   collectionData,
   userInfo,
   allUsersData,
   handleSearchCollec,
-  
 }) => {
   const { user } = useParams();
   return (
@@ -20,18 +19,30 @@ const CollectionUIDFriendVide = ({
         <div className="profil-container">
           <div className="imgpseudo">
             <img
-              src={`../../../${collectionData && collectionData.picture}`}
-              alt={`${collectionData && collectionData.pseudo}`}
+              src={
+                collectionData?.img
+                  ? `https://server-yondemangacollec.onrender.com/images/${collectionData.img}`
+                  : img
+              }
+              alt={`${collectionData?.pseudo}`}
             />
-            <h4>{collectionData && collectionData.pseudo}</h4>
+            <h4>{collectionData?.pseudo}</h4>
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5><strong>Titre :</strong> {determineGrade(collectionData && collectionData.level)} {phraseVillage(collectionData && collectionData.village)} {collectionData && collectionData.village}</h5>
+              <h5>
+                <strong>Titre :</strong>{" "}
+                {determineGrade(collectionData && collectionData.level)}{" "}
+                {phraseVillage(collectionData && collectionData.village)}{" "}
+                {collectionData && collectionData.village}
+              </h5>
             </div>
             <div className="niveau">
-              <h5><strong>Niveau :</strong> {Math.floor(collectionData && collectionData.level)}</h5>
-              <NiveauJauge userInfo={collectionData}/>
+              <h5>
+                <strong>Niveau :</strong>{" "}
+                {Math.floor(collectionData && collectionData.level)}
+              </h5>
+              <NiveauJauge userInfo={collectionData} />
             </div>
             <div className="membredepuis">
               <h5>
@@ -43,7 +54,11 @@ const CollectionUIDFriendVide = ({
         </div>
         <div className="badges"></div>
         <div className="utility-bar">
-          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec}/>
+          <SearchFriend
+            userInfo={userInfo}
+            allUsersData={allUsersData}
+            handleSearchCollec={handleSearchCollec}
+          />
         </div>
       </div>
       <div className="collection-vide">

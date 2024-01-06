@@ -7,8 +7,7 @@ import CompareCollectionDisplay from "./CompareCollectionDisplay";
 import NiveauJauge from "./NiveauJauge";
 import { useDispatch, useSelector } from "react-redux";
 import { getCompareState } from "../../actions/user.action";
-
-
+import img from "../../assets/onizuka.jpg";
 
 const CollectionUIDFriend = ({
   collecSearch,
@@ -32,18 +31,30 @@ const CollectionUIDFriend = ({
         <div className="profil-container">
           <div className="imgpseudo">
             <img
-              src={`../../../${collectionData && collectionData.picture}`}
-              alt={`image de ${collectionData && collectionData.pseudo}`}
+              src={
+                collectionData?.img
+                  ? `https://server-yondemangacollec.onrender.com/images/${collectionData.img}`
+                  : img
+              }
+              alt={`${collectionData?.pseudo}`}
             />
-            <h4>{collectionData && collectionData.pseudo}</h4>
+            <h4>{collectionData?.pseudo}</h4>
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5><strong>Titre :</strong> {determineGrade(collectionData && collectionData.level)} {phraseVillage(collectionData && collectionData.village)} {collectionData && collectionData.village}</h5>
+              <h5>
+                <strong>Titre :</strong>{" "}
+                {determineGrade(collectionData && collectionData.level)}{" "}
+                {phraseVillage(collectionData && collectionData.village)}{" "}
+                {collectionData && collectionData.village}
+              </h5>
             </div>
             <div className="niveau">
-              <h5><strong>Niveau : </strong>{Math.floor(collectionData && collectionData.level)}</h5>
-              <NiveauJauge userInfo={collectionData}/>
+              <h5>
+                <strong>Niveau : </strong>
+                {Math.floor(collectionData && collectionData.level)}
+              </h5>
+              <NiveauJauge userInfo={collectionData} />
             </div>
             <div className="membredepuis">
               <h5>
@@ -55,29 +66,39 @@ const CollectionUIDFriend = ({
         </div>
         <div className="badges"></div>
         <div className="utility-bar">
-          <SearchFriend userInfo={userInfo} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec} />
-          {isFriendCollectionPage && (compareState === false) && (
+          <SearchFriend
+            userInfo={userInfo}
+            allUsersData={allUsersData}
+            handleSearchCollec={handleSearchCollec}
+          />
+          {isFriendCollectionPage && compareState === false && (
             <button
               type="button"
               id="compareBtn"
-              onClick={() =>{dispatch(getCompareState(true));
-              setCompare(true);}}
+              onClick={() => {
+                dispatch(getCompareState(true));
+                setCompare(true);
+              }}
             >
               Comparez vos collections !
             </button>
           )}
-          {isFriendCollectionPage && (compareState === true) && (<button
+          {isFriendCollectionPage && compareState === true && (
+            <button
               type="button"
               id="compareBtn"
-              onClick={() => {dispatch(getCompareState(false));
-              setCompare(false);}}
+              onClick={() => {
+                dispatch(getCompareState(false));
+                setCompare(false);
+              }}
             >
               Annuler la comparaison
-            </button>)}
+            </button>
+          )}
         </div>
       </div>
       <div className="schedules" id="scheds">
-        {(isCompare || compareState )? (
+        {isCompare || compareState ? (
           <CompareCollectionDisplay
             compareList={compareList}
             isFriendCollectionPage={isFriendCollectionPage}
