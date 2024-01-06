@@ -75,7 +75,7 @@ const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
                         <span id="grade"></span>
                       </div>
                       <div className="level">
-                        <p>{user?.level}</p>
+                        <p>Lv.{Math.floor(user?.level)}</p>
                       </div>
                     </div>
                   );
