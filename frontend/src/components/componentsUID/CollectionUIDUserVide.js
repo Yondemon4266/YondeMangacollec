@@ -32,20 +32,22 @@ const CollectionUIDUserVide = ({
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5>
-                <strong>Titre : </strong>{" "}
-                {determineGrade(
-                  userInfo?.level,
-                  userInfo?.universe,
-                  userInfo?.marineorpirate,
-                  userInfo?.island,
-                  userInfo?.village
-                )}{" "}
-                <i
-                  className="fa-solid fa-asterisk"
-                  onClick={() => setExplicationVisible(!isExplicationVisible)}
-                ></i>
-              </h5>
+              {userInfo?.universe && (
+                <h5>
+                  <strong>Titre : </strong>{" "}
+                  {determineGrade(
+                    userInfo?.level,
+                    userInfo?.universe,
+                    userInfo?.marineorpirate,
+                    userInfo?.island,
+                    userInfo?.village
+                  )}{" "}
+                  <i
+                    className="fa-solid fa-asterisk"
+                    onClick={() => setExplicationVisible(!isExplicationVisible)}
+                  ></i>
+                </h5>
+              )}
               {isExplicationVisible && (
                 <ExplicationTitre
                   setExplicationVisible={setExplicationVisible}

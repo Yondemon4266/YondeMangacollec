@@ -35,16 +35,18 @@ const CollectionUIDUser = ({
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5>
-                <strong>Titre :</strong>{" "}
-                {determineGrade(
-                  userInfo?.level,
-                  userInfo?.universe,
-                  userInfo?.marineorpirate,
-                  userInfo?.island,
-                  userInfo?.village
-                )}
-              </h5>
+              {userInfo?.universe && (
+                <h5>
+                  <strong>Titre :</strong>{" "}
+                  {determineGrade(
+                    userInfo?.level,
+                    userInfo?.universe,
+                    userInfo?.marineorpirate,
+                    userInfo?.island,
+                    userInfo?.village
+                  )}
+                </h5>
+              )}
             </div>
             <div className="niveau">
               <h5>

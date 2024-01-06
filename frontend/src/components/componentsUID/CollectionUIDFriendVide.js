@@ -29,16 +29,18 @@ const CollectionUIDFriendVide = ({
           </div>
           <div className="rightpart">
             <div className="gradeold">
-              <h5>
-                <strong>Titre :</strong>{" "}
-                {determineGrade(
-                  collectionData?.level,
-                  collectionData?.universe,
-                  collectionData?.marineorpirate,
-                  collectionData?.island,
-                  collectionData?.village
-                )}{" "}
-              </h5>
+              {collectionData?.universe && (
+                <h5>
+                  <strong>Titre :</strong>{" "}
+                  {determineGrade(
+                    collectionData?.level,
+                    collectionData?.universe,
+                    collectionData?.marineorpirate,
+                    collectionData?.island,
+                    collectionData?.village
+                  )}{" "}
+                </h5>
+              )}
             </div>
             <div className="niveau">
               <h5>
