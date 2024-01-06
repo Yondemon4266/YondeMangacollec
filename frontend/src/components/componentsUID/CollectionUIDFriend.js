@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../Card";
 import { useParams } from "react-router-dom";
-import { dateFormater, phraseVillage, determineGrade } from "../../Utils";
+import { dateFormater, determineGrade } from "../../Utils";
 import SearchFriend from "./SearchFriend";
 import CompareCollectionDisplay from "./CompareCollectionDisplay";
 import NiveauJauge from "./NiveauJauge";
@@ -44,9 +44,13 @@ const CollectionUIDFriend = ({
             <div className="gradeold">
               <h5>
                 <strong>Titre :</strong>{" "}
-                {determineGrade(collectionData && collectionData.level)}{" "}
-                {phraseVillage(collectionData && collectionData.village)}{" "}
-                {collectionData && collectionData.village}
+                {determineGrade(
+                  collectionData?.level,
+                  collectionData?.universe,
+                  collectionData?.marineorpirate,
+                  collectionData?.island,
+                  collectionData?.village
+                )}{" "}
               </h5>
             </div>
             <div className="niveau">

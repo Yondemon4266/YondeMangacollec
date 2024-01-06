@@ -4,7 +4,6 @@ import SearchFriend from "./SearchFriend";
 import { dateFormater } from "../../Utils";
 import NiveauJauge from "./NiveauJauge";
 import { determineGrade } from "../../Utils";
-import { phraseVillage } from "../../Utils";
 import img from "../../assets/onizuka.jpg";
 const CollectionUIDFriendVide = ({
   collectionData,
@@ -32,9 +31,13 @@ const CollectionUIDFriendVide = ({
             <div className="gradeold">
               <h5>
                 <strong>Titre :</strong>{" "}
-                {determineGrade(collectionData && collectionData.level)}{" "}
-                {phraseVillage(collectionData && collectionData.village)}{" "}
-                {collectionData && collectionData.village}
+                {determineGrade(
+                  collectionData?.level,
+                  collectionData?.universe,
+                  collectionData?.marineorpirate,
+                  collectionData?.island,
+                  collectionData?.village
+                )}{" "}
               </h5>
             </div>
             <div className="niveau">

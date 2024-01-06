@@ -61,11 +61,12 @@ const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
                         setSearchUsers(null);
                       }}
                     >
-                      <img src={`../../../../${user.picture}`} />
+                      <img
+                        src={`https://server-yondemangacollec.onrender.com/images/${user.img}`}
+                      />
                       <span id="frienduserpseudo">{user.pseudo}</span>
                       <div className="gradeold">
-                        <span id="old">Vétéran </span>
-                        <span id="grade">Kage</span>
+                        <span id="grade"></span>
                       </div>
                       <div className="level">
                         <p>Niv.85</p>

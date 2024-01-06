@@ -37,14 +37,19 @@ const CollectionUIDUser = ({
             <div className="gradeold">
               <h5>
                 <strong>Titre :</strong>{" "}
-                {determineGrade(userInfo && userInfo.level)} du village caché du{" "}
-                {userInfo && userInfo.village}
+                {determineGrade(
+                  userInfo?.level,
+                  userInfo?.universe,
+                  userInfo?.marineorpirate,
+                  userInfo?.island,
+                  userInfo?.village
+                )}
               </h5>
             </div>
             <div className="niveau">
               <h5>
                 <strong>Niveau :</strong>
-                {Math.floor(userInfo && userInfo.level)}
+                {Math.floor(userInfo?.level)}
               </h5>
               <NiveauJauge userInfo={userInfo} />
             </div>

@@ -4,7 +4,6 @@ import { dateFormater } from '../../Utils';
 import SearchFriend from './SearchFriend';
 import NiveauJauge from './NiveauJauge';
 import { determineGrade } from '../../Utils';
-import { phraseVillage } from "../../Utils";
 import ExplicationTitre from '../../pages/pagesUID/ExplicationTitre';
 import img from "../../assets/onizuka.jpg";
 const CollectionUIDUserVide = ({
@@ -35,9 +34,13 @@ const CollectionUIDUserVide = ({
             <div className="gradeold">
               <h5>
                 <strong>Titre : </strong>{" "}
-                {determineGrade(userInfo && userInfo.level)}{" "}
-                {phraseVillage(userInfo && userInfo.village)}{" "}
-                {userInfo && userInfo.village}{" "}
+                {determineGrade(
+                  userInfo?.level,
+                  userInfo?.universe,
+                  userInfo?.marineorpirate,
+                  userInfo?.island,
+                  userInfo?.village
+                )}{" "}
                 <i
                   className="fa-solid fa-asterisk"
                   onClick={() => setExplicationVisible(!isExplicationVisible)}
