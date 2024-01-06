@@ -36,7 +36,6 @@ const App = () => {
       if (uid) {
         console.log("token déjà valide");
         dispatch(getUser(uid));
-        console.log("hello");
       } else {
         try {
           const response = await axios({
@@ -48,7 +47,6 @@ const App = () => {
             setUid(response.data);
               localStorage.setItem("uid", JSON.stringify(response.data));
               await dispatch(getUser(response.data));
-              console.log(response.data);
           };
         } catch (err) {
           console.log(err + "  No token !")

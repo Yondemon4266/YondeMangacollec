@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import img from "../../assets/onizuka.jpg";
 const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
   const navigate = useNavigate();
   const [searchUsers, setSearchUsers] = useState(null);
@@ -11,7 +11,9 @@ const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
           setSearchUsers(
             allUsersData.filter((user) => {
               if (user.pseudo === userInfo.pseudo) return false;
-              return user.pseudo.toLowerCase().includes(e.target.value.toLowerCase());
+              return user.pseudo
+                .toLowerCase()
+                .includes(e.target.value.toLowerCase());
             })
           );
         } else {
@@ -52,24 +54,28 @@ const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
                 searchUsers.slice(0, 2).map((user) => {
                   return (
                     <div
-                      key={user._id}
+                      key={user?._id}
                       className="friend"
                       onClick={() => {
-                        navigate(`/user/${user.pseudo}/collection`, {
+                        navigate(`/user/${user?.pseudo}/collection`, {
                           state: { user },
                         });
                         setSearchUsers(null);
                       }}
                     >
                       <img
-                        src={`https://server-yondemangacollec.onrender.com/images/${user.img}`}
+                        src={
+                          user?.img
+                            ? `https://server-yondemangacollec.onrender.com/images/${user?.img}`
+                            : img
+                        }
                       />
                       <span id="frienduserpseudo">{user.pseudo}</span>
                       <div className="gradeold">
                         <span id="grade"></span>
                       </div>
                       <div className="level">
-                        <p>Niv.85</p>
+                        <p>{user?.level}</p>
                       </div>
                     </div>
                   );

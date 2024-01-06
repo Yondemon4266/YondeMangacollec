@@ -6,8 +6,6 @@ import axios from "axios";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email);
-  console.log(password);
 
   const handleLogin = async (e) => {
     e.preventDefault();

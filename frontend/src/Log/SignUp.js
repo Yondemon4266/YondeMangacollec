@@ -45,7 +45,6 @@ const SignUp = () => {
         },
       })
         .then((res) => {
-          console.log(res.data.message);
           setFormSubmit(true);
         })
         .catch((err) => {

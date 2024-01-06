@@ -21,7 +21,6 @@ const ChangePassword = () => {
           }`,
           data: { password: newPassword, oldpassword: oldPassword },
         });
-        console.log(response);
         passwordError.style.color = "green";
         passwordError.textContent = "Votre password a été changé avec succès";
       } catch (err) {
