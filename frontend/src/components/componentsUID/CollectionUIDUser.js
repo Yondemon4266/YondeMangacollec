@@ -18,6 +18,7 @@ const CollectionUIDUser = ({
   setCompare,
 }) => {
   const dispatch = useDispatch();
+
   return (
     <>
       <div className="profilUser">

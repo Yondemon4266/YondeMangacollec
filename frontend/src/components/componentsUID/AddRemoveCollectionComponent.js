@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import Popularity from "../Popularity";
 import { getUser, getLevelMessage } from "../../actions/user.action";
 
 const AddRemoveCollectionComponent = ({
@@ -16,7 +15,6 @@ const AddRemoveCollectionComponent = ({
   isUserCardPage,
 }) => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const addAndRemoveCollection = async (element) => {
@@ -25,7 +23,6 @@ const AddRemoveCollectionComponent = ({
         userInfo.colleclist.find((el) => el.mal_id === element.mal_id) ===
         undefined;
       if (elementNotInColleclist) {
-
         const updatedData = {
           colleclist: element,
         };
@@ -33,7 +30,9 @@ const AddRemoveCollectionComponent = ({
           `${process.env.REACT_APP_API_URL}api/user/colleclistpatch/${userInfo._id}`,
           updatedData
         );
-        const responselevel = await axios.patch(`${process.env.REACT_APP_API_URL}api/user/colleclistleveladdpatch/${userInfo._id}`);
+        const responselevel = await axios.patch(
+          `${process.env.REACT_APP_API_URL}api/user/colleclistleveladdpatch/${userInfo._id}`
+        );
         dispatch(getLevelMessage(responselevel.data.message));
         await dispatch(getUser(userInfo._id));
       } else {
@@ -43,7 +42,9 @@ const AddRemoveCollectionComponent = ({
             await axios.delete(
               `${process.env.REACT_APP_API_URL}api/user/colleclistdelete/${userInfo._id}/${element.mal_id}`
             );
-            const responselevel = await axios.patch(`${process.env.REACT_APP_API_URL}api/user/colleclistlevelremovepatch/${userInfo._id}`);
+            const responselevel = await axios.patch(
+              `${process.env.REACT_APP_API_URL}api/user/colleclistlevelremovepatch/${userInfo._id}`
+            );
             dispatch(getLevelMessage(responselevel.data.message));
             await dispatch(getUser(userInfo._id));
             setRemoveConfirmed(false);
@@ -53,7 +54,9 @@ const AddRemoveCollectionComponent = ({
             await axios.delete(
               `${process.env.REACT_APP_API_URL}api/user/colleclistdelete/${userInfo._id}/${element.mal_id}`
             );
-            const responselevel = await axios.patch(`${process.env.REACT_APP_API_URL}api/user/colleclistlevelremovepatch/${userInfo._id}`);
+            const responselevel = await axios.patch(
+              `${process.env.REACT_APP_API_URL}api/user/colleclistlevelremovepatch/${userInfo._id}`
+            );
             dispatch(getLevelMessage(responselevel.data.message));
             await dispatch(getUser(userInfo._id));
             setRemoveVisible(false);

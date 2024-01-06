@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import AddInfosCardPage from "../components/componentsUID/AddInfosCardPage";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { getUser } from "../actions/user.action";
+import { useSelector } from "react-redux";
 import Popularity from "../components/Popularity";
 import AddRemoveCollectionComponent from "../components/componentsUID/AddRemoveCollectionComponent";
 
 const CardPage = () => {
-  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const userInfo = useSelector((state) => state.userReducer.userInfo);
@@ -32,7 +29,8 @@ const CardPage = () => {
         <>
           <span>{truncatedSynopsis}</span>
           <i
-            className="fa-solid fa-ellipsis" style={{color:"#067e06"}}
+            className="fa-solid fa-ellipsis"
+            style={{ color: "#067e06" }}
             onClick={() => setIsSynopsisVisible(true)}
           ></i>
         </>
@@ -71,31 +69,36 @@ const CardPage = () => {
             <div className="title-card-page">
               <h2>{manga.title_english ? manga.title_english : manga.title}</h2>
             </div>
-            
-              <div className="btn-optn-card-page">
-                <AddRemoveCollectionComponent
-                  userInfo={userInfo}
-                  manga={manga}
-                  isRemoveConfirmed={isRemoveConfirmed}
-                  setRemoveConfirmed={setRemoveConfirmed}
-                  isRemoveVisible={isRemoveVisible}
-                  setRemoveVisible={setRemoveVisible}
-                  isUserCollectionCardPage={isUserCollectionCardPage}
-                  isUserCardPage={isUserCardPage}
-                />
-                <div className="mal-stars">
-                  <Popularity manga={manga} />
-                </div>
+
+            <div className="btn-optn-card-page">
+              <AddRemoveCollectionComponent
+                userInfo={userInfo}
+                manga={manga}
+                isRemoveConfirmed={isRemoveConfirmed}
+                setRemoveConfirmed={setRemoveConfirmed}
+                isRemoveVisible={isRemoveVisible}
+                setRemoveVisible={setRemoveVisible}
+                isUserCollectionCardPage={isUserCollectionCardPage}
+                isUserCardPage={isUserCardPage}
+              />
+              <div className="mal-stars">
+                <Popularity manga={manga} />
               </div>
-            
+            </div>
 
             <div className="synopsis">
               {isSynopsisVisible ? (
                 manga.synopsis ? (
                   <>
                     <h4>Résumé</h4>
-                    <p>{manga.synopsis} <i className="fa-solid fa-minus" style={{color:"#fa5252"}} onClick={() => setIsSynopsisVisible(false)}></i></p>
-                   
+                    <p>
+                      {manga.synopsis}{" "}
+                      <i
+                        className="fa-solid fa-minus"
+                        style={{ color: "#fa5252" }}
+                        onClick={() => setIsSynopsisVisible(false)}
+                      ></i>
+                    </p>
                   </>
                 ) : null
               ) : manga.synopsis ? (

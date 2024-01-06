@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Navigation from "../../components/Navigation";
-import Card from "../../components/Card";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import SearchFriend from "../../components/componentsUID/SearchFriend";
+import { useLocation, useParams } from "react-router-dom";
 import CollectionUIDUserVide from "../../components/componentsUID/CollectionUIDUserVide";
 import CollectionUIDFriendVide from "../../components/componentsUID/CollectionUIDFriendVide";
 import CollectionUIDUserNonExistant from "../../components/componentsUID/CollectionUIDUserNonExistant";
 import CollectionUIDUser from "../../components/componentsUID/CollectionUIDUser";
 import CollectionUIDFriend from "../../components/componentsUID/CollectionUIDFriend";
-import CompareCollectionDisplay from "../../components/componentsUID/CompareCollectionDisplay";
-
 const CollectionUID = () => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const dispatch = useDispatch();
   let { user } = useParams();
   const [isCompare, setCompare] = useState(false);
   const userInfo = useSelector((state) => state.userReducer.userInfo);
@@ -81,8 +75,18 @@ const CollectionUID = () => {
           />
         );
       } else {
-        return <CollectionUIDFriendVide collectionData={collectionData} userInfo={userInfo} isCompare={isCompare}
-        setCompare={setCompare} allUsersData={allUsersData} handleSearchCollec={handleSearchCollec} isFriendCollectionPage={isFriendCollectionPage} compareList={compareList}/>;
+        return (
+          <CollectionUIDFriendVide
+            collectionData={collectionData}
+            userInfo={userInfo}
+            isCompare={isCompare}
+            setCompare={setCompare}
+            allUsersData={allUsersData}
+            handleSearchCollec={handleSearchCollec}
+            isFriendCollectionPage={isFriendCollectionPage}
+            compareList={compareList}
+          />
+        );
       }
     } else if (!userExists) {
       return <CollectionUIDUserNonExistant />;
@@ -121,14 +125,11 @@ const CollectionUID = () => {
   };
 
   const compareList = compareCollections();
-  
 
   return (
     <>
       <Navigation />
-      <div className="container">
-          {CollectionDisplay()}
-      </div>
+      <div className="container">{CollectionDisplay()}</div>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import img from "../../assets/onizuka.jpg";
 const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
   const navigate = useNavigate();
@@ -69,6 +69,7 @@ const SearchFriend = ({ userInfo, allUsersData, handleSearchCollec }) => {
                             ? `https://server-yondemangacollec.onrender.com/images/${user?.img}`
                             : img
                         }
+                        alt={user?.pseudo}
                       />
                       <span id="frienduserpseudo">{user.pseudo}</span>
                       <div className="gradeold">
