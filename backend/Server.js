@@ -21,7 +21,11 @@ const port = process.env.SERVER_PORT;
 
 
 const corsOptions = {
-  origin: [process.env.CLIENT_URL, process.env.CLIENT2_URL],
+  origin: [
+    process.env.CLIENT_URL,
+    process.env.CLIENT2_URL,
+    process.env.CLIENT3_URL,
+  ],
   credentials: true,
   allowedHeaders: ["sessionId", "Content-Type"],
   exposedHeaders: ["sessionId"],

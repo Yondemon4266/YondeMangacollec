@@ -42,8 +42,7 @@ module.exports.signIn = async (req, res) => {
 };
 
 module.exports.logout = async (req, res) => {
-    res.cookie('jwt', '', { maxAge: 1, sameSite: "None", secure: true});
-    console.log('déconnecté');
+    res.cookie("jwt", "", { maxAge: 1, sameSite: "None", secure: true });
     res.send({ message: "Déconnecté avec succès" });
     res.redirect('/');
 };
